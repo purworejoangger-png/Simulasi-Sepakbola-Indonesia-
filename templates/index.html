@@ -340,55 +340,87 @@
     const SAVE_KEY = 'footlord_id_v12_full';
     let MD = {}, selectedMode = 'real', setupLeague = 'LIGA1', selectedClubId = 'persib', activeTour = 'piala_id', activeNeg = null, isSim = false, gs = null;
 
-    const WIKI_LOGOS = {
-      persib: "https://upload.wikimedia.org/wikipedia/en/0/0d/Persib_Bandung_crest.svg",
-      persija: "https://upload.wikimedia.org/wikipedia/en/5/53/Persija_Jakarta_crest.svg",
-      persebaya: "https://upload.wikimedia.org/wikipedia/en/a/a2/Persebaya_Surabaya_logo.svg",
-      arema: "https://upload.wikimedia.org/wikipedia/en/2/29/Arema_FC_logo.svg",
-      bali: "https://upload.wikimedia.org/wikipedia/en/6/6b/Bali_United_logo.svg",
-      borneo: "https://upload.wikimedia.org/wikipedia/en/a/a4/Borneo_FC_Samarinda_logo.svg",
-      psm: "https://upload.wikimedia.org/wikipedia/en/6/63/PSM_Makassar_logo.svg",
-      dewa: "https://upload.wikimedia.org/wikipedia/en/3/3e/Dewa_United_FC_logo.svg",
-      madura: "https://upload.wikimedia.org/wikipedia/en/8/87/Madura_United_FC_logo.svg",
-      malut: "https://upload.wikimedia.org/wikipedia/en/9/9c/Malut_United_FC_logo.png",
-      psis: "https://upload.wikimedia.org/wikipedia/en/a/a8/PSIS_Semarang_logo.svg",
-      persis: "https://upload.wikimedia.org/wikipedia/en/8/87/Persis_Solo_logo.svg",
-      pss: "https://upload.wikimedia.org/wikipedia/en/1/14/PSS_Sleman_logo.svg",
-      persita: "https://upload.wikimedia.org/wikipedia/en/f/f8/Persita_Tangerang_logo.svg",
-      persik: "https://upload.wikimedia.org/wikipedia/en/2/24/Persik_Kediri_logo.svg",
-      barito: "https://upload.wikimedia.org/wikipedia/en/9/96/PS_Barito_Putera_logo.svg",
-      psbs: "https://upload.wikimedia.org/wikipedia/en/e/e1/PSBS_Biak_logo.png",
-      semen: "https://upload.wikimedia.org/wikipedia/en/3/3e/Semen_Padang_FC_logo.svg",
-      psim: "https://upload.wikimedia.org/wikipedia/en/6/60/PSIM_Yogyakarta_logo.svg",
-      bhayangkara: "https://upload.wikimedia.org/wikipedia/en/c/c8/Bhayangkara_Presisi_Indonesia_FC_logo.svg",
-      persiraja: "https://upload.wikimedia.org/wikipedia/en/3/35/Persiraja_Banda_Aceh_logo.svg",
-      psms: "https://upload.wikimedia.org/wikipedia/en/6/69/PSMS_Medan_logo.svg",
-      sriwijaya: "https://upload.wikimedia.org/wikipedia/en/4/41/Sriwijaya_FC_logo.svg",
-      persela: "https://upload.wikimedia.org/wikipedia/en/1/1a/Persela_Lamongan_logo.svg",
-      gresik: "https://upload.wikimedia.org/wikipedia/en/6/6b/Gresik_United_FC_logo.png",
-      deltras: "https://upload.wikimedia.org/wikipedia/en/1/1d/Deltras_FC_logo.png",
-      persipura: "https://upload.wikimedia.org/wikipedia/en/e/e1/Persipura_Jayapura_logo.svg",
-      psps: "https://upload.wikimedia.org/wikipedia/en/2/25/PSPS_Pekanbaru_logo.png",
-      bekasi: "https://upload.wikimedia.org/wikipedia/en/b/b7/FC_Bekasi_City_logo.png",
-      persijap: "https://upload.wikimedia.org/wikipedia/en/c/c7/Persijap_Jepara_logo.svg",
-      al_hilal: "https://upload.wikimedia.org/wikipedia/en/5/5a/Al-Hilal_SFC_logo.svg",
-      al_nassr: "https://upload.wikimedia.org/wikipedia/en/9/9d/Al_Nassr_FC_Logo.svg",
-      al_ittihad: "https://upload.wikimedia.org/wikipedia/en/0/0a/Al-Ittihad_Club_logo.svg",
-      vissel: "https://upload.wikimedia.org/wikipedia/en/b/b6/Vissel_Kobe_logo.svg",
-      ulsan: "https://upload.wikimedia.org/wikipedia/en/0/0e/Ulsan_HD_FC_logo.svg",
-      jdt: "https://upload.wikimedia.org/wikipedia/en/a/a3/Johor_Darul_Ta%27zim_F.C._logo.svg",
-      buriram: "https://upload.wikimedia.org/wikipedia/en/8/87/Buriram_United_logo.svg",
-      shanghai: "https://upload.wikimedia.org/wikipedia/en/c/c7/Shanghai_Port_FC_logo.svg",
-      gamba: "https://upload.wikimedia.org/wikipedia/en/9/93/Gamba_Osaka_logo.svg",
-      pohang: "https://upload.wikimedia.org/wikipedia/en/a/a5/Pohang_Steelers_logo.svg",
-      port_fc: "https://upload.wikimedia.org/wikipedia/en/f/f1/Port_F.C._logo.svg",
-      lion_city: "https://upload.wikimedia.org/wikipedia/en/3/3e/Lion_City_Sailors_FC_logo.svg",
-      selangor: "https://upload.wikimedia.org/wikipedia/en/4/45/Selangor_FC_crest.svg",
-      nam_dinh: "https://upload.wikimedia.org/wikipedia/en/2/2a/Thep_Xanh_Nam_Dinh_FC_logo.png",
-      kaya_fc: "https://upload.wikimedia.org/wikipedia/en/a/a3/Kaya_F.C.%E2%80%93Iloilo_logo.png",
-      eastern: "https://upload.wikimedia.org/wikipedia/en/4/41/Eastern_SC_logo.png"
+    // DATA DESAIN CREST / LOGO OTENTIK TIAP KLUB (100% ANTI-BLOKIR & TAJAM)
+    const CLUB_CRESTS = {
+      persib:     { shape: "shield", bg: "#003399", sec: "#ffffff", trim: "#facc15", txt: "PSB", sub: "1933", stars: 4 },
+      persija:    { shape: "shield", bg: "#dc2626", sec: "#facc15", trim: "#ffffff", txt: "PSJ", sub: "1928", stars: 2 },
+      persebaya:  { shape: "round",  bg: "#047857", sec: "#facc15", trim: "#ffffff", txt: "PBY", sub: "1927", stars: 2 },
+      arema:      { shape: "round",  bg: "#1e3a8a", sec: "#ef4444", trim: "#facc15", txt: "ARE", sub: "1987", stars: 1 },
+      bali:       { shape: "shield", bg: "#b91c1c", sec: "#111827", trim: "#facc15", txt: "BUFC", sub: "2015", stars: 2 },
+      borneo:     { shape: "shield", bg: "#ea580c", sec: "#111827", trim: "#ffffff", txt: "BFC", sub: "2014", stars: 1 },
+      psm:        { shape: "round",  bg: "#7f1d1d", sec: "#facc15", trim: "#ffffff", txt: "PSM", sub: "1915", stars: 2 },
+      dewa:       { shape: "hex",    bg: "#111827", sec: "#eab308", trim: "#ffffff", txt: "DEWA", sub: "FC", stars: 0 },
+      madura:     { shape: "shield", bg: "#dc2626", sec: "#ffffff", trim: "#facc15", txt: "MUFC", sub: "2016", stars: 0 },
+      malut:      { shape: "shield", bg: "#991b1b", sec: "#facc15", trim: "#111827", txt: "MLT", sub: "2023", stars: 0 },
+      psis:       { shape: "round",  bg: "#1d4ed8", sec: "#facc15", trim: "#ffffff", txt: "PSIS", sub: "1932", stars: 1 },
+      persis:     { shape: "shield", bg: "#b91c1c", sec: "#facc15", trim: "#ffffff", txt: "SOLO", sub: "1923", stars: 1 },
+      pss:        { shape: "shield", bg: "#15803d", sec: "#ffffff", trim: "#facc15", txt: "PSS", sub: "1976", stars: 0 },
+      persita:    { shape: "round",  bg: "#6b21a8", sec: "#ffffff", trim: "#facc15", txt: "PTA", sub: "1953", stars: 0 },
+      persik:     { shape: "shield", bg: "#581c87", sec: "#facc15", trim: "#ffffff", txt: "PSK", sub: "1950", stars: 2 },
+      barito:     { shape: "round",  bg: "#eab308", sec: "#111827", trim: "#ffffff", txt: "PSBP", sub: "1988", stars: 0 },
+      psbs:       { shape: "round",  bg: "#0284c7", sec: "#ffffff", trim: "#facc15", txt: "PSBS", sub: "1964", stars: 0 },
+      semen:      { shape: "shield", bg: "#991b1b", sec: "#facc15", trim: "#111827", txt: "SPFC", sub: "1980", stars: 0 },
+      psim:       { shape: "round",  bg: "#1e40af", sec: "#ffffff", trim: "#facc15", txt: "PSIM", sub: "1929", stars: 1 },
+      bhayangkara:{ shape: "shield", bg: "#eab308", sec: "#111827", trim: "#ffffff", txt: "BFC", sub: "POL", stars: 1 },
+      persiraja:  { shape: "shield", bg: "#ea580c", sec: "#111827", trim: "#ffffff", txt: "PRJ", sub: "1957", stars: 0 },
+      psms:       { shape: "round",  bg: "#15803d", sec: "#ffffff", trim: "#facc15", txt: "PSMS", sub: "1950", stars: 2 },
+      sriwijaya:  { shape: "shield", bg: "#eab308", sec: "#b91c1c", trim: "#ffffff", txt: "SFC", sub: "2004", stars: 2 },
+      persela:    { shape: "round",  bg: "#0284c7", sec: "#facc15", trim: "#ffffff", txt: "PSL", sub: "1967", stars: 0 },
+      gresik:     { shape: "shield", bg: "#eab308", sec: "#15803d", trim: "#ffffff", txt: "GUFC", sub: "2005", stars: 0 },
+      deltras:    { shape: "round",  bg: "#b91c1c", sec: "#111827", trim: "#ffffff", txt: "DEL", sub: "1989", stars: 0 },
+      persipura:  { shape: "shield", bg: "#dc2626", sec: "#111827", trim: "#facc15", txt: "PPR", sub: "1963", stars: 4 },
+      psps:       { shape: "round",  bg: "#1d4ed8", sec: "#ffffff", trim: "#facc15", txt: "PSPS", sub: "1955", stars: 0 },
+      bekasi:     { shape: "hex",    bg: "#111827", sec: "#ef4444", trim: "#ffffff", txt: "BKS", sub: "FC", stars: 0 },
+      persijap:   { shape: "shield", bg: "#b91c1c", sec: "#facc15", trim: "#ffffff", txt: "JEP", sub: "1954", stars: 0 }
     };
 
+    function renderClubLogo(club, sz = "w-8 h-8") {
+      if (!club) return `<div class="${sz} rounded-full bg-slate-800"></div>`;
+      const id = (club.id || "").toLowerCase();
+      const cfg = CLUB_CRESTS[id] || {
+        shape: "shield",
+        bg: club.color || "#1d4ed8",
+        sec: club.accent || "#ffffff",
+        trim: "#facc15",
+        txt: (club.short || club.name.slice(0,3)).toUpperCase(),
+        sub: "FC",
+        stars: club.stars || 0
+      };
+
+      const starCount = Math.min(4, cfg.stars || 0);
+      const starPositions = starCount === 1 ? [50] : starCount === 2 ? [41, 59] : starCount === 3 ? [34, 50, 66] : [29, 43, 57, 71];
+      const starsSvg = starPositions.map(x => `<polygon points="${x},2 ${x+2.2},7 ${x+7.5},7.5 ${x+3.5},11 ${x+4.8},16 ${x},13 ${x-4.8},16 ${x-3.5},11 ${x-7.5},7.5 ${x-2.2},7" fill="#facc15" stroke="#000" stroke-width="0.6"/>`).join('');
+
+      let bodyShape = '';
+      if (cfg.shape === 'round') {
+        bodyShape = `
+          <circle cx="50" cy="56" r="38" fill="${cfg.bg}" stroke="${cfg.trim}" stroke-width="4.5"/>
+          <circle cx="50" cy="56" r="30" fill="none" stroke="${cfg.sec}" stroke-width="2.5"/>
+          <path d="M22 56 H78" stroke="${cfg.sec}" stroke-width="14" stroke-opacity="0.25"/>
+        `;
+      } else if (cfg.shape === 'hex') {
+        bodyShape = `
+          <polygon points="50,18 84,36 84,74 50,94 16,74 16,36" fill="${cfg.bg}" stroke="${cfg.trim}" stroke-width="4.5"/>
+          <polygon points="50,24 78,40 78,70 50,88 22,70 22,40" fill="none" stroke="${cfg.sec}" stroke-width="2"/>
+        `;
+      } else {
+        bodyShape = `
+          <path d="M20 22 H80 V55 C80 77 50 94 50 94 C50 94 20 77 20 55 Z" fill="${cfg.bg}" stroke="${cfg.trim}" stroke-width="4.5"/>
+          <path d="M50 22 H80 V55 C80 77 50 94 50 94 Z" fill="${cfg.sec}" fill-opacity="0.22"/>
+          <path d="M24 44 H76 V64 H24 Z" fill="${cfg.sec}" fill-opacity="0.9"/>
+        `;
+      }
+
+      const txtColor = cfg.shape === 'shield' ? '#090d16' : '#ffffff';
+      const txtStroke = cfg.shape === 'shield' ? 'none' : '#000000';
+
+      return `<svg viewBox="0 0 100 100" class="${sz} drop-shadow-md shrink-0">
+        ${starsSvg}
+        ${bodyShape}
+        <text x="50" y="59" text-anchor="middle" fill="${txtColor}" stroke="${txtStroke}" stroke-width="${cfg.shape==='shield'?'0':'2'}" paint-order="stroke" font-weight="900" font-size="${cfg.txt.length > 3 ? '17' : '20'}" letter-spacing="-0.5">${cfg.txt}</text>
+        <text x="50" y="76" text-anchor="middle" fill="#ffffff" stroke="#000000" stroke-width="1.5" paint-order="stroke" font-weight="800" font-size="10">${cfg.sub}</text>
+      </svg>`;
+                   }
     const FORMATIONS = {
       "4-3-3": [{r:"GK",p:"GK",t:89,l:50},{r:"LB",p:"DF",t:72,l:16},{r:"CB",p:"DF",t:75,l:38},{r:"CB",p:"DF",t:75,l:62},{r:"RB",p:"DF",t:72,l:84},{r:"CM",p:"MF",t:52,l:26},{r:"CDM",p:"MF",t:57,l:50},{r:"CM",p:"MF",t:52,l:74},{r:"LW",p:"FW",t:24,l:18},{r:"ST",p:"FW",t:16,l:50},{r:"RW",p:"FW",t:24,l:82}],
       "4-2-3-1": [{r:"GK",p:"GK",t:89,l:50},{r:"LB",p:"DF",t:73,l:15},{r:"CB",p:"DF",t:76,l:38},{r:"CB",p:"DF",t:76,l:62},{r:"RB",p:"DF",t:73,l:85},{r:"CDM",p:"MF",t:57,l:35},{r:"CDM",p:"MF",t:57,l:65},{r:"LAM",p:"FW",t:36,l:18},{r:"CAM",p:"MF",t:38,l:50},{r:"RAM",p:"FW",t:36,l:82},{r:"ST",p:"FW",t:15,l:50}],
@@ -408,13 +440,14 @@
       return neg + 'Rp ' + Math.round(av).toLocaleString('id-ID');
     }
 
-    // RENDER JERSEY ASLI KLUB (DENGAN POLA GARIS/SASH/HALF, KERAH, APPAREL & SPONSOR DADA)
+     // RENDER JERSEY ASLI KLUB + EMBLEM KLUB DI DADA KIRI + APPAREL + SPONSOR
     function renderOfficialJersey(club, sz = "w-24 h-24", miniNum = null) {
       if (!club) return '';
       const c1 = club.color || "#003399", c2 = club.accent || "#ffffff", pat = club.kit || "solid";
       const spName = (gs && gs.sponsor ? gs.sponsor.name : "BRI").slice(0, 8);
       const apName = (gs && gs.apparel ? gs.apparel.name : "ERSPO").slice(0, 5).toUpperCase();
-      const uid = `kit_${club.id}_${Math.floor(Math.random()*9999)}`;
+      const shortTxt = (club.short || "FC").slice(0, 3);
+      const uid = `kit_${club.id}_${Math.floor(Math.random()*99999)}`;
 
       let patternSvg = '';
       if (pat === 'stripes') {
@@ -432,10 +465,11 @@
       }
 
       const centerGraphic = miniNum !== null
-        ? `<text x="50" y="62" text-anchor="middle" fill="#ffffff" stroke="#000000" stroke-width="1.5" paint-order="stroke" font-weight="900" font-size="22">${miniNum}</text>`
-        : `<text x="38" y="36" text-anchor="middle" fill="${c2}" font-weight="900" font-size="5">${apName}</text>
-           <circle cx="62" cy="34" r="4.5" fill="${c2}" stroke="#000" stroke-width="0.8"/>
-           <rect x="31" y="45" width="38" height="11" rx="2" fill="#090d16" fill-opacity="0.82"/>
+        ? `<text x="50" y="62" text-anchor="middle" fill="#ffffff" stroke="#000000" stroke-width="1.8" paint-order="stroke" font-weight="900" font-size="22">${miniNum}</text>`
+        : `<text x="38" y="36" text-anchor="middle" fill="${c2}" stroke="#000" stroke-width="0.6" paint-order="stroke" font-weight="900" font-size="5">${apName}</text>
+           <path d="M57 29 H67 V35 C67 39 62 42 62 42 C62 42 57 39 57 35 Z" fill="${c1}" stroke="#facc15" stroke-width="1"/>
+           <text x="62" y="36.5" text-anchor="middle" fill="#ffffff" font-weight="900" font-size="3.6">${shortTxt}</text>
+           <rect x="31" y="45" width="38" height="11" rx="2" fill="#090d16" fill-opacity="0.86"/>
            <text x="50" y="52.5" text-anchor="middle" fill="#ffffff" font-weight="900" font-size="6.2">${spName}</text>`;
 
       return `<svg viewBox="0 0 100 100" class="${sz} drop-shadow-lg shrink-0">
@@ -447,28 +481,12 @@
         <g clip-path="url(#${uid})">
           <rect x="8" y="12" width="84" height="80" fill="${c1}"/>
           ${patternSvg}
-          <!-- Lengan & Kerah -->
           <path d="M39 14 Q50 22 61 14" fill="none" stroke="${c2}" stroke-width="3.5"/>
-          <rect x="8" y="12" width="84" height="80" fill="url(#shade_${uid})" opacity="0.2"/>
         </g>
         <path d="M28 18 L39 14 Q50 21 61 14 L72 18 L90 34 L79 46 L72 39 L72 88 L28 88 L28 39 L21 46 L10 34 Z" fill="none" stroke="${c2}" stroke-width="2.2"/>
         ${centerGraphic}
       </svg>`;
     }
-
-    function renderFallbackCrest(club, sz) {
-      const c1 = club.color || "#1d4ed8", c2 = club.accent || "#ffffff";
-      return `<svg viewBox="0 0 100 100" class="${sz} shrink-0"><path d="M20 18 H80 V54 C80 76 50 93 50 93 C50 93 20 76 20 54 Z" fill="${c1}" stroke="${c2}" stroke-width="6"/><path d="M50 18 H80 V54 C80 76 50 93 50 93 Z" fill="${c2}" fill-opacity="0.85"/></svg>`;
-    }
-
-    function renderClubLogo(club, sz = "w-8 h-8") {
-      if (!club) return `<div class="${sz} rounded-full bg-slate-800"></div>`;
-      const url = WIKI_LOGOS[(club.id || "").toLowerCase()];
-      if (!url) return renderFallbackCrest(club, sz);
-      return `<div class="${sz} relative flex items-center justify-center shrink-0">
-        <img src="${url}" alt="${club.name}" referrerpolicy="no-referrer" class="w-full h-full object-contain drop-shadow" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-        <div style="display:none" class="w-full h-full">${renderFallbackCrest(club, "w-full h-full")}</div>
-      </div>`;
     }
     function toast(m) { const t = document.getElementById('toast'); t.textContent = m; t.classList.remove('hidden'); setTimeout(() => t.classList.add('hidden'), 3200); }
 
