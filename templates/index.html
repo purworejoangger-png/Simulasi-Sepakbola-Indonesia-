@@ -3,437 +3,490 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FootLord Indonesia 2026 — Full License</title>
+  <title>FootLord Indonesia 2026</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .tactical-pitch { background: repeating-linear-gradient(0deg, #065f46 0px, #065f46 44px, #047857 44px, #047857 88px); position: relative; overflow: hidden; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #070d19; }
+    .stadium-bg {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.24), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(16, 185, 129, 0.34), transparent 60%),
+        linear-gradient(180deg, #0b162c 0%, #10243e 52%, #093524 100%);
+    }
+    .glass-card {
+      background: rgba(15, 29, 52, 0.74);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .tactical-pitch {
+      background: repeating-linear-gradient(0deg, #065f46 0px, #065f46 40px, #047857 40px, #047857 80px);
+    }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen">
+<body class="stadium-bg text-white min-h-screen pb-24">
 
   <!-- SETUP SCREEN -->
-  <div id="setup-screen" class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950">
-    <div class="max-w-5xl w-full bg-slate-900/95 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
-      <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase bg-emerald-500/20 text-emerald-400">🇮🇩 Full License Indonesia & Asia</span>
-      <h1 class="text-3xl font-extrabold mt-2 text-white">FOOTLORD <span class="text-emerald-400">INDONESIA</span></h1>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
-        <div>
-          <label class="block text-xs font-bold text-slate-400 mb-1.5">Nama Manajer</label>
-          <input id="manager-name" type="text" value="Coach Indonesia" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white font-semibold" />
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-slate-400 mb-1.5">Mode Anggaran</label>
-          <div class="grid grid-cols-2 gap-2">
-            <button type="button" onclick="selectMode('real')" id="btn-mode-real" class="p-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-left cursor-pointer">
-              <div class="font-extrabold text-xs text-emerald-400">💼 REAL-LIFE</div>
-              <div class="text-[11px] text-slate-300">Gaji, tiket & sponsor</div>
-            </button>
-            <button type="button" onclick="selectMode('unlimited')" id="btn-mode-unlimited" class="p-3 rounded-xl border-2 border-slate-700 bg-slate-800/60 text-left cursor-pointer">
-              <div class="font-extrabold text-xs text-amber-400">👑 UNLIMITED (∞)</div>
-              <div class="text-[11px] text-slate-300">Dana sultan bebas</div>
-            </button>
+  <div id="setup-screen" class="min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full glass-card rounded-3xl p-6 shadow-2xl space-y-4">
+      <div class="text-center">
+        <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase bg-emerald-400/20 text-emerald-300">🇮🇩 BRI Liga 1 (34 Match) • ACL Elite & Two</span>
+        <h1 class="text-2xl font-black mt-2">FOOTLORD <span class="text-emerald-400">INDONESIA</span></h1>
+      </div>
+      <div>
+        <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Nama Manajer</label>
+        <input id="manager-name" type="text" value="Coach Indonesia" class="w-full bg-slate-900/80 border border-white/15 rounded-2xl px-4 py-2.5 text-sm font-bold text-white" />
+      </div>
+      <div class="grid grid-cols-2 gap-2.5">
+        <button type="button" onclick="selectMode('real')" id="btn-mode-real" class="p-3 rounded-2xl border-2 border-emerald-400 bg-emerald-500/15 text-left cursor-pointer">
+          <div class="font-black text-xs text-emerald-300">💼 REAL-LIFE</div>
+          <div class="text-[10px] text-slate-300">Gaji, tiket & sponsor</div>
+        </button>
+        <button type="button" onclick="selectMode('unlimited')" id="btn-mode-unlimited" class="p-3 rounded-2xl border-2 border-white/10 bg-slate-900/60 text-left cursor-pointer">
+          <div class="font-black text-xs text-amber-300">👑 VIP UNLIMITED</div>
+          <div class="text-[10px] text-slate-300">Saldo sultan bebas</div>
+        </button>
+      </div>
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-[11px] font-bold text-slate-300 uppercase">Pilih Klub & Jersey Resmi</span>
+          <div class="flex gap-1.5">
+            <button type="button" onclick="switchSetupLeague('LIGA1')" id="btn-setup-l1" class="px-2.5 py-1 rounded-lg text-[11px] font-black bg-emerald-400 text-slate-950 cursor-pointer">Liga 1 (18)</button>
+            <button type="button" onclick="switchSetupLeague('LIGA2')" id="btn-setup-l2" class="px-2.5 py-1 rounded-lg text-[11px] font-black bg-slate-800 text-slate-300 cursor-pointer">Liga 2 (12)</button>
           </div>
         </div>
+        <div id="club-grid" class="grid grid-cols-3 gap-2 max-h-56 overflow-y-auto pr-1"></div>
       </div>
-      <div class="mb-6">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-          <span class="text-xs font-bold text-slate-400">Pilih Klub Resmi (Full License Logo):</span>
-          <div class="flex gap-2">
-            <button type="button" onclick="switchSetupLeague('LIGA1')" id="btn-setup-l1" class="px-3 py-1.5 rounded-lg text-xs font-extrabold bg-emerald-500 text-slate-950 cursor-pointer">BRI Liga 1 (18)</button>
-            <button type="button" onclick="switchSetupLeague('LIGA2')" id="btn-setup-l2" class="px-3 py-1.5 rounded-lg text-xs font-extrabold bg-slate-800 text-slate-300 cursor-pointer">Pegadaian Liga 2 (12)</button>
-          </div>
-        </div>
-        <div id="club-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5 max-h-72 overflow-y-auto"></div>
-      </div>
-      <button onclick="startNewCareer()" class="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-base cursor-pointer">🚀 MULAI KARIER MANAJER</button>
+      <button onclick="startNewCareer()" class="w-full py-3.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-sm shadow-lg cursor-pointer">MULAI KARIER MANAJER</button>
     </div>
   </div>
 
-  <!-- MODALS -->
-  <div id="negotiation-modal" class="fixed inset-0 z-50 hidden bg-slate-950/85 flex items-center justify-center p-4">
-    <div class="max-w-md w-full bg-slate-900 border border-emerald-500/40 rounded-3xl p-5 space-y-4">
-      <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+  <!-- MAIN MOBILE APP SHELL -->
+  <div id="game-screen" class="hidden max-w-lg mx-auto px-4 pt-4 space-y-3">
+
+    <!-- TOP BAR -->
+    <div class="flex items-center justify-between">
+      <div class="px-3.5 py-1 rounded-full bg-[#86efac] text-slate-950 font-black text-xs shadow" id="top-ovr-pill">83</div>
+      <div class="flex items-center gap-3">
+        <span id="top-vip-badge" class="px-2.5 py-0.5 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-300 font-black text-[10px]">💼 REAL</span>
+        <span class="text-xs font-extrabold text-rose-400">❤️ <span id="top-fans">80%</span></span>
+        <button onclick="resetGame()" title="Reset Karier" class="text-slate-300 hover:text-white text-base cursor-pointer">⚙️</button>
+      </div>
+    </div>
+
+    <!-- CLUB IDENTITY HEADER -->
+    <div class="text-center space-y-0.5">
+      <div class="flex items-center justify-center gap-2.5">
+        <div id="hdr-logo" class="w-8 h-8 flex items-center justify-center"></div>
+        <h1 id="hdr-club-name" class="text-xl font-black tracking-wide uppercase">PERSIB BANDUNG</h1>
+      </div>
+      <p id="hdr-subtitle" class="text-xs text-slate-300 font-semibold">14 Juli 2026 • ke-1 di Liga 1</p>
+    </div>
+
+    <!-- ==================== TAB 1: BERANDA ==================== -->
+    <section id="view-beranda" class="app-view space-y-3">
+      <!-- KALENDER / NEXT MATCH CARD -->
+      <div class="glass-card rounded-3xl p-4 text-center space-y-2">
+        <div class="text-[11px] font-black tracking-widest uppercase text-slate-300" id="cal-comp-title">KALENDER</div>
+        <div id="cal-body" class="py-1"></div>
+      </div>
+
+      <!-- PERFORMA SAAT INI -->
+      <div class="glass-card rounded-3xl p-3 text-center space-y-2">
+        <div class="text-[11px] font-black tracking-widest uppercase text-slate-300">PERFORMA SAAT INI</div>
+        <div id="form-pills" class="flex items-center justify-center gap-3"></div>
+      </div>
+
+      <!-- SALDO BANK & KEUNTUNGAN -->
+      <div class="glass-card rounded-3xl p-3 grid grid-cols-2 gap-3 text-center">
         <div>
-          <span id="neg-badge" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400">NEGOSIASI</span>
-          <h3 id="neg-player-name" class="text-lg font-extrabold text-white mt-1">-</h3>
-          <p id="neg-player-meta" class="text-xs text-slate-400">-</p>
+          <div class="text-[10px] font-black uppercase text-slate-300 mb-1">SALDO BANK</div>
+          <div id="pill-bank" class="py-1.5 px-2 rounded-full bg-[#86efac] text-slate-950 font-black text-xs truncate">Rp 25M</div>
         </div>
-        <button onclick="closeNegotiationModal()" class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs font-bold cursor-pointer">✕</button>
+        <div>
+          <div class="text-[10px] font-black uppercase text-slate-300 mb-1">KEUNTUNGAN MUSIM</div>
+          <div id="pill-profit" class="py-1.5 px-2 rounded-full bg-[#fca5a5] text-slate-950 font-black text-xs truncate">Rp 0</div>
+        </div>
       </div>
-      <div id="neg-fee-section" class="space-y-1">
-        <div class="flex justify-between text-xs font-bold"><span>Biaya Transfer</span><span id="neg-fee-label" class="text-amber-400">Rp 0</span></div>
-        <input id="neg-fee-slider" type="range" oninput="updateNegotiationPreview()" class="w-full accent-emerald-500" />
-        <div id="neg-market-val" class="text-[10px] text-slate-400">Harga Pasar: Rp 0</div>
+
+      <!-- 4 ACTION TILES: KLASEMEN | STATISTIK | SOSIAL | PESAN -->
+      <div class="grid grid-cols-4 gap-2">
+        <button onclick="openSubModal('klasemen')" class="glass-card rounded-2xl py-3 px-1 flex flex-col items-center gap-1 hover:bg-white/10 cursor-pointer">
+          <span class="text-lg">🏆</span><span class="text-[10px] font-black">KLASEMEN</span>
+        </button>
+        <button onclick="openSubModal('statistik')" class="glass-card rounded-2xl py-3 px-1 flex flex-col items-center gap-1 hover:bg-white/10 cursor-pointer">
+          <span class="text-lg">📊</span><span class="text-[10px] font-black">STATISTIK</span>
+        </button>
+        <button onclick="openSubModal('sosial')" class="glass-card rounded-2xl py-3 px-1 flex flex-col items-center gap-1 hover:bg-white/10 cursor-pointer">
+          <span class="text-lg">📱</span><span class="text-[10px] font-black">SOSIAL</span>
+        </button>
+        <button onclick="openSubModal('pesan')" class="glass-card rounded-2xl py-3 px-1 flex flex-col items-center gap-1 hover:bg-white/10 relative cursor-pointer">
+          <span id="msg-badge" class="absolute top-1.5 right-2 px-1.5 rounded-full bg-rose-500 text-white font-black text-[9px]">1</span>
+          <span class="text-lg">✉️</span><span class="text-[10px] font-black">PESAN</span>
+        </button>
       </div>
-      <div class="space-y-1">
-        <div class="flex justify-between text-xs font-bold"><span>Gaji / Laga</span><span id="neg-wage-label" class="text-sky-400">Rp 0</span></div>
-        <input id="neg-wage-slider" type="range" oninput="updateNegotiationPreview()" class="w-full accent-sky-500" />
-        <div id="neg-expected-wage" class="text-[10px] text-slate-400">Ekspektasi: Rp 0</div>
+
+      <!-- LIVE TICKER & LAST MATCH STATS SUMMARY -->
+      <div id="home-ticker-wrap" class="hidden glass-card rounded-2xl p-3 space-y-1.5 max-h-40 overflow-y-auto text-xs"></div>
+
+      <!-- PRIMARY CTA -->
+      <div id="main-cta-wrap" class="pt-0.5"></div>
+    </section>
+
+    <!-- ==================== TAB 2: TIM ==================== -->
+    <section id="view-tim" class="app-view hidden space-y-3">
+      <div class="glass-card rounded-full p-1 grid grid-cols-3 text-center text-xs font-black">
+        <button onclick="switchTimSub('info')" id="sub-tim-info" class="py-2 rounded-full bg-white text-slate-950 cursor-pointer">INFO</button>
+        <button onclick="switchTimSub('pemain')" id="sub-tim-pemain" class="py-2 rounded-full text-slate-300 cursor-pointer">PEMAIN</button>
+        <button onclick="switchTimSub('susunan')" id="sub-tim-susunan" class="py-2 rounded-full text-slate-300 cursor-pointer">SUSUNAN</button>
+      </div>
+
+      <!-- SUB-TIM: INFO + JERSEY ASLI -->
+      <div id="tim-panel-info" class="space-y-3">
+        <!-- KARTU JERSEY RESMI KLUB -->
+        <div class="glass-card rounded-3xl p-4 flex items-center justify-between gap-3">
+          <div id="official-jersey-display" class="w-24 h-24 shrink-0 flex items-center justify-center"></div>
+          <div class="flex-1 space-y-1 text-xs">
+            <span class="px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-black text-[10px]">JERSEY RESMI 2026/27</span>
+            <h3 id="jersey-club-title" class="font-black text-sm">PERSIB BANDUNG</h3>
+            <p class="text-[11px] text-slate-300">Apparel: <b id="jersey-apparel-name" class="text-sky-300">Erspo</b></p>
+            <p class="text-[11px] text-slate-300">Sponsor Utama: <b id="jersey-sponsor-name" class="text-amber-300">Bank BRI</b></p>
+            <p class="text-[11px] text-slate-300">Moral Skuad: <b id="info-avg-morale" class="text-emerald-300">85% (Bahagia)</b></p>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-3xl p-3 grid grid-cols-3 gap-2 text-center">
+          <div><div class="text-[10px] font-bold text-slate-300">PELATIH</div><div id="info-coach-ovr" class="mt-1 py-1 rounded-full bg-slate-300 text-slate-950 font-black text-xs">80</div></div>
+          <div><div class="text-[10px] font-bold text-slate-300">UMUM</div><div id="info-team-ovr" class="mt-1 py-1 rounded-full bg-slate-300 text-slate-950 font-black text-xs">82</div></div>
+          <div><div class="text-[10px] font-bold text-slate-300">SUSUNAN</div><div id="info-xi-ovr" class="mt-1 py-1 rounded-full bg-slate-300 text-slate-950 font-black text-xs">83</div></div>
+        </div>
+        <div class="glass-card rounded-3xl p-3 grid grid-cols-2 gap-3 text-center">
+          <div><div class="text-[10px] font-bold text-slate-300">NILAI SKUAD</div><div id="info-squad-val" class="mt-1 py-1.5 rounded-full bg-[#86efac] text-slate-950 font-black text-xs">Rp 45M</div></div>
+          <div><div class="text-[10px] font-bold text-slate-300">SALDO BANK</div><div id="info-bank-val" class="mt-1 py-1.5 rounded-full bg-[#86efac] text-slate-950 font-black text-xs">Rp 25M</div></div>
+        </div>
+        <div class="glass-card rounded-3xl p-3 grid grid-cols-2 gap-3 text-center">
+          <div><div class="text-[10px] font-bold text-slate-300">PERINGKAT LIGA</div><div id="info-league-rank" class="mt-1 py-1.5 rounded-full bg-white text-slate-950 font-black text-xs">ke-1 / 18</div></div>
+          <div><div class="text-[10px] font-bold text-slate-300">TIKET ASIA (ACL)</div><div id="info-acl-status" class="mt-1 py-1.5 rounded-full bg-white text-slate-950 font-black text-[11px]">Belum Lolos</div></div>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <button onclick="openSubModal('keuangan')" class="glass-card rounded-2xl py-3 flex flex-col items-center gap-1 cursor-pointer"><span class="text-lg">💰</span><span class="text-[10px] font-black">KEUANGAN</span></button>
+          <button onclick="openSubModal('struktur')" class="glass-card rounded-2xl py-3 flex flex-col items-center gap-1 cursor-pointer"><span class="text-lg">🏟️</span><span class="text-[10px] font-black">STRUKTUR</span></button>
+          <button onclick="openSubModal('staf')" class="glass-card rounded-2xl py-3 flex flex-col items-center gap-1 cursor-pointer"><span class="text-lg">👔</span><span class="text-[10px] font-black">STAF</span></button>
+        </div>
+      </div>
+
+      <!-- SUB-TIM: PEMAIN (DENGAN MORAL & SIFAT REAL-LIFE) -->
+      <div id="tim-panel-pemain" class="hidden glass-card rounded-3xl p-3.5 space-y-2.5">
+        <div class="flex flex-wrap justify-between items-center gap-1 text-xs">
+          <span class="font-black">Skuad (<span id="xi-count">11</span>/11 Inti)</span>
+          <div class="flex gap-1">
+            <button onclick="boostMoraleBonus()" class="px-2 py-1 rounded-full bg-amber-300 text-slate-950 font-black text-[10px] cursor-pointer">🎉 Bonus Moral (1M)</button>
+            <button onclick="recoverStamina()" class="px-2 py-1 rounded-full bg-emerald-400 text-slate-950 font-black text-[10px] cursor-pointer">⚡ Fisio (1M)</button>
+            <button onclick="trainAllSquad()" class="px-2 py-1 rounded-full bg-sky-400 text-slate-950 font-black text-[10px] cursor-pointer">🏋️ Latih (2.5M)</button>
+          </div>
+        </div>
+        <div id="squad-list" class="space-y-1.5 max-h-[430px] overflow-y-auto pr-1 text-xs"></div>
+      </div>
+
+      <!-- SUB-TIM: SUSUNAN (MINI JERSEY DI LAPANGAN) -->
+      <div id="tim-panel-susunan" class="hidden glass-card rounded-3xl p-3.5 space-y-2.5">
+        <div class="flex justify-between items-center">
+          <div class="flex gap-1 bg-slate-950/70 p-1 rounded-full">
+            <button onclick="setFormation('4-3-3')" id="form-4-3-3" class="px-2.5 py-1 rounded-full text-[11px] font-black bg-emerald-400 text-slate-950 cursor-pointer">4-3-3</button>
+            <button onclick="setFormation('4-2-3-1')" id="form-4-2-3-1" class="px-2.5 py-1 rounded-full text-[11px] font-black text-slate-300 cursor-pointer">4-2-3-1</button>
+            <button onclick="setFormation('3-5-2')" id="form-3-5-2" class="px-2.5 py-1 rounded-full text-[11px] font-black text-slate-300 cursor-pointer">3-5-2</button>
+          </div>
+          <select id="tactic-select" onchange="saveGame()" class="bg-slate-900 border border-white/15 rounded-full px-3 py-1 text-[11px] font-bold">
+            <option value="balanced">⚖️ Seimbang</option>
+            <option value="attack">🔥 Menyerang</option>
+            <option value="possession">🎯 Tiki-Taka</option>
+            <option value="defend">🛡️ Parkir Bus</option>
+          </select>
+        </div>
+        <div class="tactical-pitch w-full h-[370px] rounded-2xl border border-white/25 relative overflow-hidden">
+          <div class="absolute inset-2.5 border border-white/30 rounded-lg pointer-events-none"></div>
+          <div class="absolute left-2.5 right-2.5 top-1/2 border-t border-white/30 pointer-events-none"></div>
+          <div id="pitch-layer" class="absolute inset-0"></div>
+        </div>
+        <div class="flex items-center justify-between text-[11px]">
+          <span class="text-slate-300">Intensitas Pressing:</span>
+          <select id="mentality-select" onchange="saveGame()" class="bg-slate-900 border border-white/15 rounded-full px-3 py-1 text-[11px] font-bold">
+            <option value="normal">🤝 Normal</option>
+            <option value="calm">🕊️ Main Bersih (Aman Cedera)</option>
+            <option value="hard">⚡ Gegenpressing Keras</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: TRANSFER ==================== -->
+    <section id="view-transfer" class="app-view hidden glass-card rounded-3xl p-4 space-y-3">
+      <div class="flex justify-between items-center">
+        <h3 class="font-black text-sm">🌍 BURSA TRANSFER & NEGOSIASI</h3>
+        <select id="filter-cat" onchange="renderTransfer()" class="bg-slate-900 border border-white/15 rounded-full px-3 py-1 text-[11px] font-bold">
+          <option value="ALL">Semua</option><option value="TIMNAS">🇮🇩 Timnas</option><option value="ASIA">🌏 Asia</option><option value="WORLD">👑 Dunia</option>
+        </select>
+      </div>
+      <input id="search-player" oninput="renderTransfer()" type="text" placeholder="Cari pemain / sifat / klub..." class="w-full bg-slate-900/80 border border-white/15 rounded-full px-4 py-2 text-xs" />
+      <div id="transfer-list" class="space-y-2 max-h-[430px] overflow-y-auto pr-1 text-xs"></div>
+    </section>
+
+    <!-- ==================== TAB 4: MANAJER ==================== -->
+    <section id="view-manajer" class="app-view hidden space-y-3">
+      <div class="glass-card rounded-3xl p-4 space-y-2">
+        <div class="flex justify-between items-center">
+          <div><div class="text-[10px] text-slate-300 font-bold">PROFIL MANAJER</div><h3 id="mgr-profile-name" class="font-black text-base">Coach Indonesia</h3></div>
+          <span id="mgr-trophies-badge" class="px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 font-black text-xs">🏆 0 Trofi</span>
+        </div>
+        <div id="mgr-trophy-list" class="text-[11px] text-slate-300">Belum ada trofi diraih.</div>
+      </div>
+
+      <div class="glass-card rounded-3xl p-4 space-y-2">
+        <h4 class="font-black text-xs text-rose-300 uppercase">🚑 Ruang Medis & Cedera</h4>
+        <div id="injury-list" class="space-y-1.5 text-xs"></div>
+      </div>
+
+      <div class="glass-card rounded-3xl p-4 space-y-2">
+        <div class="flex justify-between items-center">
+          <h4 class="font-black text-xs text-sky-300 uppercase">🎓 Akademi Muda U-18</h4>
+          <button onclick="scoutYouth()" class="px-2.5 py-1 rounded-full bg-sky-400 text-slate-950 font-black text-[10px] cursor-pointer">🔍 Cari Bakat (1M)</button>
+        </div>
+        <div id="youth-list" class="space-y-1.5 text-xs"></div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 5: HUB (TUR PRA-MUSIM, PIALA & ACL) ==================== -->
+    <section id="view-hub" class="app-view hidden space-y-3">
+      <!-- TUR PRA-MUSIM -->
+      <div class="glass-card rounded-3xl p-4 space-y-2">
+        <div class="flex justify-between items-center">
+          <h3 class="font-black text-xs uppercase text-sky-300">✈️ Tur Pra-Musim (Pre-Season)</h3>
+          <span id="preseason-status-badge" class="text-[10px] font-black text-emerald-300">Tersedia</span>
+        </div>
+        <div id="preseason-box" class="space-y-2 text-xs"></div>
+      </div>
+
+      <!-- STATUS TIKET KOMPETISI ASIA -->
+      <div class="glass-card rounded-3xl p-4 space-y-1.5">
+        <h3 class="font-black text-xs uppercase text-amber-300">🌏 Kualifikasi AFC (ACL Elite & Two)</h3>
+        <div id="acl-qualification-card" class="text-xs space-y-1"></div>
+      </div>
+
+      <!-- TURNAMEN RESMI -->
+      <div class="glass-card rounded-3xl p-4 space-y-3">
+        <div class="grid grid-cols-3 gap-1.5">
+          <button onclick="selectTour('piala_id')" id="btn-t-piala" class="py-2 rounded-full font-black text-[10px] bg-emerald-400 text-slate-950 cursor-pointer">🇮🇩 Piala ID</button>
+          <button onclick="selectTour('acl_two')" id="btn-t-acl2" class="py-2 rounded-full font-black text-[10px] bg-slate-900 text-slate-300 cursor-pointer">🌏 ACL Two</button>
+          <button onclick="selectTour('acl_elite')" id="btn-t-acle" class="py-2 rounded-full font-black text-[10px] bg-slate-900 text-slate-300 cursor-pointer">👑 ACL Elite</button>
+        </div>
+        <div id="tour-box" class="space-y-2.5 text-xs"></div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- BOTTOM NAVIGATION BAR -->
+  <nav id="bottom-nav" class="hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0b1526]/95 backdrop-blur-md border-t border-white/10">
+    <div class="max-w-lg mx-auto grid grid-cols-5">
+      <button onclick="switchAppTab('beranda')" id="nav-beranda" class="py-2.5 flex flex-col items-center gap-0.5 bg-white text-slate-950 font-black text-[10px] cursor-pointer"><span class="text-base">🏠</span><span>BERANDA</span></button>
+      <button onclick="switchAppTab('tim')" id="nav-tim" class="py-2.5 flex flex-col items-center gap-0.5 text-slate-300 font-black text-[10px] cursor-pointer"><span class="text-base">🛡️</span><span>TIM</span></button>
+      <button onclick="switchAppTab('transfer')" id="nav-transfer" class="py-2.5 flex flex-col items-center gap-0.5 text-slate-300 font-black text-[10px] cursor-pointer"><span class="text-base">🔄</span><span>TRANSFER</span></button>
+      <button onclick="switchAppTab('manajer')" id="nav-manajer" class="py-2.5 flex flex-col items-center gap-0.5 text-slate-300 font-black text-[10px] cursor-pointer"><span class="text-base">💼</span><span>MANAJER</span></button>
+      <button onclick="switchAppTab('hub')" id="nav-hub" class="py-2.5 flex flex-col items-center gap-0.5 text-slate-300 font-black text-[10px] cursor-pointer"><span class="text-base">🏆</span><span>HUB</span></button>
+    </div>
+  </nav>
+
+  <!-- UNIVERSAL SUB-MODAL -->
+  <div id="sub-modal" class="fixed inset-0 z-50 hidden bg-slate-950/85 flex items-center justify-center p-4">
+    <div class="max-w-md w-full glass-card rounded-3xl p-5 space-y-3 max-h-[86vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b border-white/15 pb-2.5">
+        <h3 id="sub-modal-title" class="font-black text-sm uppercase">DETAIL</h3>
+        <button onclick="document.getElementById('sub-modal').classList.add('hidden')" class="w-7 h-7 rounded-full bg-white/10 font-black text-xs cursor-pointer">✕</button>
+      </div>
+      <div id="sub-modal-body" class="space-y-2.5 text-xs"></div>
+    </div>
+  </div>
+
+  <!-- NEGOTIATION MODAL -->
+  <div id="neg-modal" class="fixed inset-0 z-50 hidden bg-slate-950/85 flex items-center justify-center p-4">
+    <div class="max-w-sm w-full glass-card rounded-3xl p-5 space-y-3.5 text-xs">
+      <div class="flex justify-between items-center border-b border-white/15 pb-2">
+        <div><h3 id="neg-name" class="font-black text-base text-white">-</h3><p id="neg-meta" class="text-slate-300">-</p></div>
+        <button onclick="document.getElementById('neg-modal').classList.add('hidden')" class="w-7 h-7 rounded-full bg-white/10 font-black cursor-pointer">✕</button>
+      </div>
+      <div id="neg-fee-wrap">
+        <div class="flex justify-between font-bold mb-1"><span>Biaya Transfer</span><span id="neg-fee-lbl" class="text-amber-300">Rp 0</span></div>
+        <input id="neg-fee" type="range" oninput="updNeg()" class="w-full accent-emerald-400" />
+      </div>
+      <div>
+        <div class="flex justify-between font-bold mb-1"><span>Gaji / Laga</span><span id="neg-wage-lbl" class="text-sky-300">Rp 0</span></div>
+        <input id="neg-wage" type="range" oninput="updNeg()" class="w-full accent-sky-400" />
       </div>
       <div class="grid grid-cols-2 gap-2">
-        <div><label class="text-[11px] text-slate-400">Durasi</label><select id="neg-years" onchange="updateNegotiationPreview()" class="w-full bg-slate-800 rounded-xl p-2 text-xs font-bold"><option value="1">1 Musim</option><option value="2">2 Musim</option><option value="3" selected>3 Musim</option><option value="4">4 Musim</option></select></div>
-        <div><label class="text-[11px] text-slate-400">Bonus</label><select id="neg-bonus" onchange="updateNegotiationPreview()" class="w-full bg-slate-800 rounded-xl p-2 text-xs font-bold"><option value="0">Rp 0</option><option value="500000000">Rp 500 Jt</option><option value="1500000000">Rp 1.5 M</option></select></div>
+        <select id="neg-yrs" onchange="updNeg()" class="bg-slate-900 border border-white/15 rounded-xl p-2 font-bold"><option value="1">1 Musim</option><option value="2">2 Musim</option><option value="3" selected>3 Musim</option><option value="4">4 Musim</option></select>
+        <select id="neg-bon" onchange="updNeg()" class="bg-slate-900 border border-white/15 rounded-xl p-2 font-bold"><option value="0">Bonus Rp 0</option><option value="500000000">Bonus 500 Jt</option><option value="1500000000">Bonus 1.5 M</option></select>
       </div>
-      <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-        <div class="flex justify-between font-bold"><span>Peluang Deal:</span><span id="neg-chance-text" class="text-emerald-400">85%</span></div>
-        <div id="neg-total-upfront" class="text-[11px] text-slate-400 mt-1">Total Dimuka: Rp 0</div>
+      <div class="p-3 rounded-2xl bg-slate-950/70 flex justify-between font-black">
+        <span>Peluang Deal:</span><span id="neg-chance" class="text-emerald-400">85%</span>
       </div>
-      <button onclick="submitNegotiation()" class="w-full py-3 rounded-2xl bg-emerald-500 text-slate-950 font-extrabold text-sm cursor-pointer">✍️ AJUKAN TAWARAN</button>
+      <button onclick="submitNeg()" class="w-full py-3 rounded-full bg-emerald-400 text-slate-950 font-black text-sm cursor-pointer">KIRIM TAWARAN</button>
     </div>
   </div>
 
-  <div id="post-match-modal" class="fixed inset-0 z-50 hidden bg-slate-950/85 flex items-center justify-center p-4">
-    <div class="max-w-lg w-full bg-slate-900 border border-emerald-500/40 rounded-3xl p-5 space-y-3 max-h-[88vh] overflow-y-auto">
-      <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-        <h3 class="text-base font-extrabold text-white">📋 Laporan Resmi Pertandingan</h3>
-        <button onclick="closePostMatchModal()" class="px-2.5 py-1 rounded bg-slate-800 text-xs font-bold cursor-pointer">✕</button>
-      </div>
-      <div id="pm-content" class="space-y-3 text-xs"></div>
-      <button onclick="closePostMatchModal()" class="w-full py-3 rounded-xl bg-emerald-500 text-slate-950 font-extrabold text-sm cursor-pointer">LANJUTKAN →</button>
-    </div>
-  </div>
-
-  <div id="season-report-modal" class="fixed inset-0 z-50 hidden bg-slate-950/90 flex items-center justify-center p-4">
-    <div class="max-w-xl w-full bg-slate-900 border border-amber-400/50 rounded-3xl p-5 space-y-3 max-h-[88vh] overflow-y-auto">
-      <h3 id="sr-title" class="text-lg font-extrabold text-white border-b border-slate-800 pb-2">🏆 Laporan Akhir Musim</h3>
-      <div id="sr-content" class="space-y-3 text-xs"></div>
-      <button onclick="document.getElementById('season-report-modal').classList.add('hidden')" class="w-full py-3 rounded-xl bg-amber-400 text-slate-950 font-extrabold text-sm cursor-pointer">🚀 MULAI MUSIM BARU</button>
-    </div>
-  </div>
-
-  <!-- MAIN GAME SCREEN -->
-  <div id="game-screen" class="hidden max-w-7xl mx-auto p-3 sm:p-5 space-y-4">
-    <header class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
-      <div class="flex items-center gap-3">
-        <div id="header-logo-wrap" class="w-12 h-12 rounded-xl flex items-center justify-center bg-slate-950 border border-slate-800 p-1"></div>
-        <div>
-          <div class="flex flex-wrap items-center gap-1.5">
-            <h2 id="header-club-name" class="text-lg font-extrabold text-white">Klub</h2>
-            <span id="header-league-badge" class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-sky-500/20 text-sky-300">LIGA 1</span>
-            <span id="header-mode-badge" class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-500 text-slate-950">REAL</span>
-          </div>
-          <p class="text-xs text-slate-400">Manajer: <b id="header-manager" class="text-slate-200"></b> • Musim <b id="header-season">1</b> • Pekan <b id="header-week" class="text-emerald-400">1</b>/10 • Trofi: <b id="header-trophies" class="text-amber-400">0</b></p>
-        </div>
-      </div>
-      <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
-        <div class="bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800"><div class="text-[10px] text-slate-400">Anggaran</div><div id="header-budget" class="font-extrabold text-emerald-400">Rp 0</div></div>
-        <div class="bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800"><div class="text-[10px] text-slate-400">Gaji/Laga</div><div id="header-wages" class="font-extrabold text-rose-400">Rp 0</div></div>
-        <div class="bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800 text-center"><div class="text-[10px] text-slate-400">OVR</div><div id="header-ovr" class="font-extrabold">80</div></div>
-        <div class="bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800 text-center"><div class="text-[10px] text-slate-400">Fans</div><div id="header-fans" class="font-extrabold text-amber-400">80%</div></div>
-        <button onclick="resetGame()" class="px-3 py-2 rounded-xl bg-rose-500/15 text-rose-400 font-bold cursor-pointer">Reset</button>
-      </div>
-    </header>
-
-    <nav class="flex gap-2 overflow-x-auto pb-1">
-      <button onclick="switchTab('match')" id="tab-match" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm bg-emerald-500 text-slate-950 whitespace-nowrap cursor-pointer">⚽ Laga</button>
-      <button onclick="switchTab('tournaments')" id="tab-tournaments" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 text-slate-300 border border-slate-800 whitespace-nowrap cursor-pointer">🏆 Piala & ACL</button>
-      <button onclick="switchTab('squad')" id="tab-squad" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 text-slate-300 border border-slate-800 whitespace-nowrap cursor-pointer">📋 Skuad & Taktik</button>
-      <button onclick="switchTab('transfer')" id="tab-transfer" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 text-slate-300 border border-slate-800 whitespace-nowrap cursor-pointer">🌍 Transfer</button>
-      <button onclick="switchTab('staff')" id="tab-staff" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 text-slate-300 border border-slate-800 whitespace-nowrap cursor-pointer">👔 Pelatih & Medis</button>
-      <button onclick="switchTab('sponsor')" id="tab-sponsor" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 text-slate-300 border border-slate-800 whitespace-nowrap cursor-pointer">🤝 Sponsor & Merch</button>
-      <button onclick="switchTab('academy')" id="tab-academy" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 text-slate-300 border border-slate-800 whitespace-nowrap cursor-pointer">🎓 Akademi & PSSI</button>
-      <button onclick="switchTab('standings')" id="tab-standings" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 text-slate-300 border border-slate-800 whitespace-nowrap cursor-pointer">📊 Klasemen</button>
-    </nav>
-
-    <!-- TAB 1: MATCH -->
-    <section id="view-match" class="tab-view grid grid-cols-1 lg:grid-cols-3 gap-5">
-      <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between">
-        <div>
-          <div class="flex flex-wrap justify-between text-xs text-slate-400 font-bold mb-2">
-            <span id="match-comp-title">BRI Liga 1</span>
-            <span id="match-stadium">🏟️ Stadion</span>
-          </div>
-          <div class="flex flex-wrap justify-between gap-2 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs mb-3">
-            <span>👔 <b id="match-coach-name" class="text-emerald-400">-</b> • 🩺 <b id="match-med-name" class="text-rose-400">-</b></span>
-            <span><b id="match-time-badge">19:00 WIB</b> • <b id="match-weather-badge" class="text-sky-300">☀️ Cerah</b></span>
-          </div>
-          <div class="bg-slate-950 border border-slate-800 rounded-2xl p-5 flex items-center justify-around text-center">
-            <div class="w-1/3 flex flex-col items-center">
-              <div id="match-home-logo" class="w-16 h-16 flex items-center justify-center mb-1.5"></div>
-              <h3 id="match-home-name" class="font-extrabold text-sm text-white line-clamp-1">Home</h3>
-              <span id="match-home-ovr" class="text-xs text-emerald-400 font-bold">OVR 82</span>
-            </div>
-            <div class="w-1/3">
-              <div id="live-score" class="text-4xl font-black text-white">VS</div>
-              <div id="match-status-text" class="text-xs font-bold text-slate-400 mt-1">SIAP MAIN</div>
-            </div>
-            <div class="w-1/3 flex flex-col items-center">
-              <div id="match-away-logo" class="w-16 h-16 flex items-center justify-center mb-1.5"></div>
-              <h3 id="match-away-name" class="font-extrabold text-sm text-white line-clamp-1">Away</h3>
-              <span id="match-away-ovr" class="text-xs text-amber-400 font-bold">OVR 81</span>
-            </div>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
-            <select id="tactic-select" class="bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-xs font-bold text-white">
-              <option value="balanced">⚖️ Taktik Seimbang</option>
-              <option value="attack">🔥 Menyerang Total</option>
-              <option value="possession">🎯 Tiki-Taka Penguasaan</option>
-              <option value="defend">🛡️ Parkir Bus & Counter</option>
-            </select>
-            <select id="mentality-select" class="bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-xs font-bold text-white">
-              <option value="normal">🤝 Pressing Normal</option>
-              <option value="calm">🕊️ Main Bersih (Minim Cedera)</option>
-              <option value="hard">⚡ Gegenpressing Keras</option>
-            </select>
-          </div>
-        </div>
-        <div class="mt-4 pt-3 border-t border-slate-800 space-y-2.5">
-          <div class="flex items-center justify-between text-xs">
-            <span class="text-slate-400 font-bold">Kecepatan Live:</span>
-            <div class="flex gap-1.5">
-              <button onclick="setSimSpeed(1)" id="spd-1" class="px-2.5 py-1 rounded bg-emerald-500 text-slate-950 font-extrabold cursor-pointer">1x</button>
-              <button onclick="setSimSpeed(2)" id="spd-2" class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 font-extrabold cursor-pointer">2x</button>
-              <button onclick="setSimSpeed(4)" id="spd-4" class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 font-extrabold cursor-pointer">4x</button>
-            </div>
-          </div>
-          <div class="grid grid-cols-3 gap-2">
-            <button id="btn-play-match" onclick="playMatch(false)" class="col-span-2 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm cursor-pointer">▶ MAIN LIVE</button>
-            <button id="btn-skip-match" onclick="playMatch(true)" class="py-3 rounded-2xl bg-slate-800 text-amber-300 border border-slate-700 font-extrabold text-xs cursor-pointer">⏩ SKIP</button>
-          </div>
-        </div>
-      </div>
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col">
-        <div class="flex justify-between items-center border-b border-slate-800 pb-2 mb-2">
-          <h3 class="font-extrabold text-sm">🎙️ Live Ticker</h3>
-          <button onclick="reopenLastMatchReport()" id="btn-reopen-report" class="hidden px-2 py-1 rounded bg-emerald-500/20 text-emerald-400 text-[11px] font-bold cursor-pointer">📋 Laporan</button>
-        </div>
-        <div id="match-feed" class="flex-1 space-y-2 overflow-y-auto max-h-[380px] text-xs">
-          <div class="p-3 rounded-xl bg-slate-800/60 text-slate-400">Tekan <b>Main Live</b> atau <b>Skip</b> untuk bertanding.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 2: TOURNAMENTS -->
-    <section id="view-tournaments" class="tab-view hidden space-y-4">
-      <div class="flex flex-wrap justify-between items-center gap-2 bg-slate-900 border border-slate-800 rounded-2xl p-4">
-        <div class="flex flex-wrap gap-2">
-          <button onclick="selectTournament('piala_id')" id="btn-tour-piala" class="px-3.5 py-2 rounded-xl font-extrabold text-xs bg-rose-600 text-white cursor-pointer">🇮🇩 Piala Indonesia</button>
-          <button onclick="selectTournament('acl_two')" id="btn-tour-acl2" class="px-3.5 py-2 rounded-xl font-extrabold text-xs bg-slate-800 text-slate-300 cursor-pointer">🌏 ACL Two</button>
-          <button onclick="selectTournament('acl_elite')" id="btn-tour-aclelite" class="px-3.5 py-2 rounded-xl font-extrabold text-xs bg-slate-800 text-slate-300 cursor-pointer">👑 ACL Elite</button>
-        </div>
-        <div class="text-xs text-amber-400 font-bold" id="trophy-list">Belum ada trofi</div>
-      </div>
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-800 pb-3 mb-4">
-          <div><h3 id="tour-title" class="text-xl font-extrabold text-white">Piala Indonesia</h3><p id="tour-desc" class="text-xs text-slate-400">-</p></div>
-          <div id="tour-action-wrap"></div>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div><h4 class="text-xs font-bold text-slate-400 mb-2">Perempat Final</h4><div id="bracket-qf" class="space-y-2"></div></div>
-          <div><h4 class="text-xs font-bold text-slate-400 mb-2">Semifinal</h4><div id="bracket-sf" class="space-y-2"></div></div>
-          <div><h4 class="text-xs font-bold text-amber-400 mb-2">Final & Juara</h4><div id="bracket-final" class="space-y-2"></div></div>
-        </div>
-        <div id="knockout-feed" class="mt-4 pt-3 border-t border-slate-800 space-y-1.5 text-xs max-h-40 overflow-y-auto"></div>
-      </div>
-    </section>
-
-    <!-- TAB 3: SQUAD & TACTICS -->
-    <section id="view-squad" class="tab-view hidden grid grid-cols-1 xl:grid-cols-12 gap-5">
-      <div class="xl:col-span-5 bg-slate-900 border border-slate-800 rounded-2xl p-4">
-        <div class="flex justify-between items-center mb-2">
-          <h3 class="text-base font-extrabold">Papan Formasi</h3>
-          <div class="flex gap-1 bg-slate-950 p-1 rounded-xl">
-            <button onclick="setFormation('4-3-3')" id="form-btn-4-3-3" class="px-2.5 py-1 rounded text-xs font-extrabold bg-emerald-500 text-slate-950 cursor-pointer">4-3-3</button>
-            <button onclick="setFormation('4-2-3-1')" id="form-btn-4-2-3-1" class="px-2.5 py-1 rounded text-xs font-extrabold text-slate-300 cursor-pointer">4-2-3-1</button>
-            <button onclick="setFormation('3-5-2')" id="form-btn-3-5-2" class="px-2.5 py-1 rounded text-xs font-extrabold text-slate-300 cursor-pointer">3-5-2</button>
-          </div>
-        </div>
-        <div class="tactical-pitch w-full h-[460px] rounded-2xl border-2 border-white/25">
-          <div class="absolute inset-3 border-2 border-white/30 rounded-lg pointer-events-none"></div>
-          <div class="absolute left-3 right-3 top-1/2 border-t-2 border-white/30 pointer-events-none"></div>
-          <div id="pitch-players-layer" class="absolute inset-0"></div>
-        </div>
-        <div id="swap-banner" class="mt-2.5 p-2.5 rounded-xl bg-slate-950 text-xs text-slate-300"></div>
-      </div>
-      <div class="xl:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-4">
-        <div class="flex flex-wrap justify-between items-center gap-2 mb-3">
-          <div class="text-xs font-bold">Starting XI: <span id="starter-count" class="text-emerald-400">11</span>/11 • Gaji Skuad: <span id="squad-total-wage" class="text-rose-400">Rp 0</span></div>
-          <div class="flex gap-2">
-            <button onclick="recoverStamina()" class="px-2.5 py-1.5 bg-emerald-600 text-white font-bold text-xs rounded-xl cursor-pointer">⚡ Fisio 100% (1M)</button>
-            <button onclick="trainAllSquad()" class="px-2.5 py-1.5 bg-indigo-600 text-white font-bold text-xs rounded-xl cursor-pointer">🏋️ Latihan +1 OVR (2.5M)</button>
-          </div>
-        </div>
-        <div class="overflow-x-auto max-h-[460px] overflow-y-auto">
-          <table class="w-full text-left border-collapse text-xs">
-            <thead class="sticky top-0 bg-slate-900 border-b border-slate-800 text-slate-400">
-              <tr><th class="py-2 px-1">Status</th><th class="py-2 px-1">Pos</th><th class="py-2 px-1">Pemain</th><th class="py-2 px-1">OVR</th><th class="py-2 px-1">Stam</th><th class="py-2 px-1">Kontrak</th><th class="py-2 px-1 text-right">Aksi</th></tr>
-            </thead>
-            <tbody id="squad-table-body" class="divide-y divide-slate-800/70"></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 4: TRANSFER -->
-    <section id="view-transfer" class="tab-view hidden bg-slate-900 border border-slate-800 rounded-2xl p-5">
-      <div class="flex flex-wrap justify-between gap-3 mb-4">
-        <h3 class="text-lg font-extrabold">🌍 Bursa Transfer & Negosiasi</h3>
-        <div class="flex flex-wrap gap-2">
-          <input id="search-player" oninput="renderTransferMarket()" type="text" placeholder="Cari pemain/klub..." class="bg-slate-800 rounded-xl px-3 py-1.5 text-xs" />
-          <select id="filter-cat" onchange="renderTransferMarket()" class="bg-slate-800 rounded-xl px-3 py-1.5 text-xs font-bold">
-            <option value="ALL">Semua Kategori</option><option value="TIMNAS">🇮🇩 Timnas</option><option value="ASIA">🌏 Asia</option><option value="WORLD">👑 Dunia</option>
-          </select>
-          <select id="filter-pos" onchange="renderTransferMarket()" class="bg-slate-800 rounded-xl px-3 py-1.5 text-xs font-bold">
-            <option value="ALL">Semua Pos</option><option value="GK">GK</option><option value="DF">DF</option><option value="MF">MF</option><option value="FW">FW</option>
-          </select>
-        </div>
-      </div>
-      <div id="transfer-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"></div>
-    </section>
-
-    <!-- TAB 5: STAFF & INJURY WARD -->
-    <section id="view-staff" class="tab-view hidden space-y-5">
-      <div class="bg-slate-900 border border-rose-500/40 rounded-2xl p-5">
-        <h3 class="text-base font-extrabold text-rose-400 mb-3">🚑 Ruang Perawatan Cedera Pemain</h3>
-        <div id="injury-ward-list" class="grid grid-cols-1 md:grid-cols-3 gap-3"></div>
-      </div>
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <h3 class="text-base font-extrabold mb-3">👔 Pelatih Kepala</h3>
-        <div id="coaches-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
-      </div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5"><h3 class="text-base font-extrabold mb-3">🩺 Tim Medis</h3><div id="medical-grid" class="space-y-2.5"></div></div>
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5"><h3 class="text-base font-extrabold mb-3">🔍 Pemandu Bakat</h3><div id="scouts-grid" class="space-y-2.5"></div></div>
-      </div>
-    </section>
-
-    <!-- TAB 6: SPONSOR & MERCH -->
-    <section id="view-sponsor" class="tab-view hidden space-y-5">
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <div class="flex flex-wrap justify-between items-center gap-2 mb-3">
-          <h3 class="text-base font-extrabold">📦 Toko Merchandise Resmi</h3>
-          <button onclick="restockAllMerch()" class="px-3.5 py-2 bg-amber-400 text-slate-950 font-extrabold text-xs rounded-xl cursor-pointer">Restock Semua (1.5M)</button>
-        </div>
-        <div id="merch-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
-      </div>
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <h3 class="text-base font-extrabold mb-3">👕 Apparel Resmi (17 Brand Lokal & Global)</h3>
-        <div id="apparels-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3"></div>
-      </div>
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <h3 class="text-base font-extrabold mb-3">🤝 Sponsor Utama Dada</h3>
-        <div id="sponsors-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
-      </div>
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex justify-between items-center">
-        <div><h3 class="font-extrabold text-sm">🏟️ Kapasitas Stadion (Level <span id="stadium-level">1</span>)</h3><p class="text-xs text-slate-400">Tingkatkan pendapatan tiket pertandingan.</p></div>
-        <button onclick="upgradeStadium()" class="px-4 py-2.5 bg-emerald-500 text-slate-950 font-extrabold text-xs rounded-xl cursor-pointer">Upgrade (10M)</button>
-      </div>
-    </section>
-
-    <!-- TAB 7: ACADEMY & PSSI -->
-    <section id="view-academy" class="tab-view hidden grid grid-cols-1 lg:grid-cols-2 gap-5">
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <div class="flex justify-between items-center mb-3">
-          <h3 class="text-base font-extrabold">🎓 Akademi Muda U-18</h3>
-          <button onclick="scoutYouth()" class="px-3 py-1.5 bg-indigo-600 text-white font-bold text-xs rounded-xl cursor-pointer">🔍 Cari Bakat (1M)</button>
-        </div>
-        <div id="youth-list" class="space-y-2.5"></div>
-      </div>
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <h3 class="text-base font-extrabold mb-3">⚖️ Catatan Sidang Komdis PSSI</h3>
-        <div id="pssi-sanction-log" class="space-y-2 max-h-80 overflow-y-auto text-xs"></div>
-      </div>
-    </section>
-
-    <!-- TAB 8: STANDINGS -->
-    <section id="view-standings" class="tab-view hidden bg-slate-900 border border-slate-800 rounded-2xl p-5">
-      <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
-        <h3 class="text-lg font-extrabold">📊 Klasemen Liga Indonesia</h3>
-        <div class="flex gap-2">
-          <button onclick="viewTableLeague('LIGA1')" id="btn-tbl-l1" class="px-3 py-1.5 rounded-xl text-xs font-extrabold bg-emerald-500 text-slate-950 cursor-pointer">BRI Liga 1</button>
-          <button onclick="viewTableLeague('LIGA2')" id="btn-tbl-l2" class="px-3 py-1.5 rounded-xl text-xs font-extrabold bg-slate-800 text-slate-300 cursor-pointer">Pegadaian Liga 2</button>
-        </div>
-      </div>
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse text-xs sm:text-sm">
-          <thead><tr class="border-b border-slate-800 text-slate-400"><th class="py-2 px-2">Pos</th><th class="py-2 px-2">Klub</th><th class="py-2 px-1 text-center">M</th><th class="py-2 px-1 text-center">W</th><th class="py-2 px-1 text-center">D</th><th class="py-2 px-1 text-center">L</th><th class="py-2 px-1 text-center">SG</th><th class="py-2 px-2 text-center text-emerald-400">Pts</th><th class="py-2 px-2 text-right">Zona</th></tr></thead>
-          <tbody id="standings-body" class="divide-y divide-slate-800/70"></tbody>
-        </table>
-      </div>
-    </section>
-  </div>
-
-  <div id="toast" class="fixed bottom-4 right-4 z-50 hidden bg-slate-800 border border-emerald-500 text-white px-4 py-2.5 rounded-xl shadow-2xl text-xs font-bold"></div>
+  <div id="toast" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden bg-slate-900 border border-emerald-400 text-white px-4 py-2 rounded-full shadow-2xl text-xs font-black"></div>
 
   <script>
-    const SAVE_KEY = 'footlord_id_compact_v9';
-    let MD = {}, selectedMode = 'real', setupLeague = 'LIGA1', selectedClubId = 'persib', activeTourKey = 'piala_id', tableViewLeague = 'LIGA1', selectedSwapId = null, activeNeg = null, simSpeed = 1, isSim = false, lastReport = null, pendingSeason = null, gs = null;
+    const SAVE_KEY = 'footlord_id_v12_full';
+    let MD = {}, selectedMode = 'real', setupLeague = 'LIGA1', selectedClubId = 'persib', activeTour = 'piala_id', activeNeg = null, isSim = false, gs = null;
+
+    const WIKI_LOGOS = {
+      persib: "https://upload.wikimedia.org/wikipedia/en/0/0d/Persib_Bandung_crest.svg",
+      persija: "https://upload.wikimedia.org/wikipedia/en/5/53/Persija_Jakarta_crest.svg",
+      persebaya: "https://upload.wikimedia.org/wikipedia/en/a/a2/Persebaya_Surabaya_logo.svg",
+      arema: "https://upload.wikimedia.org/wikipedia/en/2/29/Arema_FC_logo.svg",
+      bali: "https://upload.wikimedia.org/wikipedia/en/6/6b/Bali_United_logo.svg",
+      borneo: "https://upload.wikimedia.org/wikipedia/en/a/a4/Borneo_FC_Samarinda_logo.svg",
+      psm: "https://upload.wikimedia.org/wikipedia/en/6/63/PSM_Makassar_logo.svg",
+      dewa: "https://upload.wikimedia.org/wikipedia/en/3/3e/Dewa_United_FC_logo.svg",
+      madura: "https://upload.wikimedia.org/wikipedia/en/8/87/Madura_United_FC_logo.svg",
+      malut: "https://upload.wikimedia.org/wikipedia/en/9/9c/Malut_United_FC_logo.png",
+      psis: "https://upload.wikimedia.org/wikipedia/en/a/a8/PSIS_Semarang_logo.svg",
+      persis: "https://upload.wikimedia.org/wikipedia/en/8/87/Persis_Solo_logo.svg",
+      pss: "https://upload.wikimedia.org/wikipedia/en/1/14/PSS_Sleman_logo.svg",
+      persita: "https://upload.wikimedia.org/wikipedia/en/f/f8/Persita_Tangerang_logo.svg",
+      persik: "https://upload.wikimedia.org/wikipedia/en/2/24/Persik_Kediri_logo.svg",
+      barito: "https://upload.wikimedia.org/wikipedia/en/9/96/PS_Barito_Putera_logo.svg",
+      psbs: "https://upload.wikimedia.org/wikipedia/en/e/e1/PSBS_Biak_logo.png",
+      semen: "https://upload.wikimedia.org/wikipedia/en/3/3e/Semen_Padang_FC_logo.svg",
+      psim: "https://upload.wikimedia.org/wikipedia/en/6/60/PSIM_Yogyakarta_logo.svg",
+      bhayangkara: "https://upload.wikimedia.org/wikipedia/en/c/c8/Bhayangkara_Presisi_Indonesia_FC_logo.svg",
+      persiraja: "https://upload.wikimedia.org/wikipedia/en/3/35/Persiraja_Banda_Aceh_logo.svg",
+      psms: "https://upload.wikimedia.org/wikipedia/en/6/69/PSMS_Medan_logo.svg",
+      sriwijaya: "https://upload.wikimedia.org/wikipedia/en/4/41/Sriwijaya_FC_logo.svg",
+      persela: "https://upload.wikimedia.org/wikipedia/en/1/1a/Persela_Lamongan_logo.svg",
+      gresik: "https://upload.wikimedia.org/wikipedia/en/6/6b/Gresik_United_FC_logo.png",
+      deltras: "https://upload.wikimedia.org/wikipedia/en/1/1d/Deltras_FC_logo.png",
+      persipura: "https://upload.wikimedia.org/wikipedia/en/e/e1/Persipura_Jayapura_logo.svg",
+      psps: "https://upload.wikimedia.org/wikipedia/en/2/25/PSPS_Pekanbaru_logo.png",
+      bekasi: "https://upload.wikimedia.org/wikipedia/en/b/b7/FC_Bekasi_City_logo.png",
+      persijap: "https://upload.wikimedia.org/wikipedia/en/c/c7/Persijap_Jepara_logo.svg",
+      al_hilal: "https://upload.wikimedia.org/wikipedia/en/5/5a/Al-Hilal_SFC_logo.svg",
+      al_nassr: "https://upload.wikimedia.org/wikipedia/en/9/9d/Al_Nassr_FC_Logo.svg",
+      al_ittihad: "https://upload.wikimedia.org/wikipedia/en/0/0a/Al-Ittihad_Club_logo.svg",
+      vissel: "https://upload.wikimedia.org/wikipedia/en/b/b6/Vissel_Kobe_logo.svg",
+      ulsan: "https://upload.wikimedia.org/wikipedia/en/0/0e/Ulsan_HD_FC_logo.svg",
+      jdt: "https://upload.wikimedia.org/wikipedia/en/a/a3/Johor_Darul_Ta%27zim_F.C._logo.svg",
+      buriram: "https://upload.wikimedia.org/wikipedia/en/8/87/Buriram_United_logo.svg",
+      shanghai: "https://upload.wikimedia.org/wikipedia/en/c/c7/Shanghai_Port_FC_logo.svg",
+      gamba: "https://upload.wikimedia.org/wikipedia/en/9/93/Gamba_Osaka_logo.svg",
+      pohang: "https://upload.wikimedia.org/wikipedia/en/a/a5/Pohang_Steelers_logo.svg",
+      port_fc: "https://upload.wikimedia.org/wikipedia/en/f/f1/Port_F.C._logo.svg",
+      lion_city: "https://upload.wikimedia.org/wikipedia/en/3/3e/Lion_City_Sailors_FC_logo.svg",
+      selangor: "https://upload.wikimedia.org/wikipedia/en/4/45/Selangor_FC_crest.svg",
+      nam_dinh: "https://upload.wikimedia.org/wikipedia/en/2/2a/Thep_Xanh_Nam_Dinh_FC_logo.png",
+      kaya_fc: "https://upload.wikimedia.org/wikipedia/en/a/a3/Kaya_F.C.%E2%80%93Iloilo_logo.png",
+      eastern: "https://upload.wikimedia.org/wikipedia/en/4/41/Eastern_SC_logo.png"
+    };
 
     const FORMATIONS = {
-      "4-3-3": [{r:"GK",p:"GK",t:90,l:50},{r:"LB",p:"DF",t:73,l:16},{r:"CB",p:"DF",t:76,l:38},{r:"CB",p:"DF",t:76,l:62},{r:"RB",p:"DF",t:73,l:84},{r:"CM",p:"MF",t:53,l:26},{r:"CDM",p:"MF",t:58,l:50},{r:"CM",p:"MF",t:53,l:74},{r:"LW",p:"FW",t:24,l:18},{r:"ST",p:"FW",t:16,l:50},{r:"RW",p:"FW",t:24,l:82}],
-      "4-2-3-1": [{r:"GK",p:"GK",t:90,l:50},{r:"LB",p:"DF",t:74,l:15},{r:"CB",p:"DF",t:77,l:38},{r:"CB",p:"DF",t:77,l:62},{r:"RB",p:"DF",t:74,l:85},{r:"CDM",p:"MF",t:58,l:35},{r:"CDM",p:"MF",t:58,l:65},{r:"LAM",p:"FW",t:37,l:18},{r:"CAM",p:"MF",t:39,l:50},{r:"RAM",p:"FW",t:37,l:82},{r:"ST",p:"FW",t:15,l:50}],
-      "3-5-2": [{r:"GK",p:"GK",t:90,l:50},{r:"CB",p:"DF",t:75,l:25},{r:"CB",p:"DF",t:77,l:50},{r:"CB",p:"DF",t:75,l:75},{r:"LWB",p:"DF",t:49,l:13},{r:"CM",p:"MF",t:54,l:34},{r:"CDM",p:"MF",t:58,l:50},{r:"CM",p:"MF",t:54,l:66},{r:"RWB",p:"DF",t:49,l:87},{r:"ST",p:"FW",t:19,l:36},{r:"ST",p:"FW",t:19,l:64}]
+      "4-3-3": [{r:"GK",p:"GK",t:89,l:50},{r:"LB",p:"DF",t:72,l:16},{r:"CB",p:"DF",t:75,l:38},{r:"CB",p:"DF",t:75,l:62},{r:"RB",p:"DF",t:72,l:84},{r:"CM",p:"MF",t:52,l:26},{r:"CDM",p:"MF",t:57,l:50},{r:"CM",p:"MF",t:52,l:74},{r:"LW",p:"FW",t:24,l:18},{r:"ST",p:"FW",t:16,l:50},{r:"RW",p:"FW",t:24,l:82}],
+      "4-2-3-1": [{r:"GK",p:"GK",t:89,l:50},{r:"LB",p:"DF",t:73,l:15},{r:"CB",p:"DF",t:76,l:38},{r:"CB",p:"DF",t:76,l:62},{r:"RB",p:"DF",t:73,l:85},{r:"CDM",p:"MF",t:57,l:35},{r:"CDM",p:"MF",t:57,l:65},{r:"LAM",p:"FW",t:36,l:18},{r:"CAM",p:"MF",t:38,l:50},{r:"RAM",p:"FW",t:36,l:82},{r:"ST",p:"FW",t:15,l:50}],
+      "3-5-2": [{r:"GK",p:"GK",t:89,l:50},{r:"CB",p:"DF",t:74,l:25},{r:"CB",p:"DF",t:76,l:50},{r:"CB",p:"DF",t:74,l:75},{r:"LWB",p:"DF",t:48,l:13},{r:"CM",p:"MF",t:53,l:34},{r:"CDM",p:"MF",t:57,l:50},{r:"CM",p:"MF",t:53,l:66},{r:"RWB",p:"DF",t:48,l:87},{r:"ST",p:"FW",t:19,l:36},{r:"ST",p:"FW",t:19,l:64}]
     };
 
     const INIT_MERCH = [
       {id:"m1",name:"Jersey Player Issue",icon:"👕",price:850000,stock:1200,max:1200},
       {id:"m2",name:"Syal Rajut Suporter",icon:"🧣",price:200000,stock:2500,max:2500},
-      {id:"m3",name:"Jaket Anthem Klub",icon:"🧥",price:650000,stock:800,max:800},
-      {id:"m4",name:"Topi & Aksesoris",icon:"🧢",price:150000,stock:3000,max:3000}
+      {id:"m3",name:"Jaket Anthem",icon:"🧥",price:650000,stock:800,max:800}
     ];
-
     function fmt(n) {
-      if (gs && gs.mode === 'unlimited' && n >= 9e13) return '∞ UNLIMITED';
-      const v = Number(n) || 0;
-      if (Math.abs(v) >= 1e9) return 'Rp ' + (v/1e9).toFixed(2).replace('.00','') + ' M';
-      if (Math.abs(v) >= 1e6) return 'Rp ' + (v/1e6).toFixed(0) + ' Jt';
-      return 'Rp ' + Math.round(v).toLocaleString('id-ID');
+      if (gs && gs.mode === 'unlimited' && n >= 9e13) return '∞ VIP';
+      const v = Number(n) || 0, neg = v < 0 ? '-' : '', av = Math.abs(v);
+      if (av >= 1e9) return neg + 'Rp ' + (av/1e9).toFixed(2).replace('.00','') + 'M';
+      if (av >= 1e6) return neg + 'Rp ' + (av/1e6).toFixed(0) + 'Jt';
+      return neg + 'Rp ' + Math.round(av).toLocaleString('id-ID');
     }
 
-    // FULL LICENSE VECTOR LOGO ENGINE (30 KLUB LIGA 1 & 2 + KLUB ASIA)
-    function renderClubLogo(club, sz = "w-10 h-10") {
-      if (!club) return `<div class="${sz} rounded-full bg-slate-800 flex items-center justify-center text-[10px]">?</div>`;
-      const id = (club.id || "").toLowerCase();
-      const c1 = club.color || "#1d4ed8", c2 = club.accent || "#ffffff", sh = (club.short || "FC").slice(0, 4);
-      let stars = "";
-      for (let i = 0; i < (club.stars || 0); i++) {
-        const x = 50 - ((club.stars - 1) * 7.5) + i * 15;
-        stars += `<polygon points="${x},3 ${x+1.8},7.5 ${x+6.5},7.5 ${x+2.8},10.2 ${x+4.2},14.8 ${x},12 ${x-4.2},14.8 ${x-2.8},10.2 ${x-6.5},7.5 ${x-1.8},7.5" fill="#facc15"/>`;
+    // RENDER JERSEY ASLI KLUB (DENGAN POLA GARIS/SASH/HALF, KERAH, APPAREL & SPONSOR DADA)
+    function renderOfficialJersey(club, sz = "w-24 h-24", miniNum = null) {
+      if (!club) return '';
+      const c1 = club.color || "#003399", c2 = club.accent || "#ffffff", pat = club.kit || "solid";
+      const spName = (gs && gs.sponsor ? gs.sponsor.name : "BRI").slice(0, 8);
+      const apName = (gs && gs.apparel ? gs.apparel.name : "ERSPO").slice(0, 5).toUpperCase();
+      const uid = `kit_${club.id}_${Math.floor(Math.random()*9999)}`;
+
+      let patternSvg = '';
+      if (pat === 'stripes') {
+        patternSvg = `<rect x="33" y="18" width="8" height="72" fill="${c2}" fill-opacity="0.88"/>
+                      <rect x="46" y="18" width="8" height="72" fill="${c2}" fill-opacity="0.88"/>
+                      <rect x="59" y="18" width="8" height="72" fill="${c2}" fill-opacity="0.88"/>`;
+      } else if (pat === 'hoops') {
+        patternSvg = `<rect x="24" y="34" width="52" height="8" fill="${c2}" fill-opacity="0.88"/>
+                      <rect x="24" y="52" width="52" height="8" fill="${c2}" fill-opacity="0.88"/>
+                      <rect x="24" y="70" width="52" height="8" fill="${c2}" fill-opacity="0.88"/>`;
+      } else if (pat === 'half') {
+        patternSvg = `<rect x="50" y="18" width="28" height="72" fill="${c2}" fill-opacity="0.9"/>`;
+      } else if (pat === 'sash') {
+        patternSvg = `<polygon points="24,20 38,20 76,84 62,84" fill="${c2}" fill-opacity="0.88"/>`;
       }
-      const CRESTS = {
-        persib: `<path d="M18 20 H82 V54 C82 76 50 94 50 94 C50 94 18 76 18 54 Z" fill="#003399" stroke="#fff" stroke-width="4.5"/><path d="M35 66 Q50 56 65 66 L60 76 H40 Z" fill="#facc15"/><rect x="22" y="42" width="56" height="19" rx="4" fill="#001a4d"/><text x="50" y="56" text-anchor="middle" fill="#fff" font-weight="900" font-size="14">PERSIB</text>`,
-        persija: `<path d="M19 20 H81 V55 C81 76 50 94 50 94 C50 94 19 76 19 55 Z" fill="#dc2626" stroke="#facc15" stroke-width="4.5"/><polygon points="50,24 53,34 55,66 45,66 47,34" fill="#fff"/><rect x="23" y="45" width="54" height="17" rx="4" fill="#7f1d1d"/><text x="50" y="57" text-anchor="middle" fill="#fff" font-weight="900" font-size="13">PERSIJA</text>`,
-        persebaya: `<path d="M18 22 C35 16 65 16 82 22 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#047857" stroke="#facc15" stroke-width="4.5"/><path d="M34 32 Q50 22 66 32 Q56 44 34 32 Z" fill="#fff"/><rect x="20" y="43" width="60" height="19" rx="4" fill="#022c22"/><text x="50" y="57" text-anchor="middle" fill="#facc15" font-weight="900" font-size="11.5">PERSEBAYA</text>`,
-        arema: `<circle cx="50" cy="55" r="38" fill="#1e3a8a" stroke="#ef4444" stroke-width="5"/><polygon points="50,24 62,36 56,42 44,42 38,36" fill="#facc15"/><rect x="20" y="44" width="60" height="20" rx="5" fill="#172554"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="14">AREMA</text>`,
-        bali: `<path d="M20 20 H80 V55 C80 76 50 94 50 94 C50 94 20 76 20 55 Z" fill="#b91c1c" stroke="#111827" stroke-width="5"/><rect x="33" y="23" width="11" height="58" fill="#fff" opacity="0.25"/><rect x="21" y="43" width="58" height="19" rx="4" fill="#090d16"/><text x="50" y="57" text-anchor="middle" fill="#facc15" font-weight="900" font-size="12.5">BALI UTD</text>`,
-        borneo: `<path d="M18 22 H82 L75 64 L50 93 L25 64 Z" fill="#ea580c" stroke="#111827" stroke-width="5"/><rect x="22" y="42" width="56" height="20" rx="4" fill="#111827"/><text x="50" y="56" text-anchor="middle" fill="#fb923c" font-weight="900" font-size="13">BORNEO</text>`,
-        psm: `<circle cx="50" cy="55" r="38" fill="#7f1d1d" stroke="#facc15" stroke-width="5"/><path d="M30 68 Q50 78 70 68 L64 60 H36 Z" fill="#facc15"/><rect x="21" y="43" width="58" height="19" rx="4" fill="#450a0a"/><text x="50" y="57" text-anchor="middle" fill="#fff" font-weight="900" font-size="13">PSM 1915</text>`,
-        dewa: `<polygon points="50,16 84,35 84,74 50,93 16,74 16,35" fill="#111827" stroke="#eab308" stroke-width="4.5"/><rect x="21" y="44" width="58" height="19" rx="4" fill="#eab308"/><text x="50" y="58" text-anchor="middle" fill="#090d16" font-weight="900" font-size="12.5">DEWA UTD</text>`,
-        madura: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#dc2626" stroke="#fff" stroke-width="4.5"/><rect x="23" y="28" width="54" height="9" fill="#fff"/><rect x="21" y="43" width="58" height="19" rx="4" fill="#111827"/><text x="50" y="57" text-anchor="middle" fill="#fff" font-weight="900" font-size="13">MADURA</text>`,
-        malut: `<polygon points="50,15 86,54 50,93 14,54" fill="#991b1b" stroke="#facc15" stroke-width="4.5"/><rect x="22" y="44" width="56" height="19" rx="4" fill="#111827"/><text x="50" y="58" text-anchor="middle" fill="#facc15" font-weight="900" font-size="13">MALUT</text>`,
-        psis: `<path d="M20 20 H80 V56 C80 76 50 94 50 94 C50 94 20 76 20 56 Z" fill="#1d4ed8" stroke="#facc15" stroke-width="4.5"/><rect x="22" y="44" width="56" height="19" rx="4" fill="#0f172a"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="15">PSIS</text>`,
-        persis: `<circle cx="50" cy="55" r="38" fill="#b91c1c" stroke="#facc15" stroke-width="5"/><rect x="21" y="44" width="58" height="20" rx="4" fill="#450a0a"/><text x="50" y="58" text-anchor="middle" fill="#facc15" font-weight="900" font-size="14">PERSIS</text>`,
-        pss: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#15803d" stroke="#fff" stroke-width="4.5"/><path d="M28 34 L50 26 L72 34 L50 38 Z" fill="#facc15"/><rect x="22" y="44" width="56" height="19" rx="4" fill="#052e16"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="15">PSS</text>`,
-        persita: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#6b21a8" stroke="#facc15" stroke-width="4.5"/><rect x="21" y="44" width="58" height="19" rx="4" fill="#3b0764"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="13">PERSITA</text>`,
-        persik: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#581c87" stroke="#facc15" stroke-width="4.5"/><polygon points="36,34 43,25 50,33 57,25 64,34" fill="#facc15"/><rect x="21" y="44" width="58" height="19" rx="4" fill="#1e1b4b"/><text x="50" y="58" text-anchor="middle" fill="#facc15" font-weight="900" font-size="14">PERSIK</text>`,
-        barito: `<circle cx="50" cy="55" r="38" fill="#eab308" stroke="#111827" stroke-width="5"/><rect x="21" y="44" width="58" height="20" rx="4" fill="#111827"/><text x="50" y="58" text-anchor="middle" fill="#facc15" font-weight="900" font-size="13">BARITO</text>`,
-        psbs: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#0284c7" stroke="#fff" stroke-width="4.5"/><rect x="22" y="44" width="56" height="19" rx="4" fill="#0c4a6e"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="15">PSBS</text>`,
-        semen: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#991b1b" stroke="#facc15" stroke-width="4.5"/><polygon points="32,37 50,24 68,37" fill="#facc15"/><rect x="21" y="44" width="58" height="19" rx="4" fill="#111827"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="13">PADANG</text>`,
-        psim: `<circle cx="50" cy="55" r="38" fill="#1e40af" stroke="#fff" stroke-width="5"/><rect x="22" y="44" width="56" height="20" rx="4" fill="#0f172a"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="15">PSIM</text>`,
-        bhayangkara: `<path d="M18 20 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#eab308" stroke="#111827" stroke-width="5"/><rect x="21" y="44" width="58" height="19" rx="4" fill="#111827"/><text x="50" y="58" text-anchor="middle" fill="#facc15" font-weight="900" font-size="14">BFC</text>`,
-        persiraja: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#ea580c" stroke="#111827" stroke-width="5"/><rect x="20" y="44" width="60" height="19" rx="4" fill="#111827"/><text x="50" y="58" text-anchor="middle" fill="#fb923c" font-weight="900" font-size="11.5">PERSIRAJA</text>`,
-        psms: `<circle cx="50" cy="55" r="38" fill="#15803d" stroke="#fff" stroke-width="5"/><rect x="22" y="44" width="56" height="20" rx="4" fill="#052e16"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="15">PSMS</text>`,
-        sriwijaya: `<path d="M18 20 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#eab308" stroke="#b91c1c" stroke-width="5"/><rect x="22" y="44" width="56" height="19" rx="4" fill="#7f1d1d"/><text x="50" y="58" text-anchor="middle" fill="#facc15" font-weight="900" font-size="15">SFC</text>`,
-        persela: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#0284c7" stroke="#facc15" stroke-width="4.5"/><rect x="21" y="44" width="58" height="19" rx="4" fill="#0c4a6e"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="13">PERSELA</text>`,
-        gresik: `<circle cx="50" cy="55" r="38" fill="#eab308" stroke="#15803d" stroke-width="5"/><rect x="21" y="44" width="58" height="20" rx="4" fill="#052e16"/><text x="50" y="58" text-anchor="middle" fill="#facc15" font-weight="900" font-size="13">GRESIK</text>`,
-        deltras: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#b91c1c" stroke="#111827" stroke-width="5"/><rect x="21" y="44" width="58" height="19" rx="4" fill="#111827"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="13">DELTRAS</text>`,
-        persipura: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#dc2626" stroke="#111827" stroke-width="5"/><rect x="36" y="25" width="9" height="58" fill="#111827"/><rect x="55" y="25" width="9" height="58" fill="#111827"/><rect x="20" y="44" width="60" height="19" rx="4" fill="#090d16"/><text x="50" y="58" text-anchor="middle" fill="#ef4444" font-weight="900" font-size="11.5">PERSIPURA</text>`,
-        psps: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#1d4ed8" stroke="#fff" stroke-width="4.5"/><rect x="22" y="44" width="56" height="19" rx="4" fill="#0f172a"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="15">PSPS</text>`,
-        bekasi: `<polygon points="50,16 84,35 84,74 50,93 16,74 16,35" fill="#111827" stroke="#ef4444" stroke-width="4.5"/><rect x="22" y="44" width="56" height="19" rx="4" fill="#dc2626"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="13">BEKASI</text>`,
-        persijap: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#b91c1c" stroke="#facc15" stroke-width="4.5"/><rect x="21" y="44" width="58" height="19" rx="4" fill="#450a0a"/><text x="50" y="58" text-anchor="middle" fill="#facc15" font-weight="900" font-size="13">PERSIJAP</text>`,
-        al_hilal: `<path d="M18 20 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#1d4ed8" stroke="#fff" stroke-width="4.5"/><path d="M46 25 A9 9 0 1 0 56 35 A7 7 0 1 1 46 25 Z" fill="#fff"/><rect x="21" y="44" width="58" height="19" rx="4" fill="#0f172a"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="13">AL-HILAL</text>`,
-        al_nassr: `<circle cx="50" cy="55" r="38" fill="#facc15" stroke="#1d4ed8" stroke-width="5"/><polygon points="36,34 43,25 50,33 57,25 64,34" fill="#1d4ed8"/><rect x="20" y="44" width="60" height="20" rx="4" fill="#1e3a8a"/><text x="50" y="58" text-anchor="middle" fill="#facc15" font-weight="900" font-size="12">AL-NASSR</text>`,
-        al_ittihad: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#eab308" stroke="#111827" stroke-width="5"/><rect x="35" y="25" width="10" height="58" fill="#111827"/><rect x="55" y="25" width="10" height="58" fill="#111827"/><rect x="21" y="44" width="58" height="19" rx="4" fill="#111827"/><text x="50" y="58" text-anchor="middle" fill="#facc15" font-weight="900" font-size="12">ITTIHAD</text>`,
-        jdt: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#1e3a8a" stroke="#dc2626" stroke-width="5"/><rect x="22" y="44" width="56" height="19" rx="4" fill="#dc2626"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="15">JDT</text>`,
-        vissel: `<path d="M18 22 H82 V55 C82 76 50 94 50 94 C50 94 18 76 18 55 Z" fill="#881337" stroke="#fff" stroke-width="4.5"/><rect x="22" y="44" width="56" height="19" rx="4" fill="#111827"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="900" font-size="13">VISSEL</text>`
-      };
-      const inner = CRESTS[id] || `<path d="M18 22 H82 V56 C82 76 50 93 50 93 C50 93 18 76 18 56 Z" fill="${c1}" stroke="${c2}" stroke-width="5"/><rect x="22" y="43" width="56" height="20" rx="5" fill="#090d16" fill-opacity="0.85"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-weight="800" font-size="15">${sh}</text>`;
-      return `<svg viewBox="0 0 100 100" class="${sz} shrink-0">${stars}${inner}</svg>`;
+
+      const centerGraphic = miniNum !== null
+        ? `<text x="50" y="62" text-anchor="middle" fill="#ffffff" stroke="#000000" stroke-width="1.5" paint-order="stroke" font-weight="900" font-size="22">${miniNum}</text>`
+        : `<text x="38" y="36" text-anchor="middle" fill="${c2}" font-weight="900" font-size="5">${apName}</text>
+           <circle cx="62" cy="34" r="4.5" fill="${c2}" stroke="#000" stroke-width="0.8"/>
+           <rect x="31" y="45" width="38" height="11" rx="2" fill="#090d16" fill-opacity="0.82"/>
+           <text x="50" y="52.5" text-anchor="middle" fill="#ffffff" font-weight="900" font-size="6.2">${spName}</text>`;
+
+      return `<svg viewBox="0 0 100 100" class="${sz} drop-shadow-lg shrink-0">
+        <defs>
+          <clipPath id="${uid}">
+            <path d="M28 18 L39 14 Q50 21 61 14 L72 18 L90 34 L79 46 L72 39 L72 88 L28 88 L28 39 L21 46 L10 34 Z"/>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#${uid})">
+          <rect x="8" y="12" width="84" height="80" fill="${c1}"/>
+          ${patternSvg}
+          <!-- Lengan & Kerah -->
+          <path d="M39 14 Q50 22 61 14" fill="none" stroke="${c2}" stroke-width="3.5"/>
+          <rect x="8" y="12" width="84" height="80" fill="url(#shade_${uid})" opacity="0.2"/>
+        </g>
+        <path d="M28 18 L39 14 Q50 21 61 14 L72 18 L90 34 L79 46 L72 39 L72 88 L28 88 L28 39 L21 46 L10 34 Z" fill="none" stroke="${c2}" stroke-width="2.2"/>
+        ${centerGraphic}
+      </svg>`;
     }
 
-    function toast(m) { const t = document.getElementById('toast'); t.textContent = m; t.classList.remove('hidden'); setTimeout(() => t.classList.add('hidden'), 3500); }
+    function renderFallbackCrest(club, sz) {
+      const c1 = club.color || "#1d4ed8", c2 = club.accent || "#ffffff";
+      return `<svg viewBox="0 0 100 100" class="${sz} shrink-0"><path d="M20 18 H80 V54 C80 76 50 93 50 93 C50 93 20 76 20 54 Z" fill="${c1}" stroke="${c2}" stroke-width="6"/><path d="M50 18 H80 V54 C80 76 50 93 50 93 Z" fill="${c2}" fill-opacity="0.85"/></svg>`;
+    }
+
+    function renderClubLogo(club, sz = "w-8 h-8") {
+      if (!club) return `<div class="${sz} rounded-full bg-slate-800"></div>`;
+      const url = WIKI_LOGOS[(club.id || "").toLowerCase()];
+      if (!url) return renderFallbackCrest(club, sz);
+      return `<div class="${sz} relative flex items-center justify-center shrink-0">
+        <img src="${url}" alt="${club.name}" referrerpolicy="no-referrer" class="w-full h-full object-contain drop-shadow" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <div style="display:none" class="w-full h-full">${renderFallbackCrest(club, "w-full h-full")}</div>
+      </div>`;
+    }
+    function toast(m) { const t = document.getElementById('toast'); t.textContent = m; t.classList.remove('hidden'); setTimeout(() => t.classList.add('hidden'), 3200); }
+
+    function buildSeasonFixtures(leagueClubs, userId) {
+      const opps = leagueClubs.filter(c => c.id !== userId);
+      const leg1 = [...opps].sort(() => Math.random() - 0.5).map((o, i) => ({ oppId: o.id, isHome: i % 2 === 0 }));
+      const leg2 = [...leg1].sort(() => Math.random() - 0.5).map(m => ({ oppId: m.oppId, isHome: !m.isHome }));
+      return [...leg1, ...leg2];
+    }
+
+    function getCalendarDate(season, matchIdx, totalMatches) {
+      const yr = 2025 + season;
+      if (matchIdx >= totalMatches) return `30 Juni ${yr + 1}`;
+      const months = ["Juli","Agustus","September","Oktober","November","Desember","Januari","Februari","Maret","April","Mei","Juni"];
+      const mIdx = Math.min(11, Math.floor((matchIdx / Math.max(1, totalMatches)) * 11));
+      const day = 1 + ((matchIdx * 9) % 27);
+      return `${day} ${months[mIdx]} ${mIdx >= 6 ? yr + 1 : yr}`;
+    }
 
     async function boot() {
       const res = await fetch('/api/init_data');
@@ -442,76 +495,106 @@
       const s = localStorage.getItem(SAVE_KEY);
       if (s) {
         gs = JSON.parse(s);
-        if (gs && gs.club) {
-          gs.coach = gs.coach || MD.coaches[0]; gs.medical = gs.medical || MD.medical[0]; gs.scout = gs.scout || MD.scouts[0];
-          gs.sponsor = gs.sponsor || MD.sponsors[0]; gs.apparel = gs.apparel || MD.apparels[0]; gs.merch = gs.merch || JSON.parse(JSON.stringify(INIT_MERCH));
-          gs.nextWeather = gs.nextWeather || MD.weathers[0]; gs.nextTime = gs.nextTime || MD.times[1];
-          gs.sanctionLogs = gs.sanctionLogs || []; gs.trophies = gs.trophies || [];
-          gs.seasonStats = gs.seasonStats || {income:0,expense:0,goalsFor:0,goalsAgainst:0,wins:0,draws:0,losses:0,injuries:0};
-          tableViewLeague = gs.club.league;
-          openDashboard();
-        }
+        if (gs && gs.club) openDashboard();
       }
     }
 
     function selectMode(m) {
       selectedMode = m;
-      document.getElementById('btn-mode-real').className = m === 'real' ? 'p-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-left cursor-pointer' : 'p-3 rounded-xl border-2 border-slate-700 bg-slate-800/60 text-left cursor-pointer';
-      document.getElementById('btn-mode-unlimited').className = m === 'unlimited' ? 'p-3 rounded-xl border-2 border-amber-400 bg-amber-400/10 text-left cursor-pointer' : 'p-3 rounded-xl border-2 border-slate-700 bg-slate-800/60 text-left cursor-pointer';
+      document.getElementById('btn-mode-real').className = m==='real' ? 'p-3 rounded-2xl border-2 border-emerald-400 bg-emerald-500/15 text-left cursor-pointer' : 'p-3 rounded-2xl border-2 border-white/10 bg-slate-900/60 text-left cursor-pointer';
+      document.getElementById('btn-mode-unlimited').className = m==='unlimited' ? 'p-3 rounded-2xl border-2 border-amber-300 bg-amber-400/15 text-left cursor-pointer' : 'p-3 rounded-2xl border-2 border-white/10 bg-slate-900/60 text-left cursor-pointer';
     }
 
     function switchSetupLeague(lg) {
       setupLeague = lg;
-      document.getElementById('btn-setup-l1').className = lg === 'LIGA1' ? 'px-3 py-1.5 rounded-lg text-xs font-extrabold bg-emerald-500 text-slate-950 cursor-pointer' : 'px-3 py-1.5 rounded-lg text-xs font-extrabold bg-slate-800 text-slate-300 cursor-pointer';
-      document.getElementById('btn-setup-l2').className = lg === 'LIGA2' ? 'px-3 py-1.5 rounded-lg text-xs font-extrabold bg-amber-400 text-slate-950 cursor-pointer' : 'px-3 py-1.5 rounded-lg text-xs font-extrabold bg-slate-800 text-slate-300 cursor-pointer';
-      const pool = lg === 'LIGA1' ? MD.liga1 : MD.liga2;
+      document.getElementById('btn-setup-l1').className = lg==='LIGA1' ? 'px-2.5 py-1 rounded-lg text-[11px] font-black bg-emerald-400 text-slate-950 cursor-pointer' : 'px-2.5 py-1 rounded-lg text-[11px] font-black bg-slate-800 text-slate-300 cursor-pointer';
+      document.getElementById('btn-setup-l2').className = lg==='LIGA2' ? 'px-2.5 py-1 rounded-lg text-[11px] font-black bg-amber-300 text-slate-950 cursor-pointer' : 'px-2.5 py-1 rounded-lg text-[11px] font-black bg-slate-800 text-slate-300 cursor-pointer';
+      const pool = lg==='LIGA1' ? MD.liga1 : MD.liga2;
       if (pool && pool.length) selectedClubId = pool[0].id;
       renderSetupClubs();
     }
 
     function renderSetupClubs() {
-      const pool = setupLeague === 'LIGA1' ? MD.liga1 : MD.liga2;
+      const pool = setupLeague==='LIGA1' ? MD.liga1 : MD.liga2;
       if (!pool) return;
       document.getElementById('club-grid').innerHTML = pool.map(c => `
-        <button onclick="selectedClubId='${c.id}';renderSetupClubs()" class="p-2.5 rounded-xl border-2 ${c.id===selectedClubId?'border-emerald-500 bg-slate-800':'border-slate-800 bg-slate-950/60'} flex flex-col items-center text-center cursor-pointer">
-          <div class="w-11 h-11 flex items-center justify-center mb-1">${renderClubLogo(c,'w-10 h-10')}</div>
-          <span class="font-bold text-[11px] text-white line-clamp-1">${c.name}</span>
-          <span class="text-[10px] text-emerald-400 font-bold">OVR ${c.rating}</span>
+        <button onclick="selectedClubId='${c.id}';renderSetupClubs()" class="p-2 rounded-2xl border ${c.id===selectedClubId?'border-emerald-400 bg-white/15':'border-white/10 bg-slate-950/50'} flex flex-col items-center text-center cursor-pointer">
+          <div class="flex items-center gap-1 mb-1">${renderClubLogo(c,'w-7 h-7')}${renderOfficialJersey(c,'w-7 h-7')}</div>
+          <span class="font-bold text-[10px] line-clamp-1">${c.name}</span>
+          <span class="text-[9px] text-emerald-300 font-black">OVR ${c.rating}</span>
         </button>
       `).join('');
     }
 
     function buildBracket(pool) {
-      const sh = [...pool].sort(() => Math.random() - 0.5).slice(0, 8);
-      return { round:'QF', champion:null, qf:[{team1:sh[0],team2:sh[1],score1:null,score2:null,pen1:null,pen2:null,winner:null},{team1:sh[2],team2:sh[3],score1:null,score2:null,pen1:null,pen2:null,winner:null},{team1:sh[4],team2:sh[5],score1:null,score2:null,pen1:null,pen2:null,winner:null},{team1:sh[6],team2:sh[7],score1:null,score2:null,pen1:null,pen2:null,winner:null}], sf:[{team1:null,team2:null,score1:null,score2:null,pen1:null,pen2:null,winner:null},{team1:null,team2:null,score1:null,score2:null,pen1:null,pen2:null,winner:null}], final:[{team1:null,team2:null,score1:null,score2:null,pen1:null,pen2:null,winner:null}] };
+      const sh = [...pool].sort(()=>Math.random()-0.5).slice(0,8);
+      return { round:'QF', champion:null, qf:[{team1:sh[0],team2:sh[1],score1:null,score2:null,winner:null},{team1:sh[2],team2:sh[3],score1:null,score2:null,winner:null},{team1:sh[4],team2:sh[5],score1:null,score2:null,winner:null},{team1:sh[6],team2:sh[7],score1:null,score2:null,winner:null}], sf:[{team1:null,team2:null,score1:null,score2:null,winner:null},{team1:null,team2:null,score1:null,score2:null,winner:null}], final:[{team1:null,team2:null,score1:null,score2:null,winner:null}] };
     }
 
     function genYouth(boost = 0) {
-      const fn = ["Arkhan","Zahaby","Iqbal","Nabil","Welber","Jens","Dony","Kafiatur"], ln = ["Pratama","Gholy","Gwijangge","Jardim","Raven","Pamungkas","Rizky","Zaky"], pos = ["GK","DF","MF","FW"];
-      return [0,1,2,3].map(i => ({ id:'y_'+Date.now()+'_'+i, name:`${fn[Math.floor(Math.random()*fn.length)]} ${ln[Math.floor(Math.random()*ln.length)]}`, pos:pos[i], ovr:Math.min(88,73+Math.floor(Math.random()*7)+boost), potential:92, age:17+Math.floor(Math.random()*2), nat:"IDN", val:3500000000, wage:45000000, contract:3, stamina:100, is_starter:false, suspended:0, injury:null }));
+      const fn = ["Arkhan","Zahaby","Iqbal","Nabil","Welber","Jens","Dony","Kafiatur"], ln = ["Pratama","Gholy","Gwijangge","Jardim","Raven","Pamungkas","Rizky","Zaky"], pos = ["GK","DF","MF","FW"], tr = ["Refleks Kilat","Tembok Kokoh","Playmaker Jenius","Penyelesai Klinis"];
+      return [0,1,2,3].map(i => ({ id:'y_'+Date.now()+'_'+i, name:`${fn[Math.floor(Math.random()*fn.length)]} ${ln[Math.floor(Math.random()*ln.length)]}`, pos:pos[i], trait:tr[i], morale:86, goals:0, assists:0, ovr:Math.min(88,73+Math.floor(Math.random()*7)+boost), age:17+Math.floor(Math.random()*2), nat:"IDN", val:3.5e9, wage:4.5e7, contract:3, stamina:100, is_starter:false, suspended:0, injury:null }));
     }
 
     function startNewCareer() {
       const l1 = JSON.parse(JSON.stringify(MD.liga1)), l2 = JSON.parse(JSON.stringify(MD.liga2));
-      const base = l1.find(c => c.id === selectedClubId) || l2.find(c => c.id === selectedClubId) || l1[0];
+      const base = l1.find(c=>c.id===selectedClubId) || l2.find(c=>c.id===selectedClubId) || l1[0];
       const isL1 = base.league === 'LIGA1';
-      const mkT = (arr) => arr.map(c => ({id:c.id,name:c.name,short:c.short,color:c.color,accent:c.accent,stars:c.stars,rating:c.rating,played:0,win:0,draw:0,loss:0,gf:0,ga:0,pts:0}));
+      const mkT = arr => arr.map(c => ({id:c.id,name:c.name,short:c.short,color:c.color,accent:c.accent,rating:c.rating,played:0,win:0,draw:0,loss:0,gf:0,ga:0,pts:0}));
+      const fixtures = buildSeasonFixtures(isL1 ? l1 : l2, base.id);
+      const mgr = document.getElementById('manager-name').value.trim() || 'Coach Indonesia';
+
       gs = {
-        manager: document.getElementById('manager-name').value.trim() || 'Coach Indonesia', mode: selectedMode, formation: '4-3-3',
-        budget: selectedMode === 'unlimited' ? 9e14 : (isL1 ? 25000000000 : 8000000000), season: 1, week: 1, fans: 80, stadiumLevel: isL1 ? 2 : 1,
+        manager: mgr, mode: selectedMode, formation: '4-3-3', season: 1, matchIdx: 0, fixtures,
+        budget: selectedMode==='unlimited' ? 9e14 : (isL1 ? 25000000000 : 8000000000),
+        seasonProfit: 0, fans: 80, stadiumLevel: isL1 ? 2 : 1,
+        formHistory: [], aclQualification: 'NONE', preseasonDone: false,
+        lastMatchStats: null,
         sponsor: MD.sponsors[0], apparel: MD.apparels[0], coach: MD.coaches[0], medical: MD.medical[0], scout: MD.scouts[0],
-        merch: JSON.parse(JSON.stringify(INIT_MERCH)), nextWeather: MD.weathers[0], nextTime: MD.times[1], sanctionLogs: [],
-        seasonStats: {income:0,expense:0,goalsFor:0,goalsAgainst:0,wins:0,draws:0,losses:0,injuries:0}, club: base, allClubs: {LIGA1:l1, LIGA2:l2},
-        tables: {LIGA1:mkT(l1), LIGA2:mkT(l2)}, tournaments: {piala_id:buildBracket([base,...l1.filter(c=>c.id!==base.id)]), acl_two:buildBracket([base,...MD.acl_two]), acl_elite:buildBracket([base,...MD.acl_elite])},
+        merch: JSON.parse(JSON.stringify(INIT_MERCH)),
+        messages: [{title:"Selamat Datang di Klub!", body:`Target manajemen musim ini: bersaing di ${isL1?'BRI Liga 1 (34 Match)':'Pegadaian Liga 2 (22 Match)'} & ikuti Tur Pra-Musim di tab HUB!`, read:false}],
+        socialFeed: [
+          {id:'s1', user:"@InfoSuporterID", text:`Jersey baru ${base.name} musim ini keren banget! Siap kawal 34 pertandingan penuh! 🔥`, comments:[{author:"@BobotohJakMania", text:"Setuju min, semoga tahun ini juara!"}]},
+          {id:'s2', user:"@GarudaStats", text:`Menarik melihat bagaimana ${mgr} meramu taktik untuk memaksimalkan sifat para pemain bintang ${base.name}.`, comments:[]}
+        ],
+        club: base, allClubs: {LIGA1:l1, LIGA2:l2}, tables: {LIGA1:mkT(l1), LIGA2:mkT(l2)},
+        tournaments: {
+          piala_id: buildBracket([base, ...l1.filter(c=>c.id!==base.id)]),
+          acl_two: buildBracket([base, ...MD.acl_two]),
+          acl_elite: buildBracket([base, ...MD.acl_elite])
+        },
         market: JSON.parse(JSON.stringify(MD.market)), youth: genYouth(0), trophies: []
       };
-      tableViewLeague = base.league; saveGame(); openDashboard();
+      saveGame(); openDashboard();
     }
 
     function saveGame() { localStorage.setItem(SAVE_KEY, JSON.stringify(gs)); }
-    function resetGame() { if (confirm('Reset seluruh karier?')) { localStorage.removeItem(SAVE_KEY); location.reload(); } }
-    function getOpp() { const opp = gs.allClubs[gs.club.league].filter(c => c.id !== gs.club.id); return opp[(gs.week - 1) % opp.length]; }
-    function openDashboard() { document.getElementById('setup-screen').classList.add('hidden'); document.getElementById('game-screen').classList.remove('hidden'); updateUI(); }
+    function resetGame() { if (confirm('Mulai karier baru dari awal?')) { localStorage.removeItem(SAVE_KEY); location.reload(); } }
+    function openDashboard() { document.getElementById('setup-screen').classList.add('hidden'); document.getElementById('game-screen').classList.remove('hidden'); document.getElementById('bottom-nav').classList.remove('hidden'); updateUI(); }
+
+    function switchAppTab(t) {
+      document.querySelectorAll('.app-view').forEach(e => e.classList.add('hidden'));
+      document.getElementById('view-' + t).classList.remove('hidden');
+      ['beranda','tim','transfer','manajer','hub'].forEach(k => {
+        document.getElementById('nav-' + k).className = k===t
+          ? 'py-2.5 flex flex-col items-center gap-0.5 bg-white text-slate-950 font-black text-[10px] cursor-pointer'
+          : 'py-2.5 flex flex-col items-center gap-0.5 text-slate-300 font-black text-[10px] cursor-pointer';
+      });
+    }
+
+    function switchTimSub(s) {
+      ['info','pemain','susunan'].forEach(k => {
+        document.getElementById('tim-panel-' + k).classList.toggle('hidden', k!==s);
+        document.getElementById('sub-tim-' + k).className = k===s ? 'py-2 rounded-full bg-white text-slate-950 cursor-pointer' : 'py-2 rounded-full text-slate-300 cursor-pointer';
+      });
+    }
+
+    function getMoraleLabel(m) {
+      if (m >= 85) return { txt: '😄 Sangat Bahagia', cls: 'text-emerald-300' };
+      if (m >= 72) return { txt: '🙂 Bahagia', cls: 'text-sky-300' };
+      if (m >= 58) return { txt: '😐 Netral', cls: 'text-amber-300' };
+      return { txt: '😠 Kecewa', cls: 'text-rose-400' };
+    }
 
     function updateUI() {
       const sq = gs.club.squad;
@@ -520,139 +603,156 @@
         for (const b of sq.filter(p => !p.is_starter && !p.injury && !(p.suspended||0))) { if (fit.length >= 11) break; b.is_starter = true; fit.push(b); }
       }
       const st = sq.filter(p => p.is_starter).slice(0, 11);
-      gs.club.rating = Math.min(99, Math.round(st.reduce((a, p) => a + p.ovr, 0) / Math.max(1, st.length)) + (gs.coach?.ovr_bonus || 0));
-      const pw = sq.reduce((a, p) => a + (p.wage || 50000000), 0);
-      const tw = pw + (gs.coach?.salary || 0) + (gs.medical?.salary || 0) + (gs.scout?.salary || 0);
+      const xiOvr = Math.round(st.reduce((a, p) => a + p.ovr, 0) / Math.max(1, st.length));
+      gs.club.rating = Math.min(99, xiOvr + (gs.coach?.ovr_bonus || 0));
 
-      document.getElementById('header-logo-wrap').innerHTML = renderClubLogo(gs.club, 'w-10 h-10');
-      document.getElementById('header-club-name').textContent = gs.club.name;
-      document.getElementById('header-league-badge').textContent = gs.club.league === 'LIGA1' ? 'BRI LIGA 1' : 'PEGADAIAN LIGA 2';
-      document.getElementById('header-mode-badge').textContent = gs.mode === 'unlimited' ? 'UNLIMITED ∞' : 'REAL-LIFE';
-      document.getElementById('header-manager').textContent = gs.manager;
-      document.getElementById('header-season').textContent = gs.season;
-      document.getElementById('header-week').textContent = gs.week;
-      document.getElementById('header-trophies').textContent = gs.trophies.length;
-      document.getElementById('header-budget').textContent = fmt(gs.budget);
-      document.getElementById('header-wages').textContent = fmt(tw);
-      document.getElementById('header-ovr').textContent = gs.club.rating;
-      document.getElementById('header-fans').textContent = gs.fans + '%';
-      document.getElementById('squad-total-wage').textContent = fmt(pw);
-    const opp = getOpp();
-      document.getElementById('match-comp-title').textContent = `${gs.club.league === 'LIGA1' ? 'BRI Liga 1' : 'Pegadaian Liga 2'} • Pekan ${gs.week}/10`;
-      document.getElementById('match-stadium').textContent = `🏟️ ${gs.club.stadium} (Lv.${gs.stadiumLevel})`;
-      document.getElementById('match-coach-name').textContent = `${gs.coach.name} (+${gs.coach.ovr_bonus})`;
-      document.getElementById('match-med-name').textContent = `${gs.medical.name} (-${gs.medical.injury_shield}%)`;
-      document.getElementById('match-time-badge').textContent = gs.nextTime;
-      document.getElementById('match-weather-badge').textContent = `${gs.nextWeather.icon} ${gs.nextWeather.name}`;
-      document.getElementById('match-home-logo').innerHTML = renderClubLogo(gs.club, 'w-15 h-15');
-      document.getElementById('match-home-name').textContent = gs.club.name;
-      document.getElementById('match-home-ovr').textContent = `OVR ${gs.club.rating}`;
-      document.getElementById('match-away-logo').innerHTML = renderClubLogo(opp, 'w-15 h-15');
-      document.getElementById('match-away-name').textContent = opp.name;
-      document.getElementById('match-away-ovr').textContent = `OVR ${opp.rating}`;
+      const totalM = gs.fixtures.length, isSeasonEnd = gs.matchIdx >= totalM;
+      const sortedTbl = [...gs.tables[gs.club.league]].sort((a,b) => b.pts!==a.pts ? b.pts-a.pts : (b.gf-b.ga)-(a.gf-a.ga));
+      const rank = sortedTbl.findIndex(x => x.id === gs.club.id) + 1;
 
-      renderTournaments(); renderPitch(); renderSquad(); renderTransfer(); renderStaff(); renderSponsorMerch(); renderAcademy(); renderStandings();
+      document.getElementById('top-ovr-pill').textContent = gs.club.rating;
+      document.getElementById('top-vip-badge').textContent = gs.mode==='unlimited' ? '👑 VIP' : '💼 REAL';
+      document.getElementById('top-fans').textContent = gs.fans + '%';
+      document.getElementById('hdr-logo').innerHTML = renderClubLogo(gs.club, 'w-8 h-8');
+      document.getElementById('hdr-club-name').textContent = gs.club.name;
+      document.getElementById('hdr-subtitle').textContent = `${getCalendarDate(gs.season, gs.matchIdx, totalM)} • ke-${rank} di ${gs.club.league==='LIGA1'?'Liga 1':'Liga 2'}`;
+
+      // Beranda: Kalender
+      document.getElementById('cal-comp-title').textContent = isSeasonEnd ? 'KALENDER' : `PEKAN ${gs.matchIdx + 1} / ${totalM} • ${gs.club.league==='LIGA1'?'BRI LIGA 1':'LIGA 2'}`;
+      if (isSeasonEnd) {
+        document.getElementById('cal-body').innerHTML = `<div class="text-3xl mb-1">🏆</div><div class="text-xs font-black tracking-widest text-slate-300">AKHIR MUSIM ${gs.season}</div>`;
+        document.getElementById('main-cta-wrap').innerHTML = `<button onclick="advanceToNextSeason()" class="w-full py-3.5 rounded-full border-2 border-white/40 bg-white/10 hover:bg-white/20 text-white font-black text-xs uppercase cursor-pointer">LANJUT KE MUSIM BERIKUTNYA</button>`;
+      } else {
+        const fx = gs.fixtures[gs.matchIdx];
+        const opp = gs.allClubs[gs.club.league].find(c => c.id === fx.oppId) || gs.allClubs[gs.club.league][0];
+        document.getElementById('cal-body').innerHTML = `
+          <div class="flex items-center justify-around py-1">
+            <div class="w-1/3 flex flex-col items-center">${renderClubLogo(fx.isHome?gs.club:opp,'w-11 h-11 mb-1')}<span class="text-[11px] font-black line-clamp-1">${fx.isHome?gs.club.name:opp.name}</span></div>
+            <div class="w-1/3"><span class="px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-black">${fx.isHome?'KANDANG':'TANDANG'}</span><div class="text-xl font-black mt-1">VS</div></div>
+            <div class="w-1/3 flex flex-col items-center">${renderClubLogo(fx.isHome?opp:gs.club,'w-11 h-11 mb-1')}<span class="text-[11px] font-black line-clamp-1">${fx.isHome?opp.name:gs.club.name}</span></div>
+          </div>`;
+        document.getElementById('main-cta-wrap').innerHTML = `
+          <div class="grid grid-cols-3 gap-2">
+            <button onclick="playLeagueMatch(false)" class="col-span-2 py-3.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-xs uppercase shadow-lg cursor-pointer">▶ MAINKAN LAGA</button>
+            <button onclick="playLeagueMatch(true)" class="py-3.5 rounded-full border border-white/30 bg-white/10 text-white font-black text-xs uppercase cursor-pointer">⏩ SKIP</button>
+          </div>`;
+      }
+
+      // Performa
+      const fList = gs.formHistory.slice(-5); while (fList.length < 5) fList.unshift('-');
+      document.getElementById('form-pills').innerHTML = fList.map(r => {
+        const cls = r==='M' ? 'bg-[#86efac] text-slate-950' : (r==='S' ? 'bg-[#fde047] text-slate-950' : (r==='K' ? 'bg-[#fca5a5] text-slate-950' : 'bg-white/15 text-slate-400'));
+        return `<span class="w-7 h-7 rounded-full ${cls} flex items-center justify-center font-black text-xs">${r}</span>`;
+      }).join('');
+
+      document.getElementById('pill-bank').textContent = fmt(gs.budget);
+      const pEl = document.getElementById('pill-profit');
+      pEl.textContent = (gs.seasonProfit >= 0 ? '+' : '') + fmt(gs.seasonProfit);
+      pEl.className = `py-1.5 px-2 rounded-full ${gs.seasonProfit >= 0 ? 'bg-[#86efac]' : 'bg-[#fca5a5]'} text-slate-950 font-black text-xs truncate`;
+
+      const unread = gs.messages.filter(m => !m.read).length;
+      const mb = document.getElementById('msg-badge'); mb.textContent = unread; mb.classList.toggle('hidden', unread === 0);
+
+      // Tab TIM: INFO & JERSEY RESMI
+      const avgM = Math.round(sq.reduce((a,p)=>a+(p.morale||80),0)/Math.max(1,sq.length));
+      const mInfo = getMoraleLabel(avgM);
+      document.getElementById('official-jersey-display').innerHTML = renderOfficialJersey(gs.club, 'w-24 h-24');
+      document.getElementById('jersey-club-title').textContent = gs.club.name;
+      document.getElementById('jersey-apparel-name').textContent = gs.apparel.name;
+      document.getElementById('jersey-sponsor-name').textContent = gs.sponsor.full || gs.sponsor.name;
+      document.getElementById('info-avg-morale').textContent = `${avgM}% (${mInfo.txt})`;
+
+      document.getElementById('info-coach-ovr').textContent = 75 + (gs.coach.ovr_bonus * 3);
+      document.getElementById('info-team-ovr').textContent = gs.club.rating;
+      document.getElementById('info-xi-ovr').textContent = xiOvr;
+      document.getElementById('info-squad-val').textContent = fmt(sq.reduce((a,p)=>a+(p.val||2e9),0));
+      document.getElementById('info-bank-val').textContent = fmt(gs.budget);
+      document.getElementById('info-league-rank').textContent = `ke-${rank} / ${sortedTbl.length}`;
+      document.getElementById('info-acl-status').textContent = {NONE:'Belum Lolos',ACL_TWO:'🌏 ACL Two',ACL_ELITE:'👑 ACL Elite'}[gs.aclQualification || 'NONE'];
+
+      renderSquadList(); renderPitch(); renderTransfer(); renderManajer(); renderHub();
     }
 
-    function switchTab(t) {
-      document.querySelectorAll('.tab-view').forEach(e => e.classList.add('hidden'));
-      document.getElementById('view-' + t).classList.remove('hidden');
-      document.querySelectorAll('.nav-btn').forEach(b => b.className = 'nav-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 text-slate-300 border border-slate-800 whitespace-nowrap cursor-pointer');
-      document.getElementById('tab-' + t).className = 'nav-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm bg-emerald-500 text-slate-950 whitespace-nowrap cursor-pointer';
-    }
+    async function playLeagueMatch(skip = false) {
+      if (isSim || gs.matchIdx >= gs.fixtures.length) return;
+      isSim = true;
+      const fx = gs.fixtures[gs.matchIdx];
+      const opp = gs.allClubs[gs.club.league].find(c => c.id === fx.oppId);
+      const tac = document.getElementById('tactic-select').value, men = document.getElementById('mentality-select').value;
+      const tk = document.getElementById('home-ticker-wrap'); tk.classList.remove('hidden'); tk.innerHTML = '';
 
-    function setSimSpeed(s) {
-      simSpeed = s;
-      [1,2,4].forEach(x => document.getElementById('spd-'+x).className = x===s ? 'px-2.5 py-1 rounded bg-emerald-500 text-slate-950 font-extrabold cursor-pointer' : 'px-2.5 py-1 rounded bg-slate-800 text-slate-300 font-extrabold cursor-pointer');
-    }
-
-    function closePostMatchModal() {
-      document.getElementById('post-match-modal').classList.add('hidden');
-      if (pendingSeason) { document.getElementById('sr-content').innerHTML = pendingSeason; document.getElementById('season-report-modal').classList.remove('hidden'); pendingSeason = null; }
-    }
-    function reopenLastMatchReport() { if (lastReport) { document.getElementById('pm-content').innerHTML = lastReport; document.getElementById('post-match-modal').classList.remove('hidden'); } }
-
-    async function playMatch(skip = false) {
-      if (isSim) return; isSim = true;
-      const bp = document.getElementById('btn-play-match'), bs = document.getElementById('btn-skip-match');
-      bp.disabled = bs.disabled = true; bp.textContent = skip ? '⏩ SKIP...' : `⏳ LIVE (${simSpeed}x)...`;
       try {
-        const opp = getOpp(), tac = document.getElementById('tactic-select').value, men = document.getElementById('mentality-select').value, lg = gs.club.league, pWeek = gs.week, pSeas = gs.season;
-        const res = await fetch('/api/simulate_match', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({home:gs.club, away:opp, tactic:tac, mentality:men, coach_bonus:gs.coach.ovr_bonus, injury_shield:gs.medical.injury_shield, league_clubs:gs.allClubs[lg]}) });
+        const res = await fetch('/api/simulate_match', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ user_club: gs.club, opp_club: opp, is_home: fx.isHome, tactic: tac, mentality: men, coach_bonus: gs.coach.ovr_bonus, injury_shield: gs.medical.injury_shield, league_clubs: gs.allClubs[gs.club.league] })
+        });
         const d = await res.json();
-        const feed = document.getElementById('match-feed'); feed.innerHTML = '';
+        gs.lastMatchStats = { home: fx.isHome ? gs.club.name : opp.name, away: fx.isHome ? opp.name : gs.club.name, score: fx.isHome ? `${d.user_goals} - ${d.opp_goals}` : `${d.opp_goals} - ${d.user_goals}`, isHome: fx.isHome, ...d.match_stats };
 
         if (!skip) {
-          let th = 0, ta = 0; document.getElementById('live-score').textContent = '0 - 0';
           for (const ev of d.events) {
-            if (ev.type === 'goal') th++; if (ev.type === 'goal_away') ta++;
-            document.getElementById('live-score').textContent = `${th} - ${ta}`;
-            document.getElementById('match-status-text').textContent = `MENIT ${ev.min}'`;
-            feed.insertAdjacentHTML('afterbegin', `<div class="p-2 rounded-lg bg-slate-800/80 flex gap-2"><b class="text-emerald-400">${ev.min}'</b><span>${ev.text}</span></div>`);
-            await new Promise(r => setTimeout(r, simSpeed === 1 ? 380 : (simSpeed === 2 ? 180 : 75)));
+            tk.insertAdjacentHTML('afterbegin', `<div>${ev.text}</div>`);
+            await new Promise(r => setTimeout(r, 200));
           }
-        } else {
-          [...d.events].reverse().forEach(ev => feed.insertAdjacentHTML('beforeend', `<div class="p-2 rounded-lg bg-slate-800/80 flex gap-2"><b class="text-emerald-400">${ev.min}'</b><span>${ev.text}</span></div>`));
         }
 
-        document.getElementById('live-score').textContent = `${d.home_goals} - ${d.away_goals}`;
-        document.getElementById('match-status-text').textContent = 'FULL TIME';
+        // Catat Gol & Assist Pemain
+        (d.goal_records || []).forEach(g => {
+          if (g.scorer_id) { const sp = gs.club.squad.find(x => x.id === g.scorer_id); if (sp) sp.goals = (sp.goals||0) + 1; }
+          if (g.assist_id) { const ap = gs.club.squad.find(x => x.id === g.assist_id); if (ap) ap.assists = (ap.assists||0) + 1; }
+        });
 
+        const ug = d.user_goals, og = d.opp_goals;
+        const resCode = ug > og ? 'M' : (ug === og ? 'S' : 'K');
+        gs.formHistory.push(resCode);
+
+        // Update Stamina & Moral Pemain
         gs.club.squad.forEach(p => {
           if ((p.suspended||0) > 0) p.suspended--;
           if (p.injury && --p.injury.weeks <= 0) p.injury = null;
-          p.stamina = p.is_starter && !p.injury ? Math.max(35, (p.stamina||100) - (men==='hard'?15:10) + Math.floor(gs.medical.recovery_bonus/2)) : Math.min(100, (p.stamina||100) + 15);
+          p.stamina = p.is_starter && !p.injury ? Math.max(40, (p.stamina||100) - (men==='hard'?12:8) + Math.floor(gs.medical.recovery_bonus/2)) : Math.min(100, (p.stamina||100) + 15);
+          if (p.is_starter) p.morale = Math.min(100, Math.max(40, (p.morale||80) + (resCode==='M'?3:(resCode==='K'?-3:0))));
+          else p.morale = Math.max(45, (p.morale||80) - 1); // Cadangan sedikit turun moral jika jarang main
         });
+
         if (d.red_card_player) { const rp = gs.club.squad.find(p => p.id === d.red_card_player.id); if (rp) rp.suspended = 1; }
-        if (d.injured_player) { const ip = gs.club.squad.find(p => p.id === d.injured_player.id); if (ip) { ip.injury = d.injured_player; ip.is_starter = false; gs.seasonStats.injuries++; } }
+        if (d.injured_player) {
+          const ip = gs.club.squad.find(p => p.id === d.injured_player.id);
+          if (ip) { ip.injury = d.injured_player; ip.is_starter = false; }
+          gs.messages.unshift({title:`🚑 Cedera: ${d.injured_player.name}`, body:`Mengalami ${d.injured_player.type} (${d.injured_player.weeks} pekan).`, read:false});
+        }
 
         let merchInc = 0;
-        gs.merch.forEach(m => { if (m.stock > 0) { const s = Math.min(m.stock, Math.max(10, Math.round(m.max * (0.12 + gs.fans/400)))); m.stock -= s; merchInc += s * m.price; } });
-        const tixInc = Math.round(d.attendance * 65000 * gs.stadiumLevel * (0.6 + gs.fans/100));
-        let spInc = gs.sponsor.per_match + (d.home_goals > d.away_goals ? gs.sponsor.win_bonus : 0);
-        let apInc = gs.apparel.per_match + gs.apparel.merch_bonus;
-        const tw = gs.club.squad.reduce((a,p)=>a+(p.wage||5e7),0) + gs.coach.salary + gs.medical.salary + gs.scout.salary;
+        gs.merch.forEach(m => { if (m.stock > 0) { const s = Math.min(m.stock, Math.round(m.max * 0.08)); m.stock -= s; merchInc += s * m.price; } });
+        const tixInc = fx.isHome ? Math.round(d.attendance * 45000 * gs.stadiumLevel * (0.6 + gs.fans/100)) : 0;
+        const spInc = gs.sponsor.per_match + (resCode==='M' ? gs.sponsor.win_bonus : 0);
+        const apInc = gs.apparel.per_match + gs.apparel.merch_bonus;
+        const wageExp = gs.club.squad.reduce((a,p)=>a+(p.wage||4e7),0) + gs.coach.salary + gs.medical.salary + gs.scout.salary;
         const fine = d.pssi_sanction ? d.pssi_sanction.fine : 0;
+        if (d.pssi_sanction) { gs.fans = Math.max(15, gs.fans - d.pssi_sanction.fans_loss); gs.messages.unshift({title:`⚖️ Sidang Komdis PSSI`, body:d.pssi_sanction.desc, read:false}); }
 
-        if (d.home_goals > d.away_goals) { gs.fans = Math.min(100, gs.fans + 3); gs.seasonStats.wins++; }
-        else if (d.home_goals < d.away_goals) { gs.fans = Math.max(20, gs.fans - 3); gs.seasonStats.losses++; }
-        else gs.seasonStats.draws++;
-        if (d.pssi_sanction) { gs.fans = Math.max(15, gs.fans - d.pssi_sanction.fans_loss); gs.sanctionLogs.unshift({season:pSeas, week:pWeek, ...d.pssi_sanction}); }
-
-        const gross = tixInc + spInc + apInc + merchInc, exp = tw + fine, net = gross - exp;
-        gs.seasonStats.income += gross; gs.seasonStats.expense += exp; gs.seasonStats.goalsFor += d.home_goals; gs.seasonStats.goalsAgainst += d.away_goals;
+        const net = (tixInc + spInc + apInc + merchInc) - (wageExp + fine);
+        gs.seasonProfit += net;
         if (gs.mode === 'real') gs.budget = Math.max(0, gs.budget + net);
+        if (resCode === 'M') gs.fans = Math.min(100, gs.fans + 2);
+        else if (resCode === 'K') gs.fans = Math.max(20, gs.fans - 2);
 
-        updTbl(lg, gs.club.id, d.home_goals, d.away_goals); updTbl(lg, opp.id, d.away_goals, d.home_goals);
-        d.other_results.forEach(m => { updTbl(lg, m.home_id, m.home_goals, m.away_goals); updTbl(lg, m.away_id, m.away_goals, m.home_goals); });
-        const oLg = lg === 'LIGA1' ? 'LIGA2' : 'LIGA1', oPool = [...gs.allClubs[oLg]].sort(()=>Math.random()-0.5);
-        for (let i = 0; i < oPool.length - 1; i += 2) { const g1 = Math.floor(Math.random()*4), g2 = Math.floor(Math.random()*3); updTbl(oLg, oPool[i].id, g1, g2); updTbl(oLg, oPool[i+1].id, g2, g1); }
+        updTbl(gs.club.league, gs.club.id, ug, og);
+        updTbl(gs.club.league, opp.id, og, ug);
+        d.other_results.forEach(m => { updTbl(gs.club.league, m.home_id, m.home_goals, m.away_goals); updTbl(gs.club.league, m.away_id, m.away_goals, m.home_goals); });
 
-        lastReport = `
-          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
-            <div class="text-[11px] text-slate-400 mb-1">Pekan ${pWeek} • ${d.match_time} • ${d.weather.icon} ${d.weather.name}</div>
-            <div class="flex items-center justify-around"><div>${renderClubLogo(gs.club,'w-10 h-10 mx-auto')}<b>${gs.club.name}</b></div><div class="text-2xl font-black text-emerald-400">${d.home_goals} - ${d.away_goals}</div><div>${renderClubLogo(opp,'w-10 h-10 mx-auto')}<b>${opp.name}</b></div></div>
-            <div class="mt-2 text-amber-300 font-bold">⭐ MOTM: ${d.stats.motm} (${d.stats.motm_rating})</div>
-          </div>
-          ${d.injured_player ? `<div class="p-3 rounded-xl bg-rose-950/40 border border-rose-500/50 text-rose-200">🚑 <b>${d.injured_player.name}</b> cedera <b>${d.injured_player.type}</b> (${d.injured_player.weeks} pekan).</div>` : ''}
-          ${d.pssi_sanction ? `<div class="p-3 rounded-xl bg-amber-950/40 border border-amber-500/50 text-amber-200">${d.pssi_sanction.desc}</div>` : ''}
-          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-            <div class="flex justify-between text-emerald-400"><span>Pemasukan Laga</span><b>+${fmt(gross)}</b></div>
-            <div class="flex justify-between text-rose-400"><span>Gaji & Denda</span><b>-${fmt(exp)}</b></div>
-            <div class="flex justify-between font-extrabold border-t border-slate-800 pt-1"><span>Laba Bersih</span><span class="${net>=0?'text-emerald-300':'text-rose-400'}">${net>=0?'+':''}${fmt(net)}</span></div>
-          </div>
-        `;
-        document.getElementById('btn-reopen-report').classList.remove('hidden');
-        gs.nextWeather = MD.weathers[Math.floor(Math.random()*MD.weathers.length)];
-        gs.nextTime = MD.times[Math.floor(Math.random()*MD.times.length)];
+        gs.socialFeed.unshift({
+          id: 'post_' + Date.now(),
+          user: resCode==='M' ? "@BolaIndonesia" : "@FansGarisKeras",
+          text: `FT: ${gs.club.name} ${ug} - ${og} ${opp.name} (Ball Poss ${d.match_stats.poss_user}%). ${resCode==='M'?`Penampilan luar biasa dari ${d.match_stats.motm}! 🔥`:'Coach harus segera evaluasi lini belakang! 😤'}`,
+          comments: []
+        });
 
-        if (gs.week >= 10) endSeason(); else gs.week++;
+        gs.matchIdx++;
+        if (gs.matchIdx === gs.fixtures.length) evaluateSeasonQualification();
         saveGame(); updateUI();
-        document.getElementById('pm-content').innerHTML = lastReport;
-        document.getElementById('post-match-modal').classList.remove('hidden');
-      } finally {
-        isSim = false; bp.disabled = bs.disabled = false; bp.textContent = '▶ MAIN LIVE';
-      }
+        toast(`FT: ${gs.club.name} ${ug} - ${og} ${opp.name}`);
+      } finally { isSim = false; }
     }
 
     function updTbl(lg, id, gf, ga) {
@@ -661,243 +761,340 @@
       if (gf > ga) { r.win++; r.pts += 3; } else if (gf === ga) { r.draw++; r.pts++; } else r.loss++;
     }
 
-    function endSeason() {
-      const sFn = (a,b) => b.pts !== a.pts ? b.pts - a.pts : (b.gf - b.ga) - (a.gf - a.ga);
-      const t1 = [...gs.tables.LIGA1].sort(sFn), t2 = [...gs.tables.LIGA2].sort(sFn);
-      let prize = 0, out = "Musim selesai!";
-      if (t1[0].id === gs.club.id) { gs.trophies.push(`🏆 Liga 1 (S${gs.season})`); prize = 1e10; out = "🏆 JUARA BRI LIGA 1 (+Rp 10 M)!"; }
-      else if (t2[0].id === gs.club.id) { gs.trophies.push(`🏆 Liga 2 (S${gs.season})`); prize = 4e9; out = "🏆 JUARA LIGA 2 & PROMOSI (+Rp 4 M)!"; }
-      if (gs.mode === 'real') gs.budget += prize;
+    function evaluateSeasonQualification() {
+      const sFn = (a,b) => b.pts!==a.pts ? b.pts-a.pts : (b.gf-b.ga)-(a.gf-a.ga);
+      const tbl = [...gs.tables[gs.club.league]].sort(sFn);
+      const pos = tbl.findIndex(x => x.id === gs.club.id) + 1;
+      if (gs.club.league === 'LIGA1') {
+        if (pos === 1) {
+          gs.aclQualification = 'ACL_ELITE';
+          gs.trophies.push(`🏆 Juara BRI Liga 1 (S${gs.season})`);
+          if (gs.mode === 'real') gs.budget += 10000000000;
+          gs.messages.unshift({title:"👑 JUARA LIGA 1 & LOLOS ACL ELITE!", body:"Finis peringkat 1 BRI Liga 1 membawa klub lolos ke AFC Champions League Elite + hadiah Rp 10 M!", read:false});
+        } else if (pos === 2) {
+          gs.aclQualification = 'ACL_TWO';
+          gs.messages.unshift({title:"🌏 RUNNER-UP & LOLOS ACL TWO!", body:"Finis peringkat 2 BRI Liga 1 mengamankan tiket ke AFC Champions League Two!", read:false});
+        } else if (pos >= tbl.length - 2) {
+          gs.aclQualification = 'NONE';
+          gs.messages.unshift({title:"⬇️ DEGRADASI KE LIGA 2", body:`Finis peringkat ke-${pos} membuat klub terdegradasi ke Pegadaian Liga 2.`, read:false});
+        }
+      } else {
+        gs.aclQualification = 'NONE';
+        if (pos <= 3) {
+          if (pos === 1) gs.trophies.push(`🏆 Juara Liga 2 (S${gs.season})`);
+          gs.messages.unshift({title:"⬆️ PROMOSI KE BRI LIGA 1!", body:`Finis peringkat ke-${pos} membawa klub promosi ke BRI Liga 1!`, read:false});
+        }
+      }
+    }
 
-      gs.club.squad.forEach(p => { p.contract = Math.max(1, (p.contract||2) - 1); });
+    function advanceToNextSeason() {
+      const sFn = (a,b) => b.pts!==a.pts ? b.pts-a.pts : (b.gf-b.ga)-(a.gf-a.ga);
+      const t1 = [...gs.tables.LIGA1].sort(sFn), t2 = [...gs.tables.LIGA2].sort(sFn);
       const relIds = t1.slice(-3).map(x=>x.id), proIds = t2.slice(0,3).map(x=>x.id);
       const relC = gs.allClubs.LIGA1.filter(c=>relIds.includes(c.id)), proC = gs.allClubs.LIGA2.filter(c=>proIds.includes(c.id));
-      if (proIds.includes(gs.club.id)) { gs.club.league = 'LIGA1'; out += " ⬆️ PROMOSI LIGA 1!"; }
-      else if (relIds.includes(gs.club.id)) { gs.club.league = 'LIGA2'; out += " ⬇️ DEGRADASI LIGA 2"; }
 
-      document.getElementById('sr-title').textContent = `🏆 Laporan Musim ${gs.season}`;
-      pendingSeason = `<div class="p-4 rounded-xl bg-slate-950 border border-emerald-500/40 text-center font-bold text-white">${out}<div class="text-xs text-slate-400 mt-1">Rekor: ${gs.seasonStats.wins}M-${gs.seasonStats.draws}S-${gs.seasonStats.losses}K</div></div>`;
+      if (proIds.includes(gs.club.id)) gs.club.league = 'LIGA1';
+      else if (relIds.includes(gs.club.id)) gs.club.league = 'LIGA2';
 
       relC.forEach(c=>c.league='LIGA2'); proC.forEach(c=>c.league='LIGA1');
       gs.allClubs.LIGA1 = [...gs.allClubs.LIGA1.filter(c=>!relIds.includes(c.id)), ...proC];
       gs.allClubs.LIGA2 = [...gs.allClubs.LIGA2.filter(c=>!proIds.includes(c.id)), ...relC];
-      const rst = (arr) => arr.map(c=>({id:c.id,name:c.name,short:c.short,color:c.color,accent:c.accent,stars:c.stars,rating:c.rating,played:0,win:0,draw:0,loss:0,gf:0,ga:0,pts:0}));
-      gs.tables.LIGA1 = rst(gs.allClubs.LIGA1); gs.tables.LIGA2 = rst(gs.allClubs.LIGA2);
-      gs.season++; gs.week = 1; gs.seasonStats = {income:0,expense:0,goalsFor:0,goalsAgainst:0,wins:0,draws:0,losses:0,injuries:0}; tableViewLeague = gs.club.league;
+
+      const mkT = arr => arr.map(c => ({id:c.id,name:c.name,short:c.short,color:c.color,accent:c.accent,rating:c.rating,played:0,win:0,draw:0,loss:0,gf:0,ga:0,pts:0}));
+      gs.tables.LIGA1 = mkT(gs.allClubs.LIGA1); gs.tables.LIGA2 = mkT(gs.allClubs.LIGA2);
+
+      gs.club.squad.forEach(p => { p.contract = Math.max(1, (p.contract||2)-1); p.stamina = 100; p.goals = 0; p.assists = 0; });
+      gs.season++; gs.matchIdx = 0; gs.seasonProfit = 0; gs.preseasonDone = false;
+      gs.fixtures = buildSeasonFixtures(gs.allClubs[gs.club.league], gs.club.id);
+
+      if (gs.aclQualification === 'ACL_ELITE') gs.tournaments.acl_elite = buildBracket([gs.club, ...MD.acl_elite]);
+      if (gs.aclQualification === 'ACL_TWO') gs.tournaments.acl_two = buildBracket([gs.club, ...MD.acl_two]);
+      gs.tournaments.piala_id = buildBracket([gs.club, ...gs.allClubs.LIGA1.filter(c=>c.id!==gs.club.id)]);
+
+      saveGame(); updateUI();
+      toast(`🗓️ Musim ${gs.season} Dimulai! Tur Pra-Musim tersedia di HUB.`);
+          }
+     // UNIVERSAL SUB-MODAL (Klasemen, Statistik Lengkap, Sosial + Komentar, Pesan, Keuangan, Struktur, Staf)
+    function openSubModal(type) {
+      const title = document.getElementById('sub-modal-title'), body = document.getElementById('sub-modal-body');
+      if (type === 'klasemen') {
+        title.textContent = `🏆 KLASEMEN ${gs.club.league==='LIGA1'?'BRI LIGA 1 (34 MATCH)':'LIGA 2'}`;
+        const s = [...gs.tables[gs.club.league]].sort((a,b) => b.pts!==a.pts ? b.pts-a.pts : (b.gf-b.ga)-(a.gf-a.ga));
+        body.innerHTML = `<div class="text-[10px] text-slate-300 flex justify-between pb-1 border-b border-white/10"><span>👑 #1: ACL Elite</span><span>🌏 #2: ACL Two</span><span>⬇️ #16-18: Degradasi</span></div>
+          <div class="space-y-1">${s.map((r, i) => `<div class="p-2 rounded-xl flex items-center justify-between ${r.id===gs.club.id?'bg-emerald-400/25 border border-emerald-400 font-black':'bg-white/5'}">
+            <div class="flex items-center gap-2"><span class="w-4 text-slate-400">${i+1}</span>${renderClubLogo(r,'w-5 h-5')}<span class="truncate max-w-[130px]">${r.name}</span><span>${gs.club.league==='LIGA1'?(i===0?'👑':(i===1?'🌏':(i>=15?'⬇️':''))):(i<3?'⬆️':'')}</span></div>
+            <div class="flex gap-2.5 text-[11px]"><span class="text-slate-400">${r.played}M</span><span class="text-slate-300">${r.gf-r.ga}</span><b class="text-emerald-300 w-5 text-right">${r.pts}</b></div>
+          </div>`).join('')}</div>`;
+      } else if (type === 'statistik') {
+        title.textContent = '📊 STATISTIK LAGA & SKUAD MUSIM INI';
+        const st = gs.lastMatchStats;
+        const topScorers = [...gs.club.squad].sort((a,b)=>(b.goals||0)-(a.goals||0)).slice(0,5);
+        const topAssists = [...gs.club.squad].sort((a,b)=>(b.assists||0)-(a.assists||0)).slice(0,5);
+        body.innerHTML = `
+          ${st ? `<div class="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+            <div class="text-center font-black text-emerald-300">Statistik Laga Terakhir (${st.home} ${st.score} ${st.away})</div>
+            <div class="space-y-1 text-[11px]">
+              <div class="flex justify-between"><b>${st.isHome?st.poss_user:st.poss_opp}%</b><span class="text-slate-400">Penguasaan Bola</span><b>${st.isHome?st.poss_opp:st.poss_user}%</b></div>
+              <div class="flex justify-between"><b>${st.isHome?st.shots_user:st.shots_opp}</b><span class="text-slate-400">Total Tembakan</span><b>${st.isHome?st.shots_opp:st.shots_user}</b></div>
+              <div class="flex justify-between"><b>${st.isHome?st.sot_user:st.sot_opp}</b><span class="text-slate-400">Tembakan Tepat Sasaran</span><b>${st.isHome?st.sot_opp:st.sot_user}</b></div>
+              <div class="flex justify-between"><b>${st.isHome?st.pass_acc_user:st.pass_acc_opp}%</b><span class="text-slate-400">Akurasi Operan</span><b>${st.isHome?st.pass_acc_opp:st.pass_acc_user}%</b></div>
+              <div class="flex justify-between"><b>${st.isHome?st.fouls_user:st.fouls_opp}</b><span class="text-slate-400">Pelanggaran</span><b>${st.isHome?st.fouls_opp:st.fouls_user}</b></div>
+              <div class="text-center text-amber-300 font-bold pt-1">⭐ MOTM: ${st.motm} (${st.motm_rating})</div>
+            </div>
+          </div>` : '<div class="text-slate-400">Mainkan laga pertama untuk melihat statistik detail pertandingan.</div>'}
+          <div class="grid grid-cols-2 gap-2">
+            <div class="p-2.5 rounded-2xl bg-white/5"><div class="font-black text-emerald-300 mb-1">⚽ Top Skor Klub</div>${topScorers.map(p=>`<div class="flex justify-between text-[11px]"><span class="truncate max-w-[95px]">${p.name}</span><b>${p.goals||0}</b></div>`).join('')}</div>
+            <div class="p-2.5 rounded-2xl bg-white/5"><div class="font-black text-sky-300 mb-1">🎯 Top Assist Klub</div>${topAssists.map(p=>`<div class="flex justify-between text-[11px]"><span class="truncate max-w-[95px]">${p.name}</span><b>${p.assists||0}</b></div>`).join('')}</div>
+          </div>`;
+      } else if (type === 'sosial') {
+        title.textContent = '📱 MEDIA SOSIAL & KOMENTAR';
+        body.innerHTML = gs.socialFeed.slice(0, 10).map((s, idx) => `
+          <div class="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+            <div class="font-black text-sky-300 text-[11px]">${s.user}</div>
+            <p class="text-slate-100">${s.text}</p>
+            <div class="space-y-1 pl-2.5 border-l-2 border-emerald-400/50">
+              ${(s.comments||[]).map(c => `<div class="text-[11px]"><b class="text-emerald-300">${c.author}:</b> <span class="text-slate-300">${c.text}</span></div>`).join('')}
+            </div>
+            <div class="flex gap-1.5 pt-1">
+              <input id="cmt-in-${idx}" type="text" placeholder="Tulis balasan manajer..." class="flex-1 bg-slate-950/70 border border-white/15 rounded-full px-3 py-1 text-[11px]" />
+              <button onclick="postSocialComment(${idx})" class="px-3 py-1 rounded-full bg-emerald-400 text-slate-950 font-black text-[10px] cursor-pointer">Kirim</button>
+            </div>
+          </div>`).join('');
+      } else if (type === 'pesan') {
+        title.textContent = '✉️ KOTAK MASUK MANAJER';
+        gs.messages.forEach(m => m.read = true); saveGame(); updateUI();
+        body.innerHTML = gs.messages.slice(0, 15).map(m => `<div class="p-3 rounded-2xl bg-white/5 border border-white/10"><div class="font-black text-amber-300">${m.title}</div><p class="mt-0.5 text-slate-300">${m.body}</p></div>`).join('');
+      } else if (type === 'keuangan') {
+        title.textContent = '💰 SPONSOR, APPAREL & MERCH';
+        body.innerHTML = `
+          <div class="p-3 rounded-2xl bg-white/5 space-y-1.5">
+            <div class="flex justify-between items-center"><b>📦 Stok Merchandise</b><button onclick="restockAll()" class="px-2.5 py-1 rounded-full bg-amber-300 text-slate-950 font-black text-[10px] cursor-pointer">Restock (1.5M)</button></div>
+            ${gs.merch.map(m => `<div class="flex justify-between text-slate-300"><span>${m.icon} ${m.name}</span><b>${m.stock} pcs</b></div>`).join('')}
+          </div>
+          <div class="font-black text-emerald-300">Sponsor Dada Jersey (${gs.sponsor.full || gs.sponsor.name})</div>
+          <div class="grid grid-cols-2 gap-1.5">${MD.sponsors.map(s => `<button onclick="gs.sponsor=MD.sponsors.find(x=>x.id==='${s.id}');saveGame();openSubModal('keuangan');updateUI()" class="p-2 rounded-xl border ${gs.sponsor.id===s.id?'border-emerald-400 bg-emerald-400/20':'border-white/10 bg-white/5'} text-left cursor-pointer"><b>${s.full}</b><div class="text-[10px] text-emerald-300">+${fmt(s.per_match)}/laga</div></button>`).join('')}</div>
+          <div class="font-black text-sky-300">Apparel Resmi Jersey (${gs.apparel.name})</div>
+          <div class="grid grid-cols-2 gap-1.5 max-h-36 overflow-y-auto">${MD.apparels.map(a => `<button onclick="gs.apparel=MD.apparels.find(x=>x.id==='${a.id}');saveGame();openSubModal('keuangan');updateUI()" class="p-2 rounded-xl border ${gs.apparel.id===a.id?'border-sky-400 bg-sky-400/20':'border-white/10 bg-white/5'} text-left cursor-pointer"><b>${a.name}</b><div class="text-[10px] text-slate-400">${a.origin}</div></button>`).join('')}</div>`;
+      } else if (type === 'struktur') {
+        title.textContent = '🏟️ INFRASTRUKTUR STADION';
+        body.innerHTML = `<div class="p-4 rounded-2xl bg-white/5 text-center space-y-2"><div class="text-2xl">🏟️</div><div class="font-black text-sm">${gs.club.stadium} (Level ${gs.stadiumLevel})</div><button onclick="upgradeStad()" class="w-full py-2.5 rounded-full bg-emerald-400 text-slate-950 font-black cursor-pointer">UPGRADE STADION (Rp 10 M)</button></div>`;
+      } else if (type === 'staf') {
+        title.textContent = '👔 PELATIH & TIM MEDIS';
+        body.innerHTML = `
+          <div class="font-black text-emerald-300">Pelatih Kepala</div>
+          ${MD.coaches.map(c => `<button onclick="hireStaff('coach','${c.id}')" class="w-full p-2.5 rounded-xl border ${gs.coach.id===c.id?'border-emerald-400 bg-emerald-400/20':'border-white/10 bg-white/5'} flex justify-between items-center cursor-pointer"><span><b>${c.name}</b> (+${c.ovr_bonus} OVR)</span><b>${gs.coach.id===c.id?'✓ Aktif':fmt(c.cost)}</b></button>`).join('')}
+          <div class="font-black text-rose-300 pt-1">Tim Medis</div>
+          ${MD.medical.map(m => `<button onclick="hireStaff('medical','${m.id}')" class="w-full p-2.5 rounded-xl border ${gs.medical.id===m.id?'border-rose-400 bg-rose-400/20':'border-white/10 bg-white/5'} flex justify-between items-center cursor-pointer"><span><b>${m.name}</b> (-${m.injury_shield}% Cedera)</span><b>${gs.medical.id===m.id?'✓ Aktif':fmt(m.cost)}</b></button>`).join('')}`;
+      }
+      document.getElementById('sub-modal').classList.remove('hidden');
     }
 
-    function openNegotiationModal(type, pid) {
-      const p = type === 'buy' ? gs.market.find(x=>x.id===pid) : gs.club.squad.find(x=>x.id===pid); if (!p) return;
-      activeNeg = {type, p};
-      document.getElementById('neg-player-name').textContent = p.name;
-      document.getElementById('neg-player-meta').textContent = `${p.pos} • OVR ${p.ovr} • ${p.age} th`;
-      const fs = document.getElementById('neg-fee-section'), fsl = document.getElementById('neg-fee-slider');
-      if (type === 'buy') { fs.classList.remove('hidden'); fsl.min = Math.round(p.val*0.75); fsl.max = Math.round(p.val*1.15); fsl.step = 2.5e8; fsl.value = p.val; document.getElementById('neg-market-val').textContent = `Harga Pasar: ${fmt(p.val)}`; }
-      else fs.classList.add('hidden');
-      const bw = p.wage || 1e8, wsl = document.getElementById('neg-wage-slider');
-      wsl.min = Math.round(bw*0.75); wsl.max = Math.round(bw*1.5); wsl.step = 5e6; wsl.value = bw;
-      document.getElementById('neg-expected-wage').textContent = `Ekspektasi: ${fmt(bw)}/laga`;
-      updateNegotiationPreview(); document.getElementById('negotiation-modal').classList.remove('hidden');
+    function postSocialComment(idx) {
+      const inp = document.getElementById('cmt-in-' + idx);
+      const txt = (inp.value || '').trim(); if (!txt) return;
+      gs.socialFeed[idx].comments.push({ author: `👔 ${gs.manager}`, text: txt });
+      const replies = ["Mantap Coach, kami selalu di belakang tim! 🙌", "Siap kawal terus sampai juara! 🔥", "Ditunggu pembuktiannya di pertandingan berikutnya Coach!"];
+      gs.socialFeed[idx].comments.push({ author: "@SuporterSetia", text: replies[Math.floor(Math.random() * replies.length)] });
+      gs.fans = Math.min(100, gs.fans + 1);
+      saveGame(); openSubModal('sosial'); updateUI();
+      toast('💬 Komentar terkirim! Dukungan Fans +1%');
     }
-    function closeNegotiationModal() { document.getElementById('negotiation-modal').classList.add('hidden'); activeNeg = null; }
-    function updateNegotiationPreview() {
-      if (!activeNeg) return;
-      const {type, p} = activeNeg, fee = type==='buy' ? +document.getElementById('neg-fee-slider').value : 0, wage = +document.getElementById('neg-wage-slider').value, yrs = +document.getElementById('neg-years').value, bon = +document.getElementById('neg-bonus').value;
-      document.getElementById('neg-fee-label').textContent = fmt(fee); document.getElementById('neg-wage-label').textContent = fmt(wage) + '/laga';
-      let sc = 70 + (type==='buy' ? ((fee/Math.max(1,p.val))-1)*140 : 0) + ((wage/Math.max(1,p.wage||1e8))-1)*110 + (yrs>=3?5:-3) + (bon/5e8)*6;
-      const ch = Math.max(10, Math.min(99, Math.round(sc)));
-      document.getElementById('neg-chance-text').textContent = `${ch}%`;
-      document.getElementById('neg-total-upfront').textContent = `Total Dimuka: ${fmt(fee+bon)} • Kontrak ${yrs} Musim`;
-      return {fee, wage, yrs, bon, ch, up: fee+bon};
+
+    function restockAll() { if (gs.mode==='real'&&gs.budget<1.5e9) return toast('❌ Saldo kurang!'); if (gs.mode==='real') gs.budget-=1.5e9; gs.merch.forEach(m=>m.stock=m.max); saveGame(); openSubModal('keuangan'); updateUI(); toast('📦 Stok penuh!'); }
+    function upgradeStad() { if (gs.mode==='real'&&gs.budget<1e10) return toast('❌ Butuh Rp 10 M!'); if (gs.mode==='real') gs.budget-=1e10; gs.stadiumLevel++; saveGame(); openSubModal('struktur'); updateUI(); toast('🏟️ Stadion Di-upgrade!'); }
+    function hireStaff(t, id) { const it = (t==='coach'?MD.coaches:MD.medical).find(x=>x.id===id); if (gs.mode==='real'&&gs.budget<it.cost) return toast('❌ Saldo kurang!'); if (gs.mode==='real') gs.budget-=it.cost; gs[t]=it; saveGame(); openSubModal('staf'); updateUI(); toast(`✅ ${it.name} Dikontrak!`); }
+    // SQUAD (DENGAN MORAL & SIFAT PEMAIN)
+    function renderSquadList() {
+      const sq = gs.club.squad, ord = [...sq.filter(p=>p.is_starter), ...sq.filter(p=>!p.is_starter)];
+      document.getElementById('xi-count').textContent = sq.filter(p=>p.is_starter).length;
+      document.getElementById('squad-list').innerHTML = ord.map(p => {
+        const idx = sq.findIndex(x=>x.id===p.id), mObj = getMoraleLabel(p.morale || 80);
+        return `<div class="p-2.5 rounded-2xl ${p.is_starter?'bg-white/10':'bg-white/5'} flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2 min-w-0">
+            <button onclick="toggleStarter(${idx})" ${p.injury?'disabled':''} class="px-2 py-1 rounded-full font-black text-[10px] ${p.injury?'bg-rose-500/30 text-rose-300':(p.is_starter?'bg-emerald-400 text-slate-950':'bg-slate-800 text-slate-300')} cursor-pointer">${p.injury?'CED':(p.is_starter?'INTI':'CAD')}</button>
+            <div class="truncate">
+              <div class="font-bold truncate">${p.name} <span class="text-[10px] text-sky-300">• ${p.trait||'Pekerja Keras'}</span></div>
+              <div class="text-[10px] text-slate-300">${p.pos} • Stam ${p.stamina||100}% • <span class="${mObj.cls}">${mObj.txt}</span></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <span class="px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 font-black">${p.ovr}</span>
+            <button onclick="openNeg('renew','${p.id}')" class="px-2 py-1 rounded-full bg-sky-400/20 text-sky-300 font-bold text-[10px] cursor-pointer">Kontrak</button>
+            <button onclick="sellP(${idx})" class="px-2 py-1 rounded-full bg-rose-500/20 text-rose-300 font-bold text-[10px] cursor-pointer">Jual</button>
+          </div>
+        </div>`;
+      }).join('');
     }
-    function submitNegotiation() {
-      const {type, p} = activeNeg, d = updateNegotiationPreview();
-      if (gs.mode === 'real' && gs.budget < d.up) return toast('❌ Anggaran tidak cukup!');
-      if (Math.random()*100 > d.ch) { closeNegotiationModal(); return toast(`❌ Agen ${p.name} menolak tawaran!`); }
-      if (gs.mode === 'real') gs.budget -= d.up;
-      if (type === 'buy') {
-        gs.club.squad.unshift({...p, val:d.fee, wage:d.wage, contract:d.yrs, is_starter:gs.club.squad.filter(x=>x.is_starter).length<11, stamina:100, suspended:0, injury:null});
-        gs.market = gs.market.filter(x=>x.id!==p.id); toast(`✍️ ${p.name} resmi bergabung!`);
-      } else { p.wage = d.wage; p.contract = d.yrs; toast(`✍️ Kontrak ${p.name} diperpanjang!`); }
-      closeNegotiationModal(); saveGame(); updateUI();
-    }
+
+    function toggleStarter(i) { const p = gs.club.squad[i]; if (!p||p.injury) return; if (!p.is_starter && gs.club.squad.filter(x=>x.is_starter).length>=11) return toast('⚠️ Maksimal 11 pemain inti!'); p.is_starter=!p.is_starter; saveGame(); updateUI(); }
+    function boostMoraleBonus() { if (gs.mode==='real'&&gs.budget<1e9) return toast('❌ Saldo kurang!'); if (gs.mode==='real') gs.budget-=1e9; gs.club.squad.forEach(p=>p.morale=Math.min(100,(p.morale||80)+12)); saveGame(); updateUI(); toast('🎉 Moral seluruh pemain meningkat!'); }
+    function recoverStamina() { if (gs.mode==='real'&&gs.budget<1e9) return toast('❌ Saldo kurang!'); if (gs.mode==='real') gs.budget-=1e9; gs.club.squad.forEach(p=>p.stamina=100); saveGame(); updateUI(); toast('⚡ Stamina 100%!'); }
+    function trainAllSquad() { if (gs.mode==='real'&&gs.budget<2.5e9) return toast('❌ Saldo kurang!'); if (gs.mode==='real') gs.budget-=2.5e9; gs.club.squad.forEach(p=>{if(p.ovr<97)p.ovr++;}); saveGame(); updateUI(); toast('🏋️ Skuad +1 OVR!'); }
+    function sellP(i) { if (gs.club.squad.length<=12) return toast('⚠️ Minimal 12 pemain!'); const p=gs.club.squad.splice(i,1)[0]; if (gs.mode==='real') gs.budget+=Math.round(p.val*0.85); saveGame(); updateUI(); toast(`💰 ${p.name} Terjual!`); }
 
     function setFormation(f) { gs.formation = f; saveGame(); renderPitch(); }
     function renderPitch() {
       const fk = gs.formation || '4-3-3', slots = FORMATIONS[fk];
-      ['4-3-3','4-2-3-1','3-5-2'].forEach(k => document.getElementById('form-btn-'+k).className = k===fk ? 'px-2.5 py-1 rounded text-xs font-extrabold bg-emerald-500 text-slate-950 cursor-pointer' : 'px-2.5 py-1 rounded text-xs font-extrabold text-slate-300 cursor-pointer');
-      const st = gs.club.squad.filter(p => p.is_starter).slice(0, 11), rem = [...st], asg = new Array(11).fill(null);
-      slots.forEach((s, i) => { const idx = rem.findIndex(p => p.pos === s.p); if (idx !== -1) asg[i] = rem.splice(idx, 1)[0]; });
-      slots.forEach((s, i) => { if (!asg[i] && rem.length) asg[i] = rem.shift(); });
-
-      document.getElementById('pitch-players-layer').innerHTML = slots.map((s, i) => {
+      ['4-3-3','4-2-3-1','3-5-2'].forEach(k => document.getElementById('form-'+k).className = k===fk ? 'px-2.5 py-1 rounded-full text-[11px] font-black bg-emerald-400 text-slate-950 cursor-pointer' : 'px-2.5 py-1 rounded-full text-[11px] font-black text-slate-300 cursor-pointer');
+      const st = gs.club.squad.filter(p=>p.is_starter).slice(0,11), rem = [...st], asg = new Array(11).fill(null);
+      slots.forEach((s,i) => { const idx = rem.findIndex(p=>p.pos===s.p); if (idx!==-1) asg[i]=rem.splice(idx,1)[0]; });
+      slots.forEach((s,i) => { if (!asg[i] && rem.length) asg[i]=rem.shift(); });
+      document.getElementById('pitch-layer').innerHTML = slots.map((s,i) => {
         const p = asg[i]; if (!p) return '';
-        const sel = selectedSwapId === p.id, bad = (p.suspended||0)>0 || p.injury;
-        return `<div onclick="selectedSwapId=selectedSwapId==='${p.id}'?null:'${p.id}';renderPitch();renderSquad()" style="top:${s.t}%;left:${s.l}%" class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer">
-          <div style="background:${bad?'#991b1b':gs.club.color}" class="w-9 h-9 rounded-full border-2 ${sel?'border-amber-300 scale-110':'border-white'} flex flex-col items-center justify-center text-white font-black text-xs">${p.ovr}<span class="text-[7px]">${s.r}</span></div>
-          <span class="mt-0.5 px-1.5 py-0.5 rounded bg-slate-950/90 text-[10px] font-bold text-white truncate max-w-[70px]">${p.name.split(' ').slice(-1)[0]}</span>
+        return `<div style="top:${s.t}%;left:${s.l}%" class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+          ${renderOfficialJersey(gs.club, 'w-9 h-9', p.ovr)}
+          <span class="-mt-1 px-1.5 py-0.2 rounded-full bg-slate-950/90 text-[9px] font-bold truncate max-w-[68px]">${p.name.split(' ').slice(-1)[0]}</span>
         </div>`;
       }).join('');
-      document.getElementById('swap-banner').innerHTML = selectedSwapId ? `<span>🎯 Terpilih pemain inti — klik <b>TUKAR</b> pada pemain cadangan!</span>` : `<span>💡 Klik pemain di lapangan lalu klik <b>TUKAR</b> pada pemain cadangan.</span>`;
-    }
-    function renderSquad() {
-      const sq = gs.club.squad, ord = [...sq.filter(p=>p.is_starter), ...sq.filter(p=>!p.is_starter)];
-      document.getElementById('starter-count').textContent = sq.filter(p=>p.is_starter).length;
-      document.getElementById('squad-table-body').innerHTML = ord.map(p => {
-        const idx = sq.findIndex(x=>x.id===p.id), swp = !p.is_starter && selectedSwapId && !p.injury;
-        return `<tr class="${p.is_starter?'bg-slate-800/30':''}">
-          <td class="py-2 px-1">${swp ? `<button onclick="swapBench('${p.id}')" class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-extrabold cursor-pointer">TUKAR</button>` : `<button onclick="toggleSt(${idx})" ${p.injury?'disabled':''} class="px-2 py-0.5 rounded font-bold ${p.injury?'bg-rose-950 text-rose-400':(p.is_starter?'bg-emerald-500 text-slate-950':'bg-slate-700 text-slate-300')} cursor-pointer">${p.injury?'CEDERA':(p.is_starter?'INTI':'CAD')}</button>`}</td>
-          <td class="py-2 px-1 font-bold text-emerald-400">${p.pos}</td>
-          <td class="py-2 px-1"><b>${p.name}</b> ${p.injury?`<span class="text-rose-400">🚑(${p.injury.weeks}w)</span>`:''} ${(p.suspended||0)?'<span class="text-rose-400">🟥</span>':''}</td>
-          <td class="py-2 px-1 font-extrabold text-amber-400">${p.ovr}</td>
-          <td class="py-2 px-1">${p.stamina||100}%</td>
-          <td class="py-2 px-1">${p.contract||2} Musim</td>
-          <td class="py-2 px-1 text-right whitespace-nowrap">
-            <button onclick="openNegotiationModal('renew','${p.id}')" class="px-2 py-0.5 bg-sky-500/20 text-sky-300 rounded font-bold cursor-pointer">Kontrak</button>
-            <button onclick="sellP(${idx})" class="px-2 py-0.5 bg-rose-500/20 text-rose-400 rounded font-bold cursor-pointer">Jual</button>
-          </td>
-        </tr>`;
-      }).join('');
     }
 
-    function swapBench(bid) {
-      const a = gs.club.squad.find(x=>x.id===selectedSwapId), b = gs.club.squad.find(x=>x.id===bid);
-      if (a && b && !b.injury) { a.is_starter = false; b.is_starter = true; selectedSwapId = null; saveGame(); updateUI(); }
-    }
-    function toggleSt(i) {
-      const p = gs.club.squad[i]; if (!p || p.injury) return;
-      if (!p.is_starter && gs.club.squad.filter(x=>x.is_starter).length >= 11) return toast('⚠️ Starting XI sudah 11 pemain!');
-      p.is_starter = !p.is_starter; saveGame(); updateUI();
-    }
-    function recoverStamina() { if (gs.mode==='real' && gs.budget<1e9) return toast('❌ Dana kurang!'); if (gs.mode==='real') gs.budget-=1e9; gs.club.squad.forEach(p=>p.stamina=100); saveGame(); updateUI(); toast('⚡ Stamina 100%!'); }
-    function trainAllSquad() { if (gs.mode==='real' && gs.budget<2.5e9) return toast('❌ Dana kurang!'); if (gs.mode==='real') gs.budget-=2.5e9; gs.club.squad.forEach(p=>{if(p.ovr<97)p.ovr++;}); saveGame(); updateUI(); toast('🏋️ Skuad +1 OVR!'); }
-    function sellP(i) { if (gs.club.squad.length<=12) return toast('⚠️ Minimal 12 pemain!'); const p = gs.club.squad.splice(i,1)[0]; if (gs.mode==='real') gs.budget += Math.round(p.val*0.85); saveGame(); updateUI(); toast(`💰 ${p.name} terjual!`); }
-
+    // TRANSFER
     function renderTransfer() {
-      const cat = document.getElementById('filter-cat').value, pos = document.getElementById('filter-pos').value, q = document.getElementById('search-player').value.toLowerCase();
-      document.getElementById('transfer-grid').innerHTML = gs.market.filter(p => (cat==='ALL'||p.cat===cat) && (pos==='ALL'||p.pos===pos) && (p.name.toLowerCase().includes(q)||(p.club||'').toLowerCase().includes(q))).map(p => `
-        <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col justify-between">
-          <div><div class="flex justify-between text-xs"><span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-400 font-bold">${p.pos} • ${p.cat}</span><b class="text-amber-400">OVR ${p.ovr}</b></div>
-          <h4 class="font-extrabold text-sm text-white mt-1.5">${p.name}</h4><p class="text-[11px] text-slate-400">${p.club} • ${p.nat} • ${p.age} th</p></div>
-          <div class="mt-3 pt-2 border-t border-slate-800 flex justify-between items-center text-xs">
-            <div><div class="font-bold text-white">${fmt(p.val)}</div><div class="text-[10px] text-sky-400">Gaji: ${fmt(p.wage)}</div></div>
-            <button onclick="openNegotiationModal('buy','${p.id}')" class="px-3 py-1.5 bg-emerald-500 text-slate-950 font-extrabold rounded-xl cursor-pointer">Negosiasi</button>
-          </div>
-        </div>
-      `).join('');
+      const cat = document.getElementById('filter-cat').value, q = document.getElementById('search-player').value.toLowerCase();
+      document.getElementById('transfer-list').innerHTML = gs.market.filter(p => (cat==='ALL'||p.cat===cat) && (p.name.toLowerCase().includes(q)||(p.trait||'').toLowerCase().includes(q)||(p.club||'').toLowerCase().includes(q))).map(p => `
+        <div class="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between gap-2">
+          <div><div class="font-black text-white">${p.name} <span class="text-amber-300">(${p.ovr})</span></div><div class="text-[10px] text-sky-300 font-bold">✨ ${p.trait||'Pekerja Keras'}</div><div class="text-[10px] text-slate-300">${p.pos} • ${p.club} • ${fmt(p.val)}</div></div>
+          <button onclick="openNeg('buy','${p.id}')" class="px-3 py-1.5 rounded-full bg-emerald-400 text-slate-950 font-black text-[11px] cursor-pointer">Negosiasi</button>
+        </div>`).join('');
     }
 
-    function renderStaff() {
+    function openNeg(type, id) {
+      const p = type==='buy' ? gs.market.find(x=>x.id===id) : gs.club.squad.find(x=>x.id===id); if (!p) return;
+      activeNeg = {type, p};
+      document.getElementById('neg-name').textContent = p.name; document.getElementById('neg-meta').textContent = `${p.pos} • OVR ${p.ovr} • ${p.trait||''}`;
+      const fw = document.getElementById('neg-fee-wrap'), fs = document.getElementById('neg-fee');
+      if (type==='buy') { fw.classList.remove('hidden'); fs.min=Math.round(p.val*0.75); fs.max=Math.round(p.val*1.15); fs.step=2.5e8; fs.value=p.val; } else fw.classList.add('hidden');
+      const bw = p.wage||1e8, ws = document.getElementById('neg-wage'); ws.min=Math.round(bw*0.75); ws.max=Math.round(bw*1.5); ws.step=5e6; ws.value=bw;
+      updNeg(); document.getElementById('neg-modal').classList.remove('hidden');
+    }
+    function updNeg() {
+      const {type, p} = activeNeg, fee = type==='buy'?+document.getElementById('neg-fee').value:0, wage = +document.getElementById('neg-wage').value, yrs = +document.getElementById('neg-yrs').value, bon = +document.getElementById('neg-bon').value;
+      document.getElementById('neg-fee-lbl').textContent = fmt(fee); document.getElementById('neg-wage-lbl').textContent = fmt(wage)+'/laga';
+      const moraleBonus = type==='renew' ? ((p.morale||80) - 75) * 0.5 : 0;
+      const ch = Math.max(10, Math.min(99, Math.round(70 + moraleBonus + (type==='buy'?((fee/Math.max(1,p.val))-1)*140:0) + ((wage/Math.max(1,p.wage||1e8))-1)*110 + (yrs>=3?5:-3) + (bon/5e8)*6)));
+      document.getElementById('neg-chance').textContent = ch + '%';
+      return {fee, wage, yrs, bon, ch, up: fee+bon};
+    }
+    function submitNeg() {
+      const {type, p} = activeNeg, d = updNeg();
+      if (gs.mode==='real'&&gs.budget<d.up) return toast('❌ Saldo tidak cukup!');
+      if (Math.random()*100 > d.ch) { document.getElementById('neg-modal').classList.add('hidden'); return toast(`❌ Agen ${p.name} menolak!`); }
+      if (gs.mode==='real') gs.budget -= d.up;
+      if (type==='buy') { gs.club.squad.unshift({...p, val:d.fee, wage:d.wage, contract:d.yrs, morale:90, goals:0, assists:0, is_starter:gs.club.squad.filter(x=>x.is_starter).length<11, stamina:100, suspended:0, injury:null}); gs.market=gs.market.filter(x=>x.id!==p.id); toast(`✍️ ${p.name} Resmi Bergabung!`); }
+      else { p.wage=d.wage; p.contract=d.yrs; p.morale=Math.min(100,(p.morale||80)+10); toast(`✍️ Kontrak ${p.name} Diperpanjang!`); }
+      document.getElementById('neg-modal').classList.add('hidden'); saveGame(); updateUI();
+    }
+
+    // MANAJER
+    function renderManajer() {
+      document.getElementById('mgr-profile-name').textContent = gs.manager;
+      document.getElementById('mgr-trophies-badge').textContent = `🏆 ${gs.trophies.length} Trofi`;
+      document.getElementById('mgr-trophy-list').textContent = gs.trophies.length ? gs.trophies.join(' • ') : 'Belum ada trofi diraih.';
       const inj = gs.club.squad.filter(p => p.injury);
-      document.getElementById('injury-ward-list').innerHTML = inj.length ? inj.map(p => `
-        <div class="p-3 rounded-xl bg-slate-950 border border-rose-500/50 text-xs">
-          <div class="font-extrabold text-white">${p.name} (${p.pos})</div><div class="text-rose-300">${p.injury.type} • Sisa ${p.injury.weeks} pekan</div>
-          <button onclick="healP('${p.id}',${p.injury.weeks*750000000})" class="mt-2 w-full py-1.5 rounded bg-emerald-500 text-slate-950 font-extrabold cursor-pointer">💉 Terapi Instan (${fmt(p.injury.weeks*750000000)})</button>
-        </div>`).join('') : `<div class="col-span-full text-xs text-emerald-400 font-bold">✅ Tidak ada pemain cedera.</div>`;
+      document.getElementById('injury-list').innerHTML = inj.length ? inj.map(p => `<div class="p-2.5 rounded-2xl bg-rose-500/15 border border-rose-400/30 flex justify-between items-center">
+        <div><b>${p.name}</b><div class="text-[10px] text-rose-200">${p.injury.type} (${p.injury.weeks} pekan)</div></div>
+        <button onclick="healP('${p.id}',${p.injury.weeks*750000000})" class="px-3 py-1 rounded-full bg-emerald-400 text-slate-950 font-black text-[10px] cursor-pointer">💉 Terapi (${fmt(p.injury.weeks*750000000)})</button></div>`).join('') : '<div class="text-emerald-300">✅ Semua pemain bugar!</div>';
+      document.getElementById('youth-list').innerHTML = gs.youth.map((y, i) => `<div class="p-2.5 rounded-2xl bg-white/5 flex justify-between items-center">
+        <div><b>${y.name}</b> <span class="text-emerald-300 font-black">(${y.ovr})</span><div class="text-[10px] text-slate-400">${y.pos} • ✨ ${y.trait}</div></div>
+        <button onclick="gs.club.squad.push({...gs.youth.splice(${i},1)[0]});saveGame();updateUI();toast('🎓 Promosi ke Tim Utama!')" class="px-3 py-1 rounded-full bg-emerald-400 text-slate-950 font-black text-[10px] cursor-pointer">Promosi</button></div>`).join('');
+    }
+    function healP(id, c) { if (gs.mode==='real'&&gs.budget<c) return toast('❌ Saldo kurang!'); if (gs.mode==='real') gs.budget-=c; const p=gs.club.squad.find(x=>x.id===id); if(p)p.injury=null; saveGame(); updateUI(); toast('💉 Pemain Pulih!'); }
+    function scoutYouth() { if (gs.mode==='real'&&gs.budget<1e9) return toast('❌ Saldo kurang!'); if (gs.mode==='real') gs.budget-=1e9; gs.youth=genYouth(gs.scout.youth_boost); saveGame(); updateUI(); }
 
-      document.getElementById('coaches-grid').innerHTML = MD.coaches.map(c => `<div class="p-3 rounded-xl border ${gs.coach.id===c.id?'border-emerald-500 bg-emerald-500/10':'border-slate-800 bg-slate-950'} text-xs flex flex-col justify-between">
-        <div><div class="flex justify-between font-bold"><span>${c.nat}</span><span class="text-emerald-400">+${c.ovr_bonus} OVR</span></div><h4 class="font-extrabold text-white mt-1">${c.name}</h4><p class="text-slate-400 text-[11px]">${c.style}</p></div>
-        <button onclick="hireItem('coach','${c.id}')" class="mt-2.5 w-full py-1.5 rounded bg-slate-800 font-bold cursor-pointer">${gs.coach.id===c.id?'✓ Aktif':fmt(c.cost)}</button></div>`).join('');
-
-      document.getElementById('medical-grid').innerHTML = MD.medical.map(m => `<div class="p-3 rounded-xl border ${gs.medical.id===m.id?'border-rose-500 bg-rose-500/10':'border-slate-800 bg-slate-950'} flex justify-between items-center text-xs">
-        <div><b>${m.name}</b><div class="text-slate-400">Proteksi Cedera -${m.injury_shield}%</div></div>
-        <button onclick="hireItem('medical','${m.id}')" class="px-3 py-1.5 rounded bg-slate-800 font-bold cursor-pointer">${gs.medical.id===m.id?'✓ Aktif':fmt(m.cost)}</button></div>`).join('');
-
-      document.getElementById('scouts-grid').innerHTML = MD.scouts.map(s => `<div class="p-3 rounded-xl border ${gs.scout.id===s.id?'border-indigo-500 bg-indigo-500/10':'border-slate-800 bg-slate-950'} flex justify-between items-center text-xs">
-        <div><b>${s.name}</b><div class="text-slate-400">Akademi +${s.youth_boost} OVR</div></div>
-        <button onclick="hireItem('scout','${s.id}')" class="px-3 py-1.5 rounded bg-slate-800 font-bold cursor-pointer">${gs.scout.id===s.id?'✓ Aktif':fmt(s.cost)}</button></div>`).join('');
+    // HUB (TUR PRA-MUSIM + PIALA + ACL)
+    function selectTour(k) {
+      activeTour = k;
+      ['piala_id','acl_two','acl_elite'].forEach((x, i) => document.getElementById(['btn-t-piala','btn-t-acl2','btn-t-acle'][i]).className = x===k ? 'py-2 rounded-full font-black text-[10px] bg-emerald-400 text-slate-950 cursor-pointer' : 'py-2 rounded-full font-black text-[10px] bg-slate-900 text-slate-300 cursor-pointer');
+      renderHub();
     }
 
-    function healP(id, c) { if (gs.mode==='real'&&gs.budget<c) return toast('❌ Dana kurang!'); if (gs.mode==='real') gs.budget-=c; const p=gs.club.squad.find(x=>x.id===id); if(p)p.injury=null; saveGame(); updateUI(); toast('💉 Pemain pulih!'); }
-    function hireItem(type, id) {
-      const list = type==='coach'?MD.coaches:(type==='medical'?MD.medical:MD.scouts), item = list.find(x=>x.id===id);
-      if (gs.mode==='real'&&gs.budget<item.cost) return toast('❌ Dana kurang!'); if (gs.mode==='real') gs.budget-=item.cost; gs[type]=item; saveGame(); updateUI(); toast(`✅ ${item.name} aktif!`);
+    function renderHub() {
+      // Tur Pra-Musim
+      document.getElementById('preseason-status-badge').textContent = gs.preseasonDone ? '✓ Selesai Musim Ini' : 'Tersedia';
+      document.getElementById('preseason-box').innerHTML = gs.preseasonDone
+        ? `<div class="p-2.5 rounded-2xl bg-white/5 text-slate-300">Tur Pra-Musim musim ${gs.season} telah selesai dilaksanakan.</div>`
+        : (MD.preseason || []).map(t => `
+          <div class="p-2.5 rounded-2xl bg-white/5 border border-white/10 flex justify-between items-center gap-2">
+            <div><div class="font-black text-white">${t.name}</div><div class="text-[10px] text-emerald-300">Hadiah: ${fmt(t.reward)} • Moral +${t.morale_boost}%</div></div>
+            <button onclick="runPreseasonTour('${t.id}')" class="px-3 py-1.5 rounded-full bg-sky-400 text-slate-950 font-black text-[10px] cursor-pointer">Berangkat</button>
+          </div>`).join('');
+
+      const q = gs.aclQualification || 'NONE';
+      document.getElementById('acl-qualification-card').innerHTML = `
+        <div class="p-2.5 rounded-2xl bg-white/5 flex justify-between items-center">
+          <span>Status Tiket Asia:</span>
+          <b class="${q==='ACL_ELITE'?'text-amber-300':(q==='ACL_TWO'?'text-sky-300':'text-rose-300')}">${q==='ACL_ELITE'?'👑 LOLOS ACL ELITE':(q==='ACL_TWO'?'🌏 LOLOS ACL TWO':'🔒 BELUM LOLOS')}</b>
+        </div>
+        <div class="text-[10px] text-slate-300">• <b>#1 BRI Liga 1</b> → ACL Elite | <b>#2 Liga 1 / Juara Piala ID</b> → ACL Two</div>`;
+
+      const box = document.getElementById('tour-box');
+      if (activeTour === 'acl_elite' && q !== 'ACL_ELITE') { box.innerHTML = `<div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-400/30 text-center"><b>🔒 TERKUNCI — BELUM LOLOS ACL ELITE</b><p class="text-slate-300 mt-1">Juara 1 BRI Liga 1 di akhir musim (34 match) untuk lolos ke ACL Elite!</p></div>`; return; }
+      if (activeTour === 'acl_two' && q !== 'ACL_TWO' && q !== 'ACL_ELITE') { box.innerHTML = `<div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-400/30 text-center"><b>🔒 TERKUNCI — BELUM LOLOS ACL TWO</b><p class="text-slate-300 mt-1">Finis #2 Liga 1 atau juarai <b>Piala Indonesia</b> untuk tiket ACL Two!</p></div>`; return; }
+
+      const tr = gs.tournaments[activeTour];
+      const ms = tr.round==='QF' ? tr.qf : (tr.round==='SF' ? tr.sf : tr.final);
+      box.innerHTML = `
+        <div class="flex justify-between items-center">
+          <b class="text-emerald-300 uppercase">Babak: ${tr.round==='DONE'?'SELESAI':tr.round}</b>
+          ${tr.round==='DONE'
+            ? `<button onclick="resetTour('${activeTour}')" class="px-3 py-1 rounded-full bg-amber-300 text-slate-950 font-black text-[10px] cursor-pointer">Edisi Baru</button>`
+            : `<button onclick="playTourRound()" class="px-3.5 py-1.5 rounded-full bg-emerald-400 text-slate-950 font-black text-[11px] cursor-pointer">⚡ Mainkan Babak ${tr.round}</button>`}
+        </div>
+        <div class="space-y-1.5">${ms.map(m => !m.team1 ? '' : `<div class="p-2.5 rounded-2xl bg-white/5 flex justify-between items-center">
+          <div class="flex items-center gap-1.5 truncate max-w-[42%]">${renderClubLogo(m.team1,'w-4 h-4')}<span class="truncate">${m.team1.name}</span></div>
+          <b class="px-2 py-0.5 rounded bg-slate-950 text-emerald-300">${m.score1!==null?`${m.score1} - ${m.score2}`:'VS'}</b>
+          <div class="flex items-center justify-end gap-1.5 truncate max-w-[42%]"><span class="truncate">${m.team2.name}</span>${renderClubLogo(m.team2,'w-4 h-4')}</div>
+        </div>`).join('')}</div>`;
     }
 
-    function renderSponsorMerch() {
-      document.getElementById('stadium-level').textContent = gs.stadiumLevel;
-      document.getElementById('merch-grid').innerHTML = gs.merch.map((m, i) => `<div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-        <div class="flex justify-between"><span>${m.icon} <b>${m.name}</b></span><b class="text-emerald-400">Stok: ${m.stock}</b></div>
-        <div class="text-amber-400 mt-1">Harga: ${fmt(m.price)}</div>
-        <button onclick="restockOne(${i})" class="mt-2 w-full py-1.5 rounded bg-slate-800 font-bold cursor-pointer">+ Restock (450 Jt)</button></div>`).join('');
-
-      document.getElementById('apparels-grid').innerHTML = MD.apparels.map(a => `<div class="p-3 rounded-xl border ${gs.apparel.id===a.id?'border-sky-500 bg-sky-500/10':'border-slate-800 bg-slate-950'} text-xs flex flex-col justify-between">
-        <div><div class="text-[10px] text-slate-400">${a.origin}</div><b>${a.name}</b><div class="text-sky-400 mt-1">+${fmt(a.per_match)}/laga</div></div>
-        <button onclick="gs.apparel=MD.apparels.find(x=>x.id==='${a.id}');saveGame();updateUI()" class="mt-2 w-full py-1 rounded bg-slate-800 font-bold cursor-pointer">${gs.apparel.id===a.id?'✓ Aktif':'Pilih'}</button></div>`).join('');
-
-      document.getElementById('sponsors-grid').innerHTML = MD.sponsors.map(s => `<div class="p-3 rounded-xl border ${gs.sponsor.id===s.id?'border-emerald-500 bg-emerald-500/10':'border-slate-800 bg-slate-950'} text-xs flex flex-col justify-between">
-        <div><b>${s.name}</b><div class="text-emerald-400 mt-1">+${fmt(s.per_match)}/laga</div></div>
-        <button onclick="gs.sponsor=MD.sponsors.find(x=>x.id==='${s.id}');saveGame();updateUI()" class="mt-2 w-full py-1 rounded bg-slate-800 font-bold cursor-pointer">${gs.sponsor.id===s.id?'✓ Aktif':'Pilih'}</button></div>`).join('');
+    function runPreseasonTour(tid) {
+      if (gs.preseasonDone) return;
+      const t = MD.preseason.find(x => x.id === tid); if (!t) return;
+      let wins = 0, logs = [];
+      t.opps.forEach(([oname, orat]) => {
+        const diff = gs.club.rating - orat;
+        const ug = Math.max(0, Math.min(5, Math.round(1.4 + diff * 0.12 + (Math.random()*2 - 0.8))));
+        const og = Math.max(0, Math.min(4, Math.round(1.1 - diff * 0.1 + (Math.random()*2 - 0.8))));
+        if (ug > og) wins++;
+        logs.push(`${gs.club.name} ${ug}-${og} ${oname}`);
+      });
+      const prize = Math.round(t.reward * (0.5 + wins * 0.25));
+      if (gs.mode === 'real') gs.budget += prize;
+      gs.seasonProfit += prize;
+      gs.club.squad.forEach(p => { p.morale = Math.min(100, (p.morale||80) + t.morale_boost); p.stamina = 100; });
+      gs.preseasonDone = true;
+      gs.messages.unshift({title:`✈️ Laporan ${t.name}`, body:`Hasil uji coba: ${logs.join(' | ')}. Hadiah tur: +${fmt(prize)} & Moral skuad meningkat!`, read:false});
+      gs.socialFeed.unshift({id:'pre_'+Date.now(), user:"@MediaBolaID", text:`Tur pra-musim ${gs.club.name} di ${t.name} berakhir positif (${logs.join(', ')})! Skuad terlihat sangat kompak. 👏`, comments:[]});
+      saveGame(); updateUI();
+      toast(`✈️ Tur Pra-Musim Selesai! +${fmt(prize)}`);
     }
-    function restockOne(i) { if (gs.mode==='real'&&gs.budget<4.5e8) return toast('❌ Dana kurang!'); if (gs.mode==='real') gs.budget-=4.5e8; gs.merch[i].stock=gs.merch[i].max; saveGame(); updateUI(); }
-    function restockAllMerch() { if (gs.mode==='real'&&gs.budget<1.5e9) return toast('❌ Dana kurang!'); if (gs.mode==='real') gs.budget-=1.5e9; gs.merch.forEach(m=>m.stock=m.max); saveGame(); updateUI(); toast('📦 Stok penuh!'); }
-    function upgradeStadium() { if (gs.mode==='real'&&gs.budget<1e10) return toast('❌ Butuh 10 Miliar!'); if (gs.mode==='real') gs.budget-=1e10; gs.stadiumLevel++; saveGame(); updateUI(); toast('🏟️ Stadion di-upgrade!'); }
 
-    function renderAcademy() {
-      document.getElementById('youth-list').innerHTML = gs.youth.map((y, i) => `<div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center text-xs">
-        <div><b>${y.name}</b> (${y.pos} • ${y.age}th)<div class="text-emerald-400">OVR ${y.ovr} • Potensi ${y.potential}</div></div>
-        <button onclick="gs.club.squad.push({...gs.youth.splice(${i},1)[0]});saveGame();updateUI()" class="px-3 py-1.5 bg-emerald-500 text-slate-950 font-extrabold rounded-xl cursor-pointer">Promosi</button></div>`).join('');
-      document.getElementById('pssi-sanction-log').innerHTML = gs.sanctionLogs.length ? gs.sanctionLogs.map(s => `<div class="p-3 rounded-xl bg-rose-950/30 border border-rose-500/40"><b class="text-rose-400">${s.title} (S${s.season} P${s.week})</b><div>${s.desc}</div></div>`).join('') : '<div class="text-slate-400">Belum ada hukuman Komdis PSSI.</div>';
-    }
-    function scoutYouth() { if (gs.mode==='real'&&gs.budget<1e9) return toast('❌ Dana kurang!'); if (gs.mode==='real') gs.budget-=1e9; gs.youth=genYouth(gs.scout.youth_boost); saveGame(); updateUI(); }
-
-    function selectTournament(k) {
-      activeTourKey = k;
-      ['piala_id','acl_two','acl_elite'].forEach((x, idx) => document.getElementById(['btn-tour-piala','btn-tour-acl2','btn-tour-aclelite'][idx]).className = x===k ? 'px-3.5 py-2 rounded-xl font-extrabold text-xs bg-emerald-500 text-slate-950 cursor-pointer' : 'px-3.5 py-2 rounded-xl font-extrabold text-xs bg-slate-800 text-slate-300 cursor-pointer');
-      renderTournaments();
-    }
-    function renderTournaments() {
-      const titles = {piala_id:['🇮🇩 Piala Indonesia','Sistem gugur klub terbaik Indonesia (Hadiah 6M)'], acl_two:['🌏 AFC Champions League Two','Kompetisi Asia Tier 2 (Hadiah 15M)'], acl_elite:['👑 AFC Champions League Elite','Kasta tertinggi Asia: Al-Hilal, Al-Nassr, Vissel Kobe (Hadiah 35M)']}[activeTourKey];
-      document.getElementById('tour-title').textContent = titles[0]; document.getElementById('tour-desc').textContent = titles[1];
-      document.getElementById('trophy-list').textContent = gs.trophies.length ? gs.trophies.join(' • ') : 'Belum ada trofi';
-      const tr = gs.tournaments[activeTourKey], aw = document.getElementById('tour-action-wrap');
-      aw.innerHTML = tr.round === 'DONE'
-        ? `<button onclick="resetTour('${activeTourKey}')" class="px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 font-extrabold text-xs cursor-pointer">🔄 Edisi Baru (Juara: ${tr.champion.name})</button>`
-        : `<button onclick="playTourRound()" class="px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 font-extrabold text-xs cursor-pointer">⚡ Mainkan Babak ${tr.round}</button>`;
-      const box = m => !m.team1 ? `<div class="p-2.5 rounded-xl bg-slate-950/50 text-xs text-slate-500 text-center">Menunggu Pemenang</div>` : `<div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs space-y-1">
-        <div class="flex justify-between"><span>${m.team1.name}</span><b>${m.score1!==null?m.score1:'-'}</b></div>
-        <div class="flex justify-between"><span>${m.team2.name}</span><b>${m.score2!==null?m.score2:'-'}</b></div></div>`;
-      document.getElementById('bracket-qf').innerHTML = tr.qf.map(box).join('');
-      document.getElementById('bracket-sf').innerHTML = tr.sf.map(box).join('');
-      document.getElementById('bracket-final').innerHTML = tr.final.map(box).join('');
-    }
     async function playTourRound() {
-      const tr = gs.tournaments[activeTourKey]; if (tr.round === 'DONE') return;
-      const ms = tr.round === 'QF' ? tr.qf : (tr.round === 'SF' ? tr.sf : tr.final);
-      const res = await fetch('/api/simulate_knockout', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({matches:ms, user_club_id:gs.club.id, tactic:document.getElementById('tactic-select').value, mentality:document.getElementById('mentality-select').value, coach_bonus:gs.coach.ovr_bonus, injury_shield:gs.medical.injury_shield})});
+      const tr = gs.tournaments[activeTour]; if (tr.round === 'DONE') return;
+      const ms = tr.round==='QF' ? tr.qf : (tr.round==='SF' ? tr.sf : tr.final);
+      const res = await fetch('/api/simulate_knockout', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({matches:ms, user_club_id:gs.club.id, tactic:document.getElementById('tactic-select').value, mentality:document.getElementById('mentality-select').value, coach_bonus:gs.coach.ovr_bonus, injury_shield:gs.medical.injury_shield}) });
       const d = await res.json();
-      if (tr.round === 'QF') { tr.qf = d.matches; tr.sf[0].team1=tr.qf[0].winner; tr.sf[0].team2=tr.qf[1].winner; tr.sf[1].team1=tr.qf[2].winner; tr.sf[1].team2=tr.qf[3].winner; tr.round='SF'; }
-      else if (tr.round === 'SF') { tr.sf = d.matches; tr.final[0].team1=tr.sf[0].winner; tr.final[0].team2=tr.sf[1].winner; tr.round='FINAL'; }
+      if (tr.round==='QF') { tr.qf=d.matches; tr.sf[0].team1=tr.qf[0].winner; tr.sf[0].team2=tr.qf[1].winner; tr.sf[1].team1=tr.qf[2].winner; tr.sf[1].team2=tr.qf[3].winner; tr.round='SF'; }
+      else if (tr.round==='SF') { tr.sf=d.matches; tr.final[0].team1=tr.sf[0].winner; tr.final[0].team2=tr.sf[1].winner; tr.round='FINAL'; }
       else {
-        tr.final = d.matches; tr.champion = tr.final[0].winner; tr.round = 'DONE';
-        if (tr.champion.id === gs.club.id) { const pr = {piala_id:6e9,acl_two:1.5e10,acl_elite:3.5e10}[activeTourKey]; if (gs.mode==='real') gs.budget+=pr; gs.trophies.push(`${activeTourKey.toUpperCase()} (S${gs.season})`); toast(`🎉 JUARA! +${fmt(pr)}`); }
+        tr.final=d.matches; tr.champion=tr.final[0].winner; tr.round='DONE';
+        if (tr.champion.id === gs.club.id) {
+          const pr = {piala_id:6e9, acl_two:1.5e10, acl_elite:3.5e10}[activeTour];
+          if (gs.mode==='real') gs.budget += pr;
+          gs.trophies.push(`🏆 ${activeTour.toUpperCase()} (S${gs.season})`);
+          if (activeTour==='piala_id' && gs.aclQualification==='NONE') {
+            gs.aclQualification = 'ACL_TWO';
+            gs.messages.unshift({title:"🌏 JUARA PIALA INDONESIA → LOLOS ACL TWO!", body:"Klub Anda resmi mengamankan tiket AFC Champions League Two!", read:false});
+          }
+          toast(`🎉 JUARA! Hadiah +${fmt(pr)}`);
+        }
       }
-      document.getElementById('knockout-feed').innerHTML = (d.user_events||[]).map(e => `<div><b class="text-emerald-400">${e.min}'</b> ${e.text}</div>`).join('') || 'Babak selesai!';
       saveGame(); updateUI();
     }
-    function resetTour(k) { const c = gs.club; gs.tournaments[k] = buildBracket(k==='piala_id'?[c,...gs.allClubs.LIGA1.filter(x=>x.id!==c.id)]:[c,...(k==='acl_two'?MD.acl_two:MD.acl_elite)]); saveGame(); renderTournaments(); }
 
-    function viewTableLeague(lg) {
-      tableViewLeague = lg;
-      document.getElementById('btn-tbl-l1').className = lg==='LIGA1' ? 'px-3 py-1.5 rounded-xl text-xs font-extrabold bg-emerald-500 text-slate-950 cursor-pointer' : 'px-3 py-1.5 rounded-xl text-xs font-extrabold bg-slate-800 text-slate-300 cursor-pointer';
-      document.getElementById('btn-tbl-l2').className = lg==='LIGA2' ? 'px-3 py-1.5 rounded-xl text-xs font-extrabold bg-amber-400 text-slate-950 cursor-pointer' : 'px-3 py-1.5 rounded-xl text-xs font-extrabold bg-slate-800 text-slate-300 cursor-pointer';
-      renderStandings();
-    }
-    function renderStandings() {
-      const s = [...gs.tables[tableViewLeague]].sort((a,b) => b.pts!==a.pts ? b.pts-a.pts : (b.gf-b.ga)-(a.gf-a.ga));
-      document.getElementById('standings-body').innerHTML = s.map((r, i) => {
-        const me = r.id === gs.club.id;
-        let z = 'Aman';
-        if (tableViewLeague === 'LIGA1') { if (i===0) z='🏆 ACL Elite'; else if (i===1) z='🌏 ACL Two'; else if (i>=s.length-3) z='⬇️ Degradasi'; }
-        else if (i<3) z='⬆️ Promosi';
-        return `<tr class="${me?'bg-emerald-500/15 font-extrabold text-white':''}">
-          <td class="py-2 px-2">${i+1}</td><td class="py-2 px-2 flex items-center gap-2">${renderClubLogo(r,'w-6 h-6')}<span>${r.name}</span></td>
-          <td class="py-2 px-1 text-center">${r.played}</td><td class="py-2 px-1 text-center">${r.win}</td><td class="py-2 px-1 text-center">${r.draw}</td><td class="py-2 px-1 text-center">${r.loss}</td>
-          <td class="py-2 px-1 text-center">${r.gf-r.ga}</td><td class="py-2 px-2 text-center font-black text-emerald-400">${r.pts}</td><td class="py-2 px-2 text-right text-xs">${z}</td></tr>`;
-      }).join('');
-    }
+    function resetTour(k) { const c = gs.club; gs.tournaments[k] = buildBracket(k==='piala_id'?[c,...gs.allClubs.LIGA1.filter(x=>x.id!==c.id)]:[c,...(k==='acl_two'?MD.acl_two:MD.acl_elite)]); saveGame(); renderHub(); }
 
     boot();
   </script>
 </body>
-</html>
+</html>                                                                                                                                                                                                                                                                                      }
